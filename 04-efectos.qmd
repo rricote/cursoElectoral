@@ -435,6 +435,19 @@ evolucion("UP", ["2015-12", "2016-06", "2019-04", "2019-11"])
 Con el 20-21 % de los votos (2015 y 2016), Podemos y sus confluencias sacan escaño en 37 provincias. Al bajar al 13-14 % (2019) se quedan solo en 24: por debajo de cierto umbral, el voto disperso deja de convertirse en escaños en las provincias pequeñas.
 :::
 
+## Unidas Podemos frente a Sumar
+
+```{ojs}
+html`<div class="cuadricula grande">
+  ${celdaGrupo("2019-11", efectos["2019-11"].evolucion.UP, "Unidas Podemos · noviembre de 2019")}
+  ${celdaGrupo("2023-07", efectos["2023-07"].evolucion.SUMAR, "Sumar · julio de 2023")}
+</div>`
+```
+
+::: notes
+A la izquierda, Unidas Podemos en noviembre de 2019; a la derecha, Sumar en 2023. Sumar integra a Podemos, IU, Más Madrid, Compromís y los Comuns. Con casi el mismo porcentaje de votos que Unidas Podemos (12,3 % frente a 12,9 %), saca 31 escaños frente a 35.
+:::
+
 ## Evolución de Ciudadanos
 
 ```{ojs}
@@ -448,24 +461,11 @@ Su máximo es abril de 2019 (57 escaños, 40 provincias). Siete meses después, 
 ## Evolución de Vox
 
 ```{ojs}
-evolucion("VOX", ["2016-06", "2019-04", "2019-11", "2023-07"])
+html`<div class="cuadricula">${celda("2023-07", null)}${["2019-04", "2019-11", "2023-07"].map(el => celdaGrupo(el, efectos[el].evolucion.VOX, efectos[el].etiqueta))}</div>`
 ```
 
 ::: notes
-En 2016 Vox tiene un 0,2 % de los votos y ningún escaño. En abril de 2019 entra con 24 y en noviembre llega a 52, con escaño en 33 provincias. En 2023 baja a 33.
-:::
-
-## Unidas Podemos frente a Sumar
-
-```{ojs}
-html`<div class="cuadricula">
-  ${celda("2019-11", null)}${celdaGrupo("2019-11", efectos["2019-11"].evolucion.UP, "Unidas Podemos · noviembre de 2019")}
-  ${celda("2023-07", null)}${celdaGrupo("2023-07", efectos["2023-07"].evolucion.SUMAR, "Sumar · julio de 2023")}
-</div>`
-```
-
-::: notes
-Arriba, noviembre de 2019; abajo, 2023. Sumar integra a Podemos, IU, Más Madrid, Compromís y los Comuns. Con casi el mismo porcentaje de votos que Unidas Podemos (12,3 % frente a 12,9 %), saca 31 escaños frente a 35.
+Arriba a la izquierda, el mapa de escaños por provincia (2023) como referencia. Antes de 2019 Vox era irrelevante: en 2016 sacó un 0,2 % de los votos y ningún escaño. En abril de 2019 entra con 24 y en noviembre llega a 52, con escaño en 33 provincias. En 2023 baja a 33.
 :::
 
 ## Resumen de la sesión

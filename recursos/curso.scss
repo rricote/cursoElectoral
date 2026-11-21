@@ -117,3 +117,8 @@ $presentation-h2-font-size: 1.45em;
 
 .reveal .tarjeta ul { margin: .2em 0 0 0; padding-left: 1.1em; }
 .reveal .tarjeta li { margin: .15em 0; }
+
+.reveal .cuadricula.grande { margin-top: 40px; }
+.reveal .cuadricula.grande .celda { flex-direction: column; align-items: flex-start; }
+.reveal .cuadricula.grande .celda svg { height: 360px; }
+.reveal .cuadricula.grande .info { font-size: 17px; }
