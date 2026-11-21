@@ -11,6 +11,82 @@ format:
     chalkboard: false
 ---
 
+```{ojs}
+//| echo: false
+//| output: false
+function hemiciclo(partidos, filas = 9, r0 = 0.42) {
+  const total = d3.sum(partidos, p => p.es);
+  const radios = d3.range(filas).map(i => r0 + (1 - r0) * i / (filas - 1));
+  const sumR = d3.sum(radios);
+  const porFila = radios.map(r => Math.round(total * r / sumR));
+  porFila[filas - 1] += total - d3.sum(porFila);
+  const asientos = [];
+  radios.forEach((r, i) => {
+    const n = porFila[i];
+    for (let j = 0; j < n; j++) {
+      const a = Math.PI - Math.PI * j / (n - 1);
+      asientos.push({a, r, x: r * Math.cos(a), y: r * Math.sin(a)});
+    }
+  });
+  asientos.sort((p, q) => q.a - p.a || p.r - q.r);
+  let k = 0;
+  for (const p of partidos) for (let i = 0; i < p.es; i++) Object.assign(asientos[k++], {partido: p.n, c: p.c});
+  return asientos;
+}
+
+function parlamento(partidos, total, mayoria, radio, letra = 19) {
+  const asientos = hemiciclo(partidos, total > 300 ? 12 : 8);
+  const plot = Plot.plot({
+    width: 510, height: 290, margin: 6,
+    x: {axis: null, domain: [-1.04, 1.04]}, y: {axis: null, domain: [-0.04, 1.04]},
+    marks: [
+      Plot.dot(asientos, {x: "x", y: "y", fill: "c", r: radio, title: "partido"}),
+      Plot.text([`${total} escaños`], {x: 0, y: 0.2, fontSize: 22, fontWeight: 700, fill: "#333"}),
+      Plot.text([`mayoría: ${mayoria}`], {x: 0, y: 0.08, fontSize: 15, fill: "#555"})
+    ]
+  });
+  const tabla = html`<table class="tabla-esc mini" style="font-size:${letra}px !important">
+    <tr><th>Partido</th><th>% voto</th><th>% esc.</th><th>Esc.</th></tr>
+    ${partidos.map(p => html`<tr style="background:${p.c}22">
+      <td><span style="display:inline-block;width:.8em;height:.8em;background:${p.c};border-radius:2px"></span> ${p.n}</td>
+      <td>${p.v == null ? "—" : p.v.toLocaleString("es-ES", {minimumFractionDigits: 1, maximumFractionDigits: 1})}</td>
+      <td>${(100 * p.es / total).toLocaleString("es-ES", {minimumFractionDigits: 1, maximumFractionDigits: 1})}</td>
+      <td><b>${p.es}</b></td></tr>`)}
+  </table>`;
+  return html`<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:center;width:100%;max-width:100%">${plot}${tabla}</div>`;
+}
+
+reinoUnido = [
+  {n: "Verdes", c: "#02a95b", es: 4, v: 6.7},
+  {n: "SNP", c: "#d8c200", es: 9, v: 2.5},
+  {n: "Plaid Cymru", c: "#005b54", es: 4, v: 0.7},
+  {n: "Laboristas", c: "#e4003b", es: 411, v: 33.7},
+  {n: "Liberal Demócratas", c: "#faa61a", es: 72, v: 12.2},
+  {n: "Otros*", c: "#9a9a9a", es: 24, v: null},
+  {n: "Conservadores", c: "#0087dc", es: 121, v: 23.7},
+  {n: "Reform UK", c: "#12b6cf", es: 5, v: 14.3}
+]
+
+paisesBajos = [
+  {n: "SP", c: "#ee2e24", es: 3, v: 1.9},
+  {n: "PvdD", c: "#3f7d3a", es: 3, v: 2.1},
+  {n: "GL-PvdA", c: "#c8102e", es: 20, v: 12.7},
+  {n: "DENK", c: "#00b7c3", es: 3, v: 2.4},
+  {n: "Volt", c: "#502379", es: 1, v: 1.1},
+  {n: "D66", c: "#00ae41", es: 26, v: 16.9},
+  {n: "50PLUS", c: "#92278f", es: 2, v: 1.4},
+  {n: "ChristenUnie", c: "#00a7eb", es: 3, v: 1.9},
+  {n: "CDA", c: "#1a6b3b", es: 18, v: 11.8},
+  {n: "BBB", c: "#94c11f", es: 4, v: 2.7},
+  {n: "VVD", c: "#f47920", es: 22, v: 14.2},
+  {n: "SGP", c: "#e9a100", es: 3, v: 2.3},
+  {n: "JA21", c: "#5f86c4", es: 9, v: 6.0},
+  {n: "PVV", c: "#12305e", es: 26, v: 16.8},
+  {n: "FvD", c: "#841818", es: 7, v: 4.6}
+]
+```
+
+
 ## Hoja de ruta
 
 ::: {.tarjetas style="--n:3"}
@@ -33,6 +109,11 @@ La idea de la sesión: entender que los partidos y los sistemas electorales no c
 :::
 
 # 1 · Estado y legitimidad {background-color="#1b1b1b"}
+
+::: notes
+Empezamos por la base: antes de hablar de partidos y elecciones hay que entender qué es el Estado y por qué aceptamos que nos mande.
+:::
+
 
 ## ¿Qué es el Estado?
 
@@ -81,6 +162,10 @@ Obedecemos al cargo, no a la persona.
 En la práctica se mezclan: una monarquía parlamentaria como la española combina legitimidad **tradicional** (la Corona) con legitimidad **legal-racional** (la Constitución de 1978).
 :::
 
+::: notes
+Weber distingue tres razones por las que aceptamos una autoridad. Tradicional: el poder se hereda y se acepta porque siempre ha sido así. Carismática: seguimos a alguien por sus cualidades excepcionales, y por eso es inestable y suele desaparecer con el líder. Legal-racional: obedecemos a las normas y al cargo, no a la persona; si cambia el presidente, la autoridad sigue en el cargo. En la realidad se mezclan, como en la monarquía parlamentaria española.
+:::
+
 ## De la legitimidad a la representación
 
 La legitimidad legal-racional plantea una pregunta: **¿quién hace las reglas?**
@@ -93,7 +178,16 @@ Pero ¿elegidos por quién y cómo?
 - Se elige a **personas**, no a partidos: el diputado representa a *su* distrito.
 - Esto encaja de forma natural con los **sistemas mayoritarios**: un distrito, un escaño, gana el más votado.
 
+::: notes
+Si la autoridad viene de las reglas, la siguiente pregunta es quién las hace. La respuesta liberal es: representantes elegidos. Pero al principio votaba muy poca gente (sufragio censitario) y se elegía a personas concretas por distrito. Por eso los primeros sistemas electorales fueron mayoritarios: un distrito, un diputado, gana el más votado.
+:::
+
 # 2 · De los notables a las masas {background-color="#1b1b1b"}
+
+::: notes
+Segundo bloque: cómo pasamos de una política de élites a una política de masas, y cómo nacen los partidos modernos.
+:::
+
 
 ## Los partidos de notables (siglo XIX)
 
@@ -138,6 +232,10 @@ Entre finales del XIX y principios del XX todo cambia:
 - Los obreros no tienen dinero ni prestigio: su fuerza es **el número** y **la organización**.
 - El modelo es el **partido socialista** (el SPD alemán; en España, el PSOE desde 1879).
 - Los partidos de notables tendrán que imitarlos o desaparecer.
+
+::: notes
+La industrialización concentra a millones de obreros en las ciudades. Con el sufragio universal masculino, su fuerza ya no es el dinero ni el prestigio, sino el número y la organización. Nacen los partidos de masas: afiliados que pagan cuota, prensa propia y sindicatos. El modelo es el SPD alemán; en España, el PSOE (1879) y la UGT (1888). A partir de aquí se vota a un partido, no a una persona.
+:::
 
 ## Los partidos modernos: clivajes
 
@@ -191,6 +289,10 @@ Igualdad, cambio, redistribución.
 
 ::: {.chico}
 El contenido cambia con el tiempo. En el XIX, "izquierda" eran los **liberales**. En el XX, los **socialistas**.
+:::
+
+::: notes
+Es una anécdota real de 1789. En la Asamblea Nacional francesa se discutía si el rey debía tener derecho de veto: los partidarios se sentaron a la derecha del presidente y los contrarios, a la izquierda. La etiqueta se quedó. Lo importante es que su contenido cambia: en el siglo XIX la izquierda eran los liberales y en el siglo XX pasan a serlo los socialistas.
 :::
 
 ## De liberales vs. conservadores a derecha vs. izquierda
@@ -275,6 +377,11 @@ Después: los socialistas se reorganizan en la Internacional Socialista (1951) y
 
 # 3 · Las reglas del juego {background-color="#1b1b1b"}
 
+::: notes
+Tercer bloque: las reglas electorales. Veremos que no son neutrales: deciden cuántos partidos sobreviven y cómo se organizan por dentro.
+:::
+
+
 ## Sistemas mayoritarios y proporcionales
 
 ::: {.tarjetas style="--n:2"}
@@ -292,6 +399,10 @@ Distritos de **varios escaños** que se reparten **según el porcentaje de votos
 - Prioriza la **representatividad**.
 - La mayoría de Europa continental, España incluida.
 :::
+:::
+
+::: notes
+Los dos grandes modelos. En el mayoritario el país se divide en distritos de un escaño y el ganador se lo lleva todo: favorece gobiernos fuertes y la relación diputado-territorio. En el proporcional los distritos tienen varios escaños y se reparten según los votos: favorece que el parlamento refleje la diversidad. España es proporcional, pero, como veremos, con matices importantes.
 :::
 
 ## Un ejemplo con los mismos votos
@@ -323,12 +434,20 @@ En 5 distritos, los tres partidos sacan lo mismo en todos: **A 40 %**, **B 35 %*
 Con los mismos votos, en un caso A tiene el 100 % del parlamento y en el otro el 40 %.
 :::
 
+::: notes
+Este ejemplo enseña el poder de las reglas. Con exactamente los mismos votos, el partido A tiene todo el parlamento en el sistema mayoritario y solo el 40 % en el proporcional. B y C desaparecen en el primero y están representados en el segundo. Ningún sistema es neutral: cada uno elige qué valores prioriza.
+:::
+
 ## ¿Por qué Europa se pasa a la proporcional?
 
 - Bélgica la adopta en **1899**. En los años siguientes la siguen buena parte de los países europeos.
 - Coincide con el **sufragio universal** y el **auge socialista**.
 - Una explicación clásica (Rokkan, Boix): los partidos de notables temían que, con un sistema mayoritario, los socialistas ganaran **todos** los distritos obreros. Con la proporcional se aseguraban su parte.
 - Los sistemas electorales los diseñan **los que ya están dentro**, y suelen protegerse a sí mismos.
+
+::: notes
+Bélgica es la primera, en 1899. La explicación clásica de Rokkan, retomada por Boix, es estratégica: con el sufragio universal y el auge socialista, los partidos tradicionales temían que en un sistema mayoritario los socialistas ganaran todos los distritos obreros. La proporcional les garantizaba seguir en el parlamento. Moraleja: las reglas las escriben los que ya están dentro.
+:::
 
 ## Ley de Duverger
 
@@ -352,6 +471,10 @@ Los votantes lo saben y **no quieren tirar su voto**: abandonan a los pequeños 
 El efecto psicológico es el **voto útil**. Lo veremos aplicado a España en la siguiente sesión.
 :::
 
+::: notes
+Duverger formula en 1951 su famosa ley. Funciona por dos vías. El efecto mecánico: las reglas convierten los votos en escaños favoreciendo a los grandes. El efecto psicológico: los votantes lo saben y no quieren desperdiciar su voto, así que abandonan a los pequeños. Es lo que llamamos voto útil, y lo veremos con datos de España en la próxima sesión.
+:::
+
 ## La ley de hierro de la oligarquía
 
 ::: {.cita}
@@ -369,14 +492,57 @@ Hasta el partido más democrático acaba dirigido por **unos pocos**:
 Pregunta para España: con **listas cerradas y bloqueadas**, ¿a quién debe su escaño un diputado, a sus votantes o a quien hace la lista?
 :::
 
+::: notes
+Michels estudió el SPD, el partido socialista más democrático de su época, y concluyó que incluso ahí mandaban unos pocos. Las organizaciones grandes necesitan profesionales; las bases delegan; y los dirigentes controlan las listas, el dinero y la información. Buena pregunta para debatir: con listas cerradas y bloqueadas, ¿a quién debe lealtad un diputado español?
+:::
+
+## Un parlamento mayoritario: Reino Unido (2024)
+
+```{ojs}
+//| echo: false
+parlamento(reinoUnido, 650, 326, 3.3)
+```
+
+::: {.chico}
+**650 distritos de un escaño**: en cada uno gana el más votado. Los laboristas, con el **33,7 %** de los votos, se llevan el **63 %** de los escaños. Reform UK, con el **14,3 %**, solo 5 escaños.
+:::
+
+::: {.fuente}
+*Otros: partidos de Irlanda del Norte (Sinn Féin, DUP, SDLP, Alianza, UUP, TUV), 6 independientes y el Speaker. Fuente: House of Commons.
+:::
+
+::: notes
+Es el ejemplo más claro del efecto mecánico de Duverger. Con un tercio de los votos, los laboristas logran una mayoría aplastante. Reform UK, tercero en votos, apenas saca escaños porque su voto está repartido por todo el país y no gana casi ningún distrito. En cambio, los Liberal Demócratas, con menos votos que Reform, sacan 72 escaños porque concentran su voto en ciertas zonas. Los nacionalistas escoceses y galeses también se benefician de esa concentración. Se considera una de las elecciones menos proporcionales de la historia británica.
+:::
+
+## Un parlamento proporcional: Países Bajos (2025)
+
+```{ojs}
+//| echo: false
+parlamento(paisesBajos, 150, 76, 6.2, 15)
+```
+
+::: {.chico}
+**Un único distrito de 150 escaños**: unos 70.000 votos (0,67 %) dan un escaño. Entran **15 partidos** y el % de escaños es casi igual al % de votos.
+:::
+
+
+::: notes
+Elecciones del 29 de octubre de 2025. Todo el país es una sola circunscripción, así que la proporcionalidad es casi perfecta: D66 y PVV empatan a 26 escaños con un 16,9 % y un 16,8 % de los votos. El precio es la fragmentación: ningún partido pasa de 26 escaños y hacen falta al menos cuatro partidos para llegar a la mayoría de 76. Es el modelo opuesto al británico. España está entre los dos: es proporcional, pero con 52 circunscripciones pequeñas.
+:::
+
 ## Resumen de la sesión
 
 1. El Estado se sostiene sobre la **legitimidad**. En las democracias es **legal-racional**.
 2. Primero se elegía a **personas** (notables, distritos mayoritarios). Con la política de masas se eligen **partidos**.
 3. Los partidos nacen de **clivajes**. Liberales y conservadores se funden frente al socialismo: **derecha vs. izquierda**.
 4. Las reglas electorales importan: **Duverger** (mayoritario → bipartidismo) y **Michels** (organización → oligarquía).
-
-**Próxima sesión:** ¿y en España, cómo funciona todo esto?
+5. Reino Unido y Países Bajos muestran los dos extremos: **mayorías fabricadas** frente a **parlamentos fragmentados**.
 
 <div class="volver"><a href="index.html">← Volver al índice del curso</a></div>
-<div class="volver sec"><a href="02-espana.html">Ir a la sesión 2 →</a></div>
+<div class="volver sec"><a href="02-espana.html">Sesión 2: ¿y en España? →</a></div>
+
+
+::: notes
+Repaso rápido de las cuatro ideas. Si hay tiempo, preguntad a los asistentes con qué partido actual asociarían cada clivaje. Desde aquí se puede ir directamente a la sesión 2 con el botón.
+:::

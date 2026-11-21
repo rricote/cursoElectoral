@@ -120,6 +120,10 @@ Cuánto cuesta un escaño y cómo se mide la distorsión.
 :::
 :::
 
+::: notes
+Esta sesión junta las dos anteriores: cómo el sistema electoral moldea el sistema de partidos en España. Primero veremos mapas elección a elección y después mediremos la distorsión con datos.
+:::
+
 ## La idea clave
 
 El sistema español es **proporcional**, pero con **52 circunscripciones**, la mayoría pequeñas. Eso produce tres efectos:
@@ -143,7 +147,16 @@ Los nacionalistas solo compiten en su territorio, donde son grandes, y sacan esc
 Es el **efecto mecánico** de Duverger. El **efecto psicológico** (el voto útil) refuerza a los grandes en las siguientes elecciones.
 :::
 
+::: notes
+Tres efectos que vamos a ver una y otra vez en los mapas. Los grandes ganan casi todas las provincias pequeñas; los terceros partidos con voto repartido por todo el país pierden escaños; y los nacionalistas, que solo compiten donde son fuertes, salen bien parados.
+:::
+
 # Diciembre de 2015 {background-color="#1b1b1b"}
+
+::: notes
+Empezamos en 2015, el año en que se rompe el bipartidismo. En los mapas, cada provincia tiene más color cuanto mayor es el porcentaje de sus escaños que se lleva el partido.
+:::
+
 
 ## 2015 · PP, PSOE y Podemos
 
@@ -167,6 +180,11 @@ Ciudadanos, con el 14 % de los votos, saca escaño en 26 provincias. Izquierda U
 
 # Junio de 2016 {background-color="#1b1b1b"}
 
+::: notes
+Seis meses después se repiten las elecciones porque no hubo investidura.
+:::
+
+
 ## 2016 · PP, PSOE y Unidos Podemos
 
 ```{ojs}
@@ -183,7 +201,16 @@ Repetición electoral. Podemos e IU se presentan juntos (Unidos Podemos) y el PP
 cuadricula("2016-06", ["CS", "OTROS_IZQ", "OTROS_DER"])
 ```
 
+::: notes
+Ciudadanos baja ligeramente en votos (del 14 % al 13,1 %) pero pierde 8 escaños y pasa de 26 a 20 provincias: un pequeño descenso le saca de varias provincias medianas. Los nacionalistas se mantienen casi igual, concentrados en Cataluña, el País Vasco y Canarias.
+:::
+
 # Abril de 2019 {background-color="#1b1b1b"}
+
+::: notes
+Abril de 2019: el momento de máxima fragmentación por votos, con cinco partidos estatales por encima del 10 %.
+:::
+
 
 ## Abril de 2019 · PSOE, PP y Cs
 
@@ -207,6 +234,11 @@ Vox, con el 10,3 % de los votos, solo saca escaño en 18 provincias: el voto dis
 
 # Noviembre de 2019 {background-color="#1b1b1b"}
 
+::: notes
+Nueva repetición electoral solo siete meses después.
+:::
+
+
 ## Noviembre de 2019 · PSOE, PP y Vox
 
 ```{ojs}
@@ -229,11 +261,20 @@ El hundimiento de Ciudadanos es el mejor ejemplo del efecto mecánico: con el 6,
 
 # Julio de 2023 {background-color="#1b1b1b"}
 
+::: notes
+2023: Ciudadanos ya no se presenta y la izquierda del PSOE se agrupa en Sumar.
+:::
+
+
 ## 2023 · PP, PSOE y Vox
 
 ```{ojs}
 cuadricula("2023-07", ["PP", "PSOE", "VOX"])
 ```
+
+::: notes
+El PP gana con el 33 % de los votos y el 39 % de los escaños. Entre PP y PSOE vuelven a sumar casi tres cuartas partes del Congreso. Vox, con el 12,4 %, saca escaño en 24 provincias, frente a las 33 de noviembre de 2019, cuando tenía un 15 %.
+:::
 
 ## 2023 · Sumar y otros
 
@@ -246,6 +287,11 @@ Desaparece Ciudadanos. "Otros de izquierda": ERC, EH Bildu y BNG. "Otros de dere
 :::
 
 # ¿Quién gana y quién pierde? {background-color="#1b1b1b"}
+
+::: notes
+Después de los mapas, los números: cuánto premia o castiga el sistema a cada partido.
+:::
+
 
 ## Votos frente a escaños
 
@@ -273,6 +319,10 @@ viewof elecVE = Inputs.radio(new Map([["2015", "2015-12"], ["2016", "2016-06"], 
 
 ::: {.fuente}
 Círculo vacío: % de votos. Círculo lleno: % de escaños. Verde: el sistema le da más escaños que votos; rojo, menos. Unidas Podemos incluye En Comú Podem.
+:::
+
+::: notes
+Elegid la elección con los botones. Círculo vacío: votos; círculo lleno: escaños. Si la flecha es verde, el partido tiene más escaños que votos; si es roja, menos. Casi siempre ganan los dos primeros y pierden el tercero y el cuarto. El caso extremo es Ciudadanos en noviembre de 2019.
 :::
 
 ## ¿Cuántos votos cuesta un escaño?
@@ -333,6 +383,10 @@ html`<div class="tarjetas" style="--n:1">
 España está en un punto intermedio: es proporcional, pero con una distorsión moderada que favorece a los grandes y a los partidos concentrados.
 :::
 
+::: notes
+El índice de Gallagher resume en un número la distancia entre votos y escaños de todos los partidos. España oscila entre 5 y 7: más desproporcional que los Países Bajos o Alemania, pero mucho menos que el Reino Unido con sus distritos de un solo diputado.
+:::
+
 ## Ganadores y perdedores del sistema
 
 ::: {.tarjetas style="--n:3"}
@@ -360,7 +414,16 @@ España está en un punto intermedio: es proporcional, pero con una distorsión 
 :::
 :::
 
+::: notes
+Resumen de lo que hemos visto en los mapas y gráficos. La columna de consecuencias es la más importante: el sistema dificulta que los partidos nuevos se consoliden, alimenta el voto útil y da un gran poder de negociación a los nacionalistas.
+:::
+
 # La evolución de los nuevos partidos {background-color="#1b1b1b"}
+
+::: notes
+Para acabar, seguimos a los tres partidos nuevos que han cambiado el sistema desde 2015: Podemos, Ciudadanos y Vox.
+:::
+
 
 ## Evolución de Podemos / Unidas Podemos
 
@@ -415,3 +478,7 @@ Arriba, noviembre de 2019; abajo, 2023. Sumar integra a Podemos, IU, Más Madrid
 6. Así se explica que España mantenga dos grandes partidos y que el multipartidismo nunca llegue a ser pleno.
 
 <div class="volver"><a href="index.html">← Volver al índice del curso</a></div>
+
+::: notes
+Seis ideas para cerrar el curso. La conclusión general es que España es proporcional sobre el papel, pero sus provincias pequeñas funcionan casi como un sistema mayoritario, y eso explica que dos grandes partidos sigan dominando.
+:::

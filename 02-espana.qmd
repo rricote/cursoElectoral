@@ -57,6 +57,10 @@ Voto estratégico (útil) y voto dual.
 :::
 :::
 
+::: notes
+Esta sesión baja la teoría a España. Cuatro partes: el mapa de las circunscripciones, la fórmula de reparto, la historia del bipartidismo y el comportamiento de los votantes.
+:::
+
 ## Las reglas básicas {.smaller}
 
 ::: {.columns}
@@ -77,7 +81,16 @@ Cada provincia es un **"punto de venta"** distinto, y los partidos compiten por 
 :::
 :::
 
+::: notes
+Las reglas están en la Constitución (artículo 68) y en la LOREG de 1985. La idea más importante es la tarjeta de la derecha: no hay una elección general, sino 52 elecciones a la vez. Cada provincia reparte sus escaños por separado, y un voto en Soria y otro en Madrid no valen lo mismo.
+:::
+
 # 1 · El mapa {background-color="#1b1b1b"}
+
+::: notes
+Empezamos por el mapa: cuántos escaños elige cada provincia y por qué eso es tan importante.
+:::
+
 
 ## 52 circunscripciones, tamaños muy distintos
 
@@ -153,7 +166,16 @@ El número en cada provincia son sus escaños en 2023. Madrid elige 37 y Soria 2
 El efecto secundario: como cada provincia tiene un mínimo de 2, las provincias poco pobladas están **sobrerrepresentadas**. En 2023 un escaño de Soria costaba muchos menos habitantes que uno de Madrid.
 :::
 
+::: notes
+Las provincias son de 1833 y la Constitución las fija como circunscripción. Por eso en España no se pueden redibujar los distritos para favorecer a nadie, a diferencia de lo que pasa en EE. UU. El precio es la sobrerrepresentación de las provincias poco pobladas, porque todas parten con un mínimo de 2 escaños.
+:::
+
 # 2 · La fórmula {background-color="#1b1b1b"}
+
+::: notes
+Segunda parte: cómo se convierten los votos en escaños dentro de cada provincia.
+:::
+
 
 ## Cómo funciona D'Hondt
 
@@ -170,6 +192,10 @@ El efecto secundario: como cada provincia tiene un mínimo de 2, las provincias 
 
 ::: {.chico}
 Provincia de 4 escaños: ① ② ③ ④ son los cuatro cocientes más altos. C tiene el 13 % de los votos y **ningún escaño**. Si hubiera un 5.º escaño, iría a A (⑤ 16.000 > 13.000 de C).
+:::
+
+::: notes
+Explicadlo paso a paso con la tabla. Se dividen los votos de cada partido entre 1, 2, 3… y los escaños van a los cocientes más altos, en orden. El partido C, con el 13 % de los votos, se queda sin nada porque en una provincia de 4 escaños no le llega. D'Hondt no es la fórmula más favorable a los grandes; lo que pesa de verdad es el tamaño de la provincia.
 :::
 
 ## El tamaño importa: la barrera real
@@ -195,6 +221,10 @@ Plot.plot({
 
 ::: {.fuente}
 Barrera efectiva ≈ 75 % / (escaños + 1), fórmula de Taagepera. Es una aproximación: depende también de cuántos partidos compitan.
+:::
+
+::: notes
+La barrera legal del 3 % solo importa en Madrid y Barcelona. En el resto manda la barrera efectiva: en una provincia de 2 o 3 escaños hace falta un 20-25 % para sacar diputado. Fijaos en Tarragona: con 6 escaños, ronda el 10-11 %. Por eso en 2023 Vox, con un 10,3 %, se quedó fuera.
 :::
 
 ## Simulador: reparte tú los escaños {.smaller}
@@ -264,6 +294,10 @@ Ejemplos que funcionan con los datos de 2023: en Tarragona, un 5 % de los votant
 Las casillas coloreadas son los cocientes que se llevan escaño. Solo aparecen los partidos que superan el 3 %. Cambia la provincia o los votos en la diapositiva anterior.
 :::
 
+::: notes
+Esta tabla se actualiza con lo que hayáis elegido en el simulador. Las casillas de color son los cocientes que ganan escaño. Es la forma más clara de ver qué partido se ha quedado a las puertas y por cuánto.
+:::
+
 ## Tarragona 2023: el último escaño {.smaller}
 
 ::: {.columns}
@@ -300,6 +334,11 @@ Es el mejor ejemplo de por qué cada voto pesa distinto según la provincia y el
 :::
 
 # 3 · La historia {background-color="#1b1b1b"}
+
+::: notes
+Tercera parte: cómo han funcionado estas reglas desde 1977.
+:::
+
 
 ## Evolución del bipartidismo en el Congreso
 
@@ -364,9 +403,18 @@ Tras la crisis y el 15-M irrumpen Podemos y Ciudadanos, y después Vox. Mínimo 
 "Imperfecto" porque, a diferencia del Reino Unido o EE. UU., hay terceros partidos con escaños, y a menudo el gobierno necesita el apoyo de los nacionalistas.
 :::
 
+::: notes
+Resumen del gráfico anterior. La Transición, con UCD y PSOE; el largo bipartidismo imperfecto, en el que PSOE y PP se alternan y pactan con los nacionalistas cuando les falta la mayoría; y desde 2015 el multipartidismo, con un mínimo en abril de 2019 y una recuperación de los dos grandes en 2023.
+:::
+
 # 4 · El votante {background-color="#1b1b1b"}
 
-## La racionalidad del voto: cálculo de la ganancia
+::: notes
+Última parte: cómo se adaptan los votantes a estas reglas.
+:::
+
+
+## ¿Por qué votamos lo que votamos?
 
 <div class="voto">
 <div class="raiz">La racionalidad del voto: cálculo de la ganancia</div>
@@ -375,6 +423,17 @@ Tras la crisis y el 15-M irrumpen Podemos y Ciudadanos, y después Vox. Mínimo 
 <div class="rama" style="--c:#1d84ce"><b>Voto dual</b>: cambiar de preferencia según el <b>nivel de elección</b> (generales, autonómicas, municipales…).</div>
 </div>
 </div>
+
+<div class="voto" style="margin-top:.7em">
+<div class="raiz">El voto como expresión de pertenencia</div>
+<div class="ramas">
+<div class="rama" style="--c:#2e7d4f"><b>Voto identitario</b>: votar al partido que representa <b>quién soy</b> (mi nación, mi clase, mi religión, mi territorio), aunque no gane o no me convenga en ese momento.</div>
+</div>
+</div>
+
+::: notes
+Hay dos grandes lógicas de voto. La primera es el cálculo: el votante piensa para qué sirve su voto, y de ahí salen el voto estratégico o útil y el voto dual. La segunda es la identidad: se vota al partido que representa al grupo al que uno siente que pertenece, aunque no tenga opciones de ganar. Son lógicas que compiten, y en cada votante pesa más una u otra.
+:::
 
 ## Voto estratégico (útil) {.smaller}
 
@@ -399,6 +458,10 @@ Cambia un escaño. Prueba lo mismo en Madrid.
 :::
 :::
 
+::: notes
+Es el efecto psicológico de Duverger. Si mi partido favorito no tiene opciones en mi provincia, voto al grande de mi bloque que sí puede ganar el escaño. Proponed el ejercicio del simulador: con Tarragona, Salamanca o Guadalajara se ve que pequeños movimientos cambian escaños.
+:::
+
 ## Voto dual
 
 ::: {.columns}
@@ -416,13 +479,45 @@ También funciona al revés: el voto **municipal** depende mucho del alcalde o a
 :::
 :::
 
+::: notes
+El mismo votante cambia de partido según la elección, porque en cada una se decide algo distinto. Es muy típico en Cataluña y el País Vasco: nacionalistas en las autonómicas y partidos estatales en las generales. Preguntad si alguien lo ha hecho alguna vez.
+:::
+
+## Voto identitario
+
+::: {.columns}
+::: {.column width="55%"}
+- Se vota por **pertenencia**, no por cálculo: el partido es "de los míos".
+- Está ligado a los **clivajes** de la sesión 1: clase, religión, centro-periferia.
+- Es un voto **estable y leal**: resiste a las crisis, a los escándalos y a las llamadas al voto útil.
+- Es lo contrario del voto estratégico: prefiero votar a "los míos" aunque no saquen escaño.
+:::
+::: {.column width="45%"}
+::: {.tarjeta style="--c:#2e7d4f"}
+[Ejemplos]{.tt}
+
+- El voto **nacionalista** en Cataluña, el País Vasco o Galicia.
+- El voto **obrero tradicional** a los partidos socialistas, y el voto **católico** a la democracia cristiana.
+- El voto a partidos de **identidad territorial**, como Teruel Existe o el PRC.
+:::
+:::
+:::
+
+::: notes
+El voto identitario explica por qué muchos partidos resisten aunque el sistema electoral los castigue: sus votantes no les abandonan por mucho que se les pida el voto útil. También ayuda a entender por qué los nacionalistas tienen un suelo electoral tan estable. En las últimas décadas ha perdido peso el voto de clase y ha ganado peso el voto por identidad nacional o territorial y por valores. Preguntad: ¿votáis más por cálculo o por identidad?
+:::
+
 ## Resumen de la sesión
 
 1. España tiene **52 elecciones simultáneas**: cada provincia reparte sus escaños por separado.
 2. La mayoría de las circunscripciones son **pequeñas**. Eso da al sistema, que es proporcional, efectos **casi mayoritarios** en buena parte del territorio.
 3. D'Hondt + provincias pequeñas = **premio a los grandes**. De ahí el **bipartidismo imperfecto** (1982-2011).
 4. La crisis de 2008 trajo el **multipartidismo** (2015-hoy), aunque en 2023 los dos grandes se recuperan.
-5. Los votantes se adaptan: **voto útil** (por el tamaño de la provincia) y **voto dual** (por el nivel de gobierno).
+5. Los votantes se adaptan: **voto útil** (por el tamaño de la provincia) y **voto dual** (por el nivel de gobierno). El **voto identitario** resiste a ese cálculo.
+
+::: notes
+Cinco ideas para quedarse. La clave es la primera: España tiene 52 elecciones a la vez, y casi todo lo demás se explica a partir de ahí.
+:::
 
 ## Para seguir explorando
 
@@ -435,3 +530,7 @@ Datos: Ministerio del Interior (ficheros por mesa), procesados con los scripts d
 
 <div class="volver"><a href="index.html">← Volver al índice del curso</a></div>
 <div class="volver sec"><a href="03-partidos.html">Ir a la sesión 3 →</a></div>
+
+::: notes
+Enlaces a los simuladores y resultados que hemos usado para preparar el curso, por si alguien quiere jugar con los datos en casa.
+:::

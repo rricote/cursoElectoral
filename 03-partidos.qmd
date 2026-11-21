@@ -62,7 +62,16 @@ Los partidos que compiten en nuestra provincia.
 :::
 :::
 
+::: notes
+Esta sesión va del sistema electoral al sistema de partidos: qué tipos hay, cómo es el español y cómo se ve todo esto en Tarragona.
+:::
+
 # 1 · Tipos de sistemas de partidos {background-color="#1b1b1b"}
+
+::: notes
+Primero, la teoría: cómo clasifica la ciencia política los sistemas de partidos.
+:::
+
 
 ## ¿Qué es un sistema de partidos?
 
@@ -81,6 +90,10 @@ No es solo **cuántos** partidos hay, sino **cómo se relacionan** entre sí.
 
 ::: {.chico}
 Giovanni Sartori, *Partidos y sistemas de partidos* (1976): combinando número y distancia salen los distintos tipos.
+:::
+
+::: notes
+Un sistema de partidos no es una lista de partidos, sino cómo compiten y se relacionan entre ellos. Sartori usa dos criterios: cuántos partidos cuentan de verdad (los que pueden gobernar o son imprescindibles para una mayoría) y cuánta distancia ideológica hay entre ellos.
 :::
 
 ## La tipología de Sartori {.smaller}
@@ -130,6 +143,10 @@ p<sub>i</sub> es la proporción de votos (o escaños) de cada partido.
 Se puede calcular con los **votos** (lo que quieren los votantes) o con los **escaños** (lo que sale del sistema electoral).
 :::
 
+::: notes
+Contar partidos es engañoso: no es lo mismo diez partidos con uno al 90 % que diez partidos iguales. El número efectivo pondera cada partido por su tamaño. Haced los tres ejemplos en voz alta: dos partidos iguales dan 2; un partido muy dominante baja el resultado; cinco iguales dan 5.
+:::
+
 ## España: número efectivo de partidos, 1977-2023
 
 ```{ojs}
@@ -165,6 +182,11 @@ En 2008 el número efectivo por escaños fue de 2,3: casi bipartidismo puro. En 
 
 # 2 · El caso español {background-color="#1b1b1b"}
 
+::: notes
+Segundo bloque: cómo encaja España en estas categorías.
+:::
+
+
 ## Dos ejes de competición
 
 ::: {.columns}
@@ -197,6 +219,10 @@ Solo en su territorio: ERC, Junts, PNV, EH Bildu, BNG, CC, UPN…
 Por eso en Cataluña o el País Vasco funciona un **sistema de partidos propio**, distinto del español.
 :::
 
+::: notes
+La clave del caso español es que se compite en dos ejes a la vez: izquierda-derecha y centro-periferia. Por eso conviven partidos de ámbito estatal y partidos que solo se presentan en su territorio, y por eso en Cataluña o el País Vasco hay un sistema de partidos propio.
+:::
+
 ## Así evoluciona el sistema
 
 ::: {.tarjetas style="--n:3"}
@@ -216,6 +242,10 @@ Llegan Podemos, Cs y Vox. Se compite **por bloques** (izquierda + nacionalistas 
 
 ::: {.chico}
 Hoy el debate es si España sigue en el **pluralismo moderado** o si la polarización la acerca al **pluralismo polarizado** de Sartori.
+:::
+
+::: notes
+Tres etapas. Los nacionalistas, CiU y PNV sobre todo, fueron durante décadas los socios necesarios de PSOE y PP cuando no tenían mayoría absoluta. Desde 2015 la competición es por bloques, y el debate abierto es si la polarización nos acerca al pluralismo polarizado de Sartori.
 :::
 
 ## El Congreso de 2023
@@ -254,6 +284,10 @@ html`<table class="tabla-esc mini">
 **11 partidos** con escaño. Investidura de Sánchez (noviembre de 2023): **179** votos a favor (PSOE, Sumar, ERC, Junts, EH Bildu, PNV, BNG y CC).
 :::
 
+::: notes
+El hemiciclo ordena los escaños de izquierda a derecha. Para gobernar hacen falta 176. Sánchez fue investido con 179 votos gracias a la suma de su bloque con los nacionalistas. Se ve muy bien el peso de los partidos pequeños: sin ellos no hay mayoría.
+:::
+
 ## Los partidos del Congreso de 2023 {.smaller}
 
 ::: {.tabla-peq}
@@ -277,7 +311,16 @@ html`<table class="tabla-esc mini">
 Clasificación orientativa. Las etiquetas "derecha radical populista" y similares siguen el uso habitual en ciencia política (Mudde).
 :::
 
+::: notes
+Una ficha de cada partido, ordenada de izquierda a derecha. Fijaos en las dos columnas de ejes: hay partidos de derecha e izquierda tanto estatales como nacionalistas. Las etiquetas son orientativas y pueden discutirse.
+:::
+
 # 3 · La oferta en España {background-color="#1b1b1b"}
+
+::: notes
+Tercer bloque: cómo ha cambiado la oferta de partidos entre 2019 y 2023.
+:::
+
 
 ## La oferta en 2019 (noviembre)
 
@@ -321,7 +364,16 @@ El PP se recupera y **Vox** baja de 52 a 33 escaños.
 Resultado: menos partidos (de 16 a 11) y un número efectivo de partidos que baja de 4,7 a 3,4 por escaños. Pero la competición sigue siendo **por bloques**.
 :::
 
+::: notes
+Tres movimientos. La izquierda se concentra en Sumar; el centro desaparece con el hundimiento de Ciudadanos; y la derecha se reordena: el PP se recupera y Vox baja. Hay menos partidos, pero la lógica de bloques sigue.
+:::
+
 # 4 · Tarragona {background-color="#1b1b1b"}
+
+::: notes
+Y para acabar, nuestra provincia.
+:::
+
 
 ## Los partidos en la provincia de Tarragona {.smaller}
 
@@ -383,6 +435,10 @@ Aliança Catalana y Vox compiten por un electorado parecido en inmigración, per
 Posición aproximada, con fines didácticos.
 :::
 
+::: notes
+Este plano es orientativo, pero ayuda a ver lo que pasa en Tarragona. Hay izquierda independentista (CUP, ERC), izquierda no independentista (Comuns, PSC), derecha independentista (Junts, Aliança Catalana) y derecha unionista (PP, Vox). Los dos ejes se cruzan, y por eso es tan difícil predecir los pactos.
+:::
+
 ## Resumen de la sesión
 
 1. Un sistema de partidos se define por el **número** de partidos relevantes y la **distancia ideológica** entre ellos (Sartori).
@@ -393,3 +449,7 @@ Posición aproximada, con fines didácticos.
 
 <div class="volver"><a href="index.html">← Volver al índice del curso</a></div>
 <div class="volver sec"><a href="04-efectos.html">Ir a la sesión 4 →</a></div>
+
+::: notes
+Cinco ideas. Si da tiempo, preguntad dónde situarían ellos a cada partido en el plano de los dos ejes. Suele salir un buen debate.
+:::
