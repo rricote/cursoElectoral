@@ -1,0 +1,12 @@
+project:
+  type: default
+  output-dir: docs
+  render:
+    - index.qmd
+    - 01-teoria.qmd
+    - 02-espana.qmd
+    - 03-partidos.qmd
+  resources:
+    - datos/
+
+lang: es

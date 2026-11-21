@@ -1,0 +1,437 @@
+---
+title: "El sistema electoral español"
+subtitle: "Sesión 2 · Provincias, D'Hondt y bipartidismo"
+format:
+  revealjs:
+    theme: [default, recursos/curso.scss]
+    slide-number: true
+    hash-type: number
+    transition: fade
+    footer: "[Curso de política](index.html) · Sesión 2"
+execute:
+  echo: false
+---
+
+```{ojs}
+//| output: false
+provincias = FileAttachment("datos/provincias_2023.json").json()
+mapa = FileAttachment("datos/mapa_provincias.json").json()
+bip = (await FileAttachment("datos/bipartidismo.csv").csv({typed: true})).map(d => ({...d, etiqueta: String(d.etiqueta)}))
+
+categoria = s => s === 1 ? "Uninominal (1)" : s <= 5 ? "Pequeña (2-5)" : s <= 9 ? "Mediana (6-9)" : "Grande (10+)"
+colorCat = ({"Uninominal (1)": "#c9c4bd", "Pequeña (2-5)": "#f2c6b4", "Mediana (6-9)": "#e07a5f", "Grande (10+)": "#9b2226"})
+fmt = d3.formatLocale({decimal: ",", thousands: ".", grouping: [3], currency: ["", " €"]}).format(",d")
+fondo = c => c + "22"
+fmtPct = v => v.toLocaleString("es-ES", {maximumFractionDigits: 1}) + " %"
+
+function dhondt(votos, escanos, validos) {
+  const elig = votos.map(v => v >= 0.03 * validos ? v : 0);
+  const a = votos.map(() => 0);
+  for (let i = 0; i < escanos; i++) {
+    let mejor = 0, q = -1;
+    elig.forEach((v, k) => { const c = v / (a[k] + 1); if (c > q) { q = c; mejor = k; } });
+    a[mejor]++;
+  }
+  return a;
+}
+```
+
+## Hoja de ruta
+
+::: {.tarjetas style="--n:4"}
+::: {.tarjeta style="--c:#9b2226"}
+[1. El mapa]{.tt}
+52 circunscripciones: la provincia como "punto de venta".
+:::
+::: {.tarjeta style="--c:#e07a5f"}
+[2. La fórmula]{.tt}
+Cómo funciona D'Hondt y por qué el tamaño importa.
+:::
+::: {.tarjeta style="--c:#1d84ce"}
+[3. La historia]{.tt}
+Del bipartidismo imperfecto al multipartidismo.
+:::
+::: {.tarjeta style="--c:#555"}
+[4. El votante]{.tt}
+Voto estratégico (útil) y voto dual.
+:::
+:::
+
+## Las reglas básicas {.smaller}
+
+::: {.columns}
+::: {.column width="55%"}
+- **350 diputados** (art. 68 de la Constitución y LOREG de 1985).
+- **Circunscripción = provincia**. Ceuta y Melilla, una cada una.
+- Cada provincia arranca con **2 escaños**. Ceuta y Melilla, con **1**.
+- Los **248** restantes se reparten **según la población**.
+- Dentro de cada provincia: **fórmula D'Hondt** y **barrera del 3 %** de los votos válidos.
+- **Listas cerradas y bloqueadas**: se vota al partido, el orden lo decide el partido.
+:::
+::: {.column width="45%"}
+::: {.tarjeta style="--c:#9b2226"}
+[La clave]{.tt}
+No hay **una** elección general: hay **52 elecciones** a la vez.
+Cada provincia es un **"punto de venta"** distinto, y los partidos compiten por los escaños de cada una por separado.
+:::
+:::
+:::
+
+# 1 · El mapa {background-color="#1b1b1b"}
+
+## 52 circunscripciones, tamaños muy distintos
+
+::: {.columns}
+::: {.column width="62%"}
+```{ojs}
+mapaSVG = {
+  const porId = new Map(provincias.map(p => [p.id, p]));
+  const W = mapa.w, H = mapa.h + 30;
+  const svg = d3.create("svg").attr("viewBox", `0 0 ${W} ${H}`).style("width", "100%").style("height", "auto").style("max-height", "560px");
+  const g = svg.append("g");
+  for (const [id, d] of Object.entries(mapa.paths)) {
+    const p = porId.get(id);
+    g.append("path").attr("d", d).attr("fill", colorCat[categoria(p.s)]).attr("stroke", "#fff").attr("stroke-width", 1.2)
+      .append("title").text(`${p.n}: ${p.s} escaños`);
+  }
+  for (const [id, [x, y, s]] of Object.entries(mapa.sq)) {
+    const p = porId.get(id);
+    g.append("rect").attr("x", x).attr("y", y).attr("width", s).attr("height", s).attr("rx", 6)
+      .attr("fill", colorCat[categoria(p.s)]).attr("stroke", "#999").append("title").text(`${p.n}: ${p.s} escaño`);
+    g.append("text").attr("x", x + s / 2).attr("y", y + s + 22).attr("text-anchor", "middle").attr("font-size", 18).attr("fill", "#555").text(p.n);
+  }
+  // Tarragona destacada
+  g.append("path").attr("d", mapa.paths["43"]).attr("fill", "none").attr("stroke", "#111").attr("stroke-width", 5).attr("stroke-linejoin", "round");
+  const [tx, ty] = mapa.lab["43"];
+  g.append("line").attr("x1", tx + 18).attr("y1", ty + 12).attr("x2", tx + 70).attr("y2", ty + 70).attr("stroke", "#111").attr("stroke-width", 2);
+  g.append("text").attr("x", tx + 74).attr("y", ty + 88).attr("font-size", 26).attr("font-weight", 700).attr("font-family", "Inter, sans-serif").attr("fill", "#111").text("Tarragona: 6");
+  const [x0, y0, x1, y1] = mapa.box;
+  g.append("rect").attr("x", x0).attr("y", y0).attr("width", x1 - x0).attr("height", y1 - y0).attr("fill", "none").attr("stroke", "#bbb").attr("stroke-dasharray", "4 4");
+  for (const [id, [x, y]] of Object.entries(mapa.lab)) {
+    const p = porId.get(id);
+    g.append("text").attr("x", x).attr("y", y + 7).attr("text-anchor", "middle").attr("font-size", 22).attr("font-weight", 700)
+      .attr("font-family", "Inter, sans-serif").attr("fill", p.s >= 10 ? "#fff" : "#333").attr("pointer-events", "none").text(p.s);
+  }
+  return svg.node();
+}
+```
+:::
+::: {.column width="38%"}
+```{ojs}
+resumenCat = {
+  const orden = ["Uninominal (1)", "Pequeña (2-5)", "Mediana (6-9)", "Grande (10+)"];
+  const filas = orden.map(c => {
+    const ps = provincias.filter(p => categoria(p.s) === c);
+    return {c, n: ps.length, esc: d3.sum(ps, p => p.s)};
+  });
+  return html`<div style="font-family:Inter,sans-serif;font-size:.62em">
+    <div style="margin-bottom:.6em;color:#555">Tipos de circunscripción según Nohlen (escaños de 2023)</div>
+    ${filas.map(f => html`<div style="display:flex;align-items:center;gap:.6em;margin:.45em 0">
+      <span style="display:inline-block;width:1.4em;height:1.4em;border-radius:4px;background:${colorCat[f.c]}"></span>
+      <span style="flex:1">${f.c}</span>
+      <b style="font-size:1.6em">${f.n}</b>
+      <span style="color:#777;width:5.5em;text-align:right">${f.esc} escaños</span></div>`)}
+    <div style="margin-top:.8em;color:#555">Total: ${provincias.length} circunscripciones · ${d3.sum(provincias, p => p.s)} escaños</div>
+    <p style="margin-top:1em;font-family:'Source Serif 4',Georgia,serif;font-size:1.25em">Más de la mitad de las provincias (<b>${provincias.filter(p => p.s <= 5).length}</b>) reparten 5 escaños o menos.</p>
+  </div>`
+}
+```
+:::
+:::
+
+::: notes
+El número en cada provincia son sus escaños en 2023. Madrid elige 37 y Soria 2. Las provincias pequeñas son mayoría en número, pero las grandes concentran muchos escaños.
+:::
+
+## ¿Por qué la provincia? Estabilidad y nada de *gerrymandering*
+
+- Las provincias existen desde **1833** (Javier de Burgos) y la **Constitución** fija que son la circunscripción.
+- Sus fronteras **no se pueden redibujar** para favorecer a un partido. En EE. UU., en cambio, los distritos se rediseñan cada diez años y a veces se trazan a medida (*gerrymandering*).
+- Lo único que cambia es **cuántos escaños** tiene cada provincia, según su población, y lo hace **poco a poco**: no hay cambios bruscos.
+
+::: {.chico}
+El efecto secundario: como cada provincia tiene un mínimo de 2, las provincias poco pobladas están **sobrerrepresentadas**. En 2023 un escaño de Soria costaba muchos menos habitantes que uno de Madrid.
+:::
+
+# 2 · La fórmula {background-color="#1b1b1b"}
+
+## Cómo funciona D'Hondt
+
+1. Se quitan los partidos con **menos del 3 %** de los votos válidos de la provincia.
+2. Se dividen los votos de cada partido entre **1, 2, 3, 4…**
+3. Los escaños van a los **cocientes más altos**.
+
+| Partido | ÷1 | ÷2 | ÷3 | Escaños |
+|---|---:|---:|---:|---:|
+| A (48.000) | **48.000** ① | **24.000** ③ | 16.000 ⑤ | **2** |
+| B (34.000) | **34.000** ② | **17.000** ④ | 11.333 | **2** |
+| C (13.000) | 13.000 | 6.500 | 4.333 | 0 |
+| D (5.000) | 5.000 | 2.500 | 1.667 | 0 |
+
+::: {.chico}
+Provincia de 4 escaños: ① ② ③ ④ son los cuatro cocientes más altos. C tiene el 13 % de los votos y **ningún escaño**. Si hubiera un 5.º escaño, iría a A (⑤ 16.000 > 13.000 de C).
+:::
+
+## El tamaño importa: la barrera real
+
+En una provincia pequeña, la barrera del 3 % es irrelevante. La que cuenta es la **barrera efectiva**: el porcentaje que hace falta, en la práctica, para sacar un escaño.
+
+```{ojs}
+Plot.plot({
+  width: 1000, height: 330, marginLeft: 60, marginBottom: 45, marginRight: 60,
+  x: {label: "Escaños de la provincia →", type: "log", ticks: [1, 2, 3, 5, 10, 20, 37], tickFormat: d => d},
+  y: {label: "↑ Barrera efectiva aprox. (%)", grid: true, domain: [0, 40]},
+  color: {domain: Object.keys(colorCat), range: Object.values(colorCat), legend: true},
+  marks: [
+    Plot.line(d3.range(1, 38).map(m => ({m, b: 75 / (m + 1)})), {x: "m", y: "b", stroke: "#bbb", strokeDasharray: "4 3"}),
+    Plot.dot(provincias, {x: "s", y: p => 75 / (p.s + 1), fill: p => categoria(p.s), r: 7, stroke: "#fff", title: p => `${p.n}: ${p.s} escaños → ~${(75 / (p.s + 1)).toFixed(1)} %`}),
+    Plot.text(provincias.filter(p => ["Soria", "Madrid", "Ávila", "València/Valencia"].includes(p.n)),
+      {x: "s", y: p => 75 / (p.s + 1), text: "n", dy: -16, fontSize: 16}),
+    Plot.dot(provincias.filter(p => p.n === "Tarragona"), {x: "s", y: p => 75 / (p.s + 1), r: 11, stroke: "#111", strokeWidth: 3}),
+    Plot.text(provincias.filter(p => p.n === "Tarragona"), {x: "s", y: p => 75 / (p.s + 1), text: p => `Tarragona (${p.s}): ~${(75 / (p.s + 1)).toFixed(1).replace(".", ",")} %`, dy: -24, dx: 10, textAnchor: "start", fontSize: 18, fontWeight: 700})
+  ]
+})
+```
+
+::: {.fuente}
+Barrera efectiva ≈ 75 % / (escaños + 1), fórmula de Taagepera. Es una aproximación: depende también de cuántos partidos compitan.
+:::
+
+## Simulador: reparte tú los escaños {.smaller}
+
+```{ojs}
+viewof prov = Inputs.select(provincias.slice().sort((a, b) => a.n.localeCompare(b.n, "es")), {label: "Provincia", format: p => `${p.n} (${p.s} escaños)`, value: provincias.find(p => p.n === "Tarragona")})
+```
+
+::: {.columns}
+::: {.column width="38%"}
+```{ojs}
+viewof desde = Inputs.select(prov.partidos.filter(p => p.v / prov.validos >= 0.01), {label: "Votantes de", format: p => p.n, value: prov.partidos[2] ?? prov.partidos[0]})
+viewof hacia = Inputs.select(prov.partidos.filter(p => p.v / prov.validos >= 0.01), {label: "se pasan a", format: p => p.n, value: prov.partidos[1] ?? prov.partidos[0]})
+viewof pct = Inputs.range([0, 100], {label: "Porcentaje", step: 5, value: 0})
+```
+::: {.fuente}
+Datos reales de las generales de 2023 (incluido el voto exterior). Con 0 % sale el reparto oficial.
+:::
+:::
+::: {.column width="62%"}
+```{ojs}
+sim = {
+  const ps = prov.partidos.map(p => ({...p}));
+  const iD = ps.findIndex(p => p.k === desde.k), iH = ps.findIndex(p => p.k === hacia.k);
+  if (iD !== iH && pct > 0) { const t = ps[iD].v * pct / 100; ps[iD].v -= t; ps[iH].v += t; }
+  const nuevos = dhondt(ps.map(p => p.v), prov.s, prov.validos);
+  return ps.map((p, i) => ({...p, pctv: 100 * p.v / prov.validos, nuevo: nuevos[i], cambio: nuevos[i] - p.es}))
+    .filter(p => p.pctv >= 1 || p.nuevo > 0).sort((a, b) => b.v - a.v).slice(0, 8);
+}
+Plot.plot({
+  width: 680, height: 60 + 52 * sim.length, marginLeft: 90, marginRight: 160,
+  x: {label: "% de votos válidos", grid: true, domain: [0, Math.max(50, d3.max(sim, d => d.pctv) + 5)]},
+  y: {label: null, domain: sim.map(d => d.n)},
+  marks: [
+    Plot.ruleX([3], {stroke: "#999", strokeDasharray: "3 3"}),
+    Plot.barX(sim, {y: "n", x: "pctv", fill: "c", fillOpacity: d => d.nuevo > 0 ? 1 : 0.35}),
+    Plot.text(sim, {y: "n", x: "pctv", text: d => `${d.pctv.toFixed(1)} %  ·  ${"●".repeat(d.nuevo) || "—"}${d.cambio ? (d.cambio > 0 ? "  (+" : "  (") + d.cambio + ")" : ""}`, dx: 8, textAnchor: "start", fontSize: 17})
+  ]
+})
+```
+:::
+:::
+
+::: notes
+Ejemplos que funcionan con los datos de 2023: en Tarragona, un 5 % de los votantes de Junts que cambie de partido mueve el último escaño; en Salamanca, basta con que el 15 % de los votantes de Sumar pase al PSOE para que cambie un escaño; en Guadalajara, basta con que el 5 % de los de Vox pase al PP. En Madrid hace falta mover muchísimo más. Esto es exactamente lo que el votante que "vota útil" intuye.
+:::
+
+## Tabla de cocientes de la provincia elegida {.smaller}
+
+```{ojs}
+{
+  const elig = sim.filter(p => p.pctv >= 3);
+  const ncol = Math.min(prov.s + 1, 8);
+  const todos = [];
+  elig.forEach(p => d3.range(1, prov.s + 1).forEach(d => todos.push({k: p.k, d, q: p.v / d})));
+  const ganadores = new Set(todos.sort((a, b) => b.q - a.q).slice(0, prov.s).map(x => x.k + "|" + x.d));
+  return html`<table class="tabla-esc">
+    <tr><th>${prov.n} · ${prov.s} escaños</th>${d3.range(1, ncol + 1).map(d => html`<th>÷${d}</th>`)}<th>Escaños</th></tr>
+    ${elig.map(p => html`<tr style="background:${fondo(p.c)}"><td><span style="display:inline-block;width:.8em;height:.8em;background:${p.c};border-radius:2px"></span> ${p.n}</td>
+      ${d3.range(1, ncol + 1).map(d => { const g = ganadores.has(p.k + "|" + d); return html`<td style="${g ? `background:${p.c};color:#fff;font-weight:700` : "color:#888"}">${fmt(Math.round(p.v / d))}</td>`; })}
+      <td><b>${p.nuevo}</b></td></tr>`)}
+  </table>`
+}
+```
+
+::: {.fuente}
+Las casillas coloreadas son los cocientes que se llevan escaño. Solo aparecen los partidos que superan el 3 %. Cambia la provincia o los votos en la diapositiva anterior.
+:::
+
+## Tarragona 2023: el último escaño {.smaller}
+
+::: {.columns}
+::: {.column width="55%"}
+<table class="tabla-partidos">
+<tr><th>Orden</th><th>Partido</th><th style="text-align:right">Cociente</th></tr>
+<tr><td style="background:#e3061322">1.º</td><td style="background:#e3061322"><span class="punto" style="background:#e30613"></span>PSOE ÷1</td><td style="background:#e3061322;text-align:right">121.784</td></tr>
+<tr><td style="background:#e3061322">2.º</td><td style="background:#e3061322"><span class="punto" style="background:#e30613"></span>PSOE ÷2</td><td style="background:#e3061322;text-align:right">60.892</td></tr>
+<tr><td style="background:#e8890c22">3.º</td><td style="background:#e8890c22"><span class="punto" style="background:#e8890c"></span>ERC ÷1</td><td style="background:#e8890c22;text-align:right">55.724</td></tr>
+<tr><td style="background:#1d84ce22">4.º</td><td style="background:#1d84ce22"><span class="punto" style="background:#1d84ce"></span>PP ÷1</td><td style="background:#1d84ce22;text-align:right">51.375</td></tr>
+<tr><td style="background:#e6007e22">5.º</td><td style="background:#e6007e22"><span class="punto" style="background:#e6007e"></span>Sumar ÷1</td><td style="background:#e6007e22;text-align:right">41.950</td></tr>
+<tr style="font-weight:700"><td style="background:#00a99d22">6.º</td><td style="background:#00a99d22"><span class="punto" style="background:#00a99d"></span>Junts ÷1</td><td style="background:#00a99d22;text-align:right">40.991</td></tr>
+<tr style="font-style:italic;opacity:.75"><td style="background:#e3061322">7.º</td><td style="background:#e3061322"><span class="punto" style="background:#e30613"></span>PSOE ÷3</td><td style="background:#e3061322;text-align:right">40.595</td></tr>
+<tr style="font-style:italic;opacity:.75"><td style="background:#5aa31f22">8.º</td><td style="background:#5aa31f22"><span class="punto" style="background:#5aa31f"></span>Vox ÷1</td><td style="background:#5aa31f22;text-align:right">38.181</td></tr>
+</table>
+:::
+::: {.column width="45%"}
+::: {.tarjeta style="--c:#9b2226"}
+[El 6.º escaño se decidió por muy poco]{.tt}
+
+- Al **PSOE** le faltaron unos **1.200 votos** para su tercer diputado (396 × 3).
+- A **Vox** le faltaron unos **2.800 votos**.
+- En el simulador basta con que un **5 %** de los votantes de Junts cambie de partido para que ese escaño cambie de manos.
+:::
+:::
+:::
+
+::: {.fuente}
+Elecciones generales de julio de 2023, provincia de Tarragona (6 escaños). Votos con voto exterior incluido.
+:::
+
+::: notes
+Es el mejor ejemplo de por qué cada voto pesa distinto según la provincia y el momento: en Tarragona, unos pocos cientos de votos deciden un escaño. Probadlo en el simulador: pasad un 5 % de Junts a cualquier otro partido.
+:::
+
+# 3 · La historia {background-color="#1b1b1b"}
+
+## Evolución del bipartidismo en el Congreso
+
+```{ojs}
+viewof medida = Inputs.radio(new Map([["Escaños", "pct_escanos"], ["Votos", "pct_votos"]]), {value: "pct_escanos", label: "Porcentaje de"})
+```
+
+```{ojs}
+{
+  const etiquetas = [...new Set(bip.map(d => d.etiqueta))];
+  const totales = etiquetas.map(e => ({etiqueta: e, total: d3.sum(bip.filter(d => d.etiqueta === e), d => d[medida])}));
+  const colores = {"UCD": "#2e9e5b", "PSOE": "#e30613", "AP/PP": "#1d84ce"};
+  const ultimo = totales[totales.length - 1];
+  return Plot.plot({
+    width: 1040, height: 430, marginTop: 30, marginBottom: 40,
+    x: {domain: etiquetas, label: null, padding: 0.25, tickFormat: d => d.replace(" (", "\n(")},
+    y: {domain: [0, 106], label: `↑ % de ${medida === "pct_escanos" ? "diputados" : "votos"} de los dos primeros partidos`, grid: true, ticks: [0, 20, 40, 60, 80, 100]},
+    color: {domain: Object.keys(colores), range: Object.values(colores), legend: true},
+    marks: [
+      Plot.barY(etiquetas.filter(e => e >= "1982" && e <= "2011"), {x: d => d, y: 106, fill: "#efece7", insetLeft: -9, insetRight: -9}),
+      Plot.barY(etiquetas.filter(e => e <= "1979"), {x: d => d, y: 106, fill: "#eef5ef", insetLeft: -9, insetRight: -9}),
+      Plot.barY(bip, Plot.stackY({x: "etiqueta", y: medida, fill: "partido", order: "orden", title: d => `${d.partido} ${d.etiqueta}: ${fmtPct(d[medida])} (${d.escanos} escaños)`})),
+      Plot.ruleY([50], {stroke: "#1b1b1b", strokeOpacity: .3, strokeDasharray: "4 4"}),
+      Plot.line(totales, {x: "etiqueta", y: "total", stroke: "#1b1b1b", strokeWidth: 2.5, marker: "circle"}),
+      Plot.text(totales, {x: "etiqueta", y: "total", text: d => d.total.toFixed(1).replace(".", ","), dy: -14, fontSize: d => d === ultimo ? 22 : 15, fontWeight: d => d === ultimo ? 700 : 400}),
+      Plot.text([{x: "1996", t: "Bipartidismo imperfecto (1982-2011)"}, {x: "2019 (abr)", t: "Multipartidismo (2015-hoy)"}], {x: "x", y: 103, text: "t", fontSize: 16, fill: "#666", fontWeight: 600}),
+      Plot.text([{x: "1977", t: "Transición\n(multipartidismo)"}], {x: "x", y: 101, text: "t", fontSize: 14, fill: "#2e7d4f", fontWeight: 600, dx: 30, lineHeight: 1.1})
+    ]
+  });
+}
+```
+
+::: {.fuente}
+Fuente: Ministerio del Interior. Elaboración propia a partir del proyecto *Simulador elecciones*. Los dos primeros partidos por escaños en cada elección.
+:::
+
+::: notes
+Cambia entre escaños y votos: la distancia entre las dos líneas es el "premio" que el sistema da a los grandes (efecto mecánico de Duverger). En 2011, PP + PSOE sumaban el 74 % de los votos pero el 85 % de los escaños.
+:::
+
+## Tres etapas
+
+::: {.tarjetas style="--n:3"}
+::: {.tarjeta style="--c:#2e9e5b"}
+[1977-1979]{.tt}
+**Transición (multipartidismo)**
+UCD y PSOE, junto a PCE, AP y nacionalistas. Los dos grandes suman en torno al 81-83 % de los escaños.
+:::
+::: {.tarjeta style="--c:#1d84ce"}
+[1982-2011]{.tt}
+**Bipartidismo imperfecto**
+PSOE y AP/PP se alternan en el gobierno. Hay más partidos (IU, CiU, PNV…), pero los dos grandes llegan a sumar el **92 %** de los escaños (2008).
+:::
+::: {.tarjeta style="--c:#e07a5f"}
+[2015-hoy]{.tt}
+**Multipartidismo moderado**
+Tras la crisis y el 15-M irrumpen Podemos y Ciudadanos, y después Vox. Mínimo en **abril de 2019** (54 %). En 2023 vuelven a subir (74 %).
+:::
+:::
+
+::: {.chico}
+"Imperfecto" porque, a diferencia del Reino Unido o EE. UU., hay terceros partidos con escaños, y a menudo el gobierno necesita el apoyo de los nacionalistas.
+:::
+
+# 4 · El votante {background-color="#1b1b1b"}
+
+## La racionalidad del voto: cálculo de la ganancia
+
+<div class="voto">
+<div class="raiz">La racionalidad del voto: cálculo de la ganancia</div>
+<div class="ramas">
+<div class="rama" style="--c:#b3261e"><b>Voto estratégico o útil</b>: votar a la <b>segunda preferencia</b> para asegurar la representación del bloque ideológico.</div>
+<div class="rama" style="--c:#1d84ce"><b>Voto dual</b>: cambiar de preferencia según el <b>nivel de elección</b> (generales, autonómicas, municipales…).</div>
+</div>
+</div>
+
+## Voto estratégico (útil) {.smaller}
+
+::: {.columns}
+::: {.column width="55%"}
+- Es el **efecto psicológico de Duverger** en acción.
+- Pienso: "mi partido favorito no va a sacar escaño en mi provincia, así que voto al grande de mi bloque que sí puede".
+- Es más fuerte en las provincias **pequeñas**, donde la barrera efectiva es del 15-25 %.
+- Por eso los partidos grandes hacen campaña con el **"no dividas el voto"** y los pequeños se concentran en las provincias grandes.
+:::
+::: {.column width="45%"}
+::: {.tarjeta style="--c:#b3261e"}
+[Pruébalo]{.tt}
+Vuelve al **simulador** y pasa votos de un partido pequeño al grande de su bloque.
+
+- **Tarragona**: 5 % de Junts → cualquier otro partido.
+- **Salamanca**: 15 % de Sumar → PSOE.
+- **Guadalajara**: 5 % de Vox → PP.
+
+Cambia un escaño. Prueba lo mismo en Madrid.
+:::
+:::
+:::
+
+## Voto dual
+
+::: {.columns}
+::: {.column width="55%"}
+- El mismo votante elige partidos **distintos** según la elección.
+- La razón: en cada nivel se decide algo distinto. En las **generales**, quién gobierna España. En las **autonómicas**, quién gobierna mi comunidad.
+- Es típico de comunidades con **clivaje centro-periferia** fuerte: Cataluña, País Vasco, Galicia, Canarias…
+:::
+::: {.column width="45%"}
+::: {.tarjeta style="--c:#1d84ce"}
+[Ejemplo típico]{.tt}
+Un votante catalán o vasco que apoya a un partido **nacionalista** en las autonómicas y a un partido **de ámbito estatal** en las generales.
+También funciona al revés: el voto **municipal** depende mucho del alcalde o alcaldesa, no solo de las siglas.
+:::
+:::
+:::
+
+## Resumen de la sesión
+
+1. España tiene **52 elecciones simultáneas**: cada provincia reparte sus escaños por separado.
+2. La mayoría de las circunscripciones son **pequeñas**. Eso da al sistema, que es proporcional, efectos **casi mayoritarios** en buena parte del territorio.
+3. D'Hondt + provincias pequeñas = **premio a los grandes**. De ahí el **bipartidismo imperfecto** (1982-2011).
+4. La crisis de 2008 trajo el **multipartidismo** (2015-hoy), aunque en 2023 los dos grandes se recuperan.
+5. Los votantes se adaptan: **voto útil** (por el tamaño de la provincia) y **voto dual** (por el nivel de gobierno).
+
+## Para seguir explorando
+
+- Resultados históricos del Congreso por provincia, municipio y sección: [histEleccionesCongreso](https://rricote.github.io/histEleccionesCongreso/)
+- Seguimiento de la noche electoral del 29-N: [simulador-29n](https://rricote.github.io/simulador-29n/)
+
+::: {.fuente}
+Datos: Ministerio del Interior (ficheros por mesa), procesados con los scripts de `scripts/preparar_datos.py`.
+:::
+
+<div class="volver"><a href="index.html">← Volver al índice del curso</a></div>
+<div class="volver sec"><a href="03-partidos.html">Ir a la sesión 3 →</a></div>

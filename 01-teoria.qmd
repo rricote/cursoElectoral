@@ -1,0 +1,382 @@
+---
+title: "De los notables a los partidos de masas"
+subtitle: "Sesión 1 · Conceptos básicos de ciencia política"
+format:
+  revealjs:
+    theme: [default, recursos/curso.scss]
+    slide-number: true
+    hash-type: number
+    transition: fade
+    footer: "[Curso de política](index.html) · Sesión 1"
+    chalkboard: false
+---
+
+## Hoja de ruta
+
+::: {.tarjetas style="--n:3"}
+::: {.tarjeta style="--c:#555"}
+[1. El Estado]{.tt}
+Qué es y por qué le obedecemos: **legitimidad**.
+:::
+::: {.tarjeta style="--c:#1d84ce"}
+[2. Representar]{.tt}
+De los **notables** y los distritos uninominales a los **partidos de masas**.
+:::
+::: {.tarjeta style="--c:#e30613"}
+[3. Ordenar el conflicto]{.tt}
+Clivajes, **izquierda y derecha**, sistemas proporcionales, **Duverger** y **Michels**.
+:::
+:::
+
+::: notes
+La idea de la sesión: entender que los partidos y los sistemas electorales no caen del cielo. Nacen de conflictos concretos y de decisiones interesadas.
+:::
+
+# 1 · Estado y legitimidad {background-color="#1b1b1b"}
+
+## ¿Qué es el Estado?
+
+::: {.cita}
+El Estado es la comunidad humana que, dentro de un territorio, reclama con éxito para sí el **monopolio de la violencia física legítima**.
+<small>Max Weber, *La política como vocación* (1919)</small>
+:::
+
+Tres ingredientes:
+
+- **Territorio**: fronteras definidas.
+- **Monopolio de la fuerza**: nadie más puede usarla (policía, ejército, tribunales).
+- **Legitimidad**: la mayoría acepta que ese monopolio es *correcto*.
+
+::: notes
+La palabra clave es "legítima". Una mafia también usa la violencia, pero no la consideramos legítima. Lo que diferencia al Estado es que la gente acepta que tenga ese derecho.
+:::
+
+## ¿Por qué obedecemos? Los tres tipos de legitimidad
+
+::: {.tarjetas style="--n:3"}
+::: {.tarjeta style="--c:#8a6d3b"}
+[Tradicional]{.tt}
+"Siempre ha sido así".
+El rey manda porque su padre mandó.
+
+*Monarquías absolutas, sociedades estamentales.*
+:::
+::: {.tarjeta style="--c:#b3261e"}
+[Carismática]{.tt}
+"Le seguimos porque es extraordinario".
+Héroes, profetas, caudillos.
+
+*Inestable: muere con el líder.*
+:::
+::: {.tarjeta style="--c:#1d84ce"}
+[Legal-racional]{.tt}
+"Manda quien las reglas dicen".
+Obedecemos al cargo, no a la persona.
+
+*Estados constitucionales modernos.*
+:::
+:::
+
+::: {.chico}
+En la práctica se mezclan: una monarquía parlamentaria como la española combina legitimidad **tradicional** (la Corona) con legitimidad **legal-racional** (la Constitución de 1978).
+:::
+
+## De la legitimidad a la representación
+
+La legitimidad legal-racional plantea una pregunta: **¿quién hace las reglas?**
+
+La respuesta liberal (siglos XVIII-XIX): **representantes elegidos**.
+
+Pero ¿elegidos por quién y cómo?
+
+- Al principio votan pocos: **sufragio censitario** (solo propietarios o quienes pagan impuestos).
+- Se elige a **personas**, no a partidos: el diputado representa a *su* distrito.
+- Esto encaja de forma natural con los **sistemas mayoritarios**: un distrito, un escaño, gana el más votado.
+
+# 2 · De los notables a las masas {background-color="#1b1b1b"}
+
+## Los partidos de notables (siglo XIX)
+
+::: {.columns}
+::: {.column width="55%"}
+- Electorado **pequeño** (sufragio censitario).
+- El candidato es un **notable local**: terrateniente, abogado, industrial.
+- Su fuerza es **personal**: prestigio, redes de favores, dinero propio.
+- El "partido" es una coalición flexible de notables en el Parlamento. No hay afiliados ni cuotas.
+- Distritos **uninominales mayoritarios**: se elige a una persona por territorio.
+:::
+::: {.column width="45%"}
+::: {.tarjeta style="--c:#8a6d3b"}
+[Ejemplo español: la Restauración (1876-1923)]{.tt}
+**Turnismo** entre conservadores (Cánovas) y liberales (Sagasta).
+Los resultados se pactaban de antemano y los **caciques** locales los garantizaban.
+Política de notables en estado puro.
+:::
+:::
+:::
+
+::: notes
+Duverger los llamó "partidos de cuadros": lo importante no es cuántos miembros tienen, sino quiénes son.
+:::
+
+## Llega la política de masas
+
+Entre finales del XIX y principios del XX todo cambia:
+
+::: {.flujo}
+<div>**Industrialización**<br>Millones de obreros en las ciudades</div>
+<div class="flecha">→</div>
+<div>**Sufragio universal**<br>(masculino primero)</div>
+<div class="flecha">→</div>
+<div>**Partidos de masas**<br>Afiliados, cuotas, prensa propia, sindicatos</div>
+<div class="flecha">→</div>
+<div>**Se vota a un partido**<br>no a una persona</div>
+:::
+
+<br>
+
+- Los obreros no tienen dinero ni prestigio: su fuerza es **el número** y **la organización**.
+- El modelo es el **partido socialista** (el SPD alemán; en España, el PSOE desde 1879).
+- Los partidos de notables tendrán que imitarlos o desaparecer.
+
+## Los partidos modernos: clivajes
+
+Lipset y Rokkan (1967): los partidos nacen de **grandes conflictos sociales** (*clivajes*) que dividen a la sociedad.
+
+<table class="clivajes">
+<tr><th></th><th>Conflicto estructural</th><th>Clivaje</th><th>Partidos</th></tr>
+<tr><td class="siglo" rowspan="3">Siglo XIX</td><td>Industrialización</td><td>Campo / Ciudad</td><td>Agrarios</td></tr>
+<tr><td>Centralización</td><td>Centro / Periferia</td><td>Notables</td></tr>
+<tr><td>Religión</td><td>Confesional / Laico</td><td>Confesionales</td></tr>
+<tr><td class="siglo" rowspan="3">Siglo XX</td><td>Nación</td><td>Etnias</td><td>Nacionalistas</td></tr>
+<tr><td>Propiedad</td><td>Clases</td><td>Socialistas</td></tr>
+<tr class="xx"><td>Crisis de entreguerras y Revolución rusa</td><td>Democracia liberal / Totalitarismo</td><td>Fascistas</td></tr>
+<tr class="xxi"><td class="siglo" rowspan="3">Siglo XXI</td><td colspan="3">Predominio de los <b>temas transversales</b> frente a los <b>clivajes estructurales</b></td></tr>
+<tr class="xxi"><td>Valores posmateriales</td><td>Materialista / Posmaterialista</td><td>Ecologistas</td></tr>
+<tr class="xxi"><td>Globalización e inmigración</td><td>Cosmopolita / Identitario</td><td>Derecha radical populista</td></tr>
+</table>
+
+::: notes
+En España pesan mucho dos clivajes: el de clase (izquierda-derecha) y el de centro-periferia (nacionalismos catalán, vasco, gallego...). Por eso tenemos partidos de ámbito estatal y partidos nacionalistas o regionalistas.
+
+Fascismo: nace tras la Primera Guerra Mundial y la Revolución rusa como reacción antiliberal y anticomunista. Partido de masas, pero contra la democracia parlamentaria: Italia (1922), Alemania (1933). En España, Falange Española (1933).
+
+Siglo XXI: la globalización, la inmigración y la integración europea crean un nuevo conflicto entre quienes se benefician de la apertura y quienes se sienten perjudicados o amenazados en su identidad. De ahí surge la derecha radical populista (Cas Mudde): nativismo, autoritarismo y populismo. A diferencia del fascismo, acepta las elecciones. Ejemplos: Agrupación Nacional en Francia, AfD en Alemania, Hermanos de Italia, Vox en España (2013; entra en el Congreso en 2019).
+:::
+
+## ¿De dónde salen "izquierda" y "derecha"?
+
+::: {.columns}
+::: {.column width="58%"}
+**París, 1789.** En la Asamblea Nacional se debate si el rey debe tener derecho de veto.
+
+- A la **derecha** del presidente se sientan los partidarios del rey y del orden tradicional.
+- A la **izquierda**, los que quieren limitar su poder y cambiar las cosas.
+
+Una cuestión de **sitio** acaba nombrando dos grandes familias políticas.
+:::
+::: {.column width="42%"}
+::: {.tarjetas style="--n:1"}
+::: {.tarjeta style="--c:#1d84ce"}
+[Derecha]{.tt}
+Orden, tradición, propiedad, cambio gradual.
+:::
+::: {.tarjeta style="--c:#e30613"}
+[Izquierda]{.tt}
+Igualdad, cambio, redistribución.
+:::
+:::
+:::
+:::
+
+::: {.chico}
+El contenido cambia con el tiempo. En el XIX, "izquierda" eran los **liberales**. En el XX, los **socialistas**.
+:::
+
+## De liberales vs. conservadores a derecha vs. izquierda
+
+**Siglo XIX:** el conflicto principal se da *dentro* de las élites.
+
+::: {.tarjetas style="--n:2"}
+::: {.tarjeta style="--c:#8a6d3b"}
+[Conservadores]{.tt}
+Trono, altar, propiedad de la tierra, orden.
+:::
+::: {.tarjeta style="--c:#d4a017"}
+[Liberales]{.tt}
+Constitución, libertades, mercado, burguesía urbana.
+:::
+:::
+
+**Siglo XX:** aparece el socialismo y cuestiona **la propiedad**. Liberales y conservadores descubren que tienen más en común entre sí que con los socialistas.
+
+→ Se funden en el **liberal-conservadurismo**: libertad económica + orden social.
+
+::: notes
+Ejemplo británico: el Partido Liberal, que era uno de los dos grandes, es sustituido por el Laborista en los años 20. Muchos liberales acaban en el Partido Conservador. El eje deja de ser liberal/conservador y pasa a ser derecha/izquierda.
+:::
+
+## Ideologías modernas: agregación de preferencias
+
+<div class="bloques">
+<div class="bloque izq">
+<h3>Izquierda</h3>
+<div class="fusion">
+<ul><li>Socialista</li><li>Laicista / republicano</li><li>Ecologista</li><li>Feminista</li></ul>
+<div class="llave">}</div>
+<div><b>Socialdemócrata</b></div>
+</div>
+<div class="margen"><b>En los extremos:</b> comunista (s. XX) · izquierda alternativa o populista (s. XXI)</div>
+<div class="base">Clase trabajadora, clases medias liberales, sector público, jóvenes urbanos con estudios</div>
+</div>
+<div class="bloque der">
+<h3>Derecha</h3>
+<div class="fusion">
+<ul><li>Agrario</li><li>Notable</li><li>Confesional (democristiano)</li><li>Nacionalista</li></ul>
+<div class="llave">}</div>
+<div><b>Liberal<br>Conservador</b></div>
+</div>
+<div class="margen"><b>En los extremos:</b> fascista (s. XX) · derecha radical populista (s. XXI)</div>
+<div class="base">Voto rural, propietarios, confesionales, clases medias tradicionales</div>
+</div>
+</div>
+
+::: {.chico}
+Un partido grande **agrega** muchas preferencias distintas en una sola oferta. Así se forman los dos grandes bloques. En los extremos quedan las corrientes que rechazan esa síntesis central.
+:::
+
+::: notes
+La izquierda agrega el clivaje de clase (socialistas), el laico frente al confesional (republicanos, laicistas) y los temas transversales del siglo XXI (ecologismo, feminismo). Su síntesis moderada es la socialdemocracia.
+
+La derecha agrega los clivajes del siglo XIX (agrario, notables, confesional, nacionalista) en el liberal-conservadurismo. En muchos países europeos, la democracia cristiana fue la forma principal de esa síntesis.
+
+En los márgenes: el comunismo (escisión de los socialistas tras 1917) y la izquierda alternativa del siglo XXI; el fascismo en el siglo XX y la derecha radical populista en el XXI.
+:::
+
+## La izquierda se divide: las Internacionales
+
+<svg viewBox="0 0 1150 430" style="width:100%;height:auto;font-family:Inter,sans-serif"><line x1="130" y1="46" x2="130" y2="420" stroke="#bbb" stroke-dasharray="4 4"/><text x="130" y="20" text-anchor="middle" font-weight="700" font-size="15">I Int. · 1864</text><text x="130" y="38" text-anchor="middle" font-size="13" fill="#777">Londres</text><line x1="284" y1="46" x2="284" y2="420" stroke="#bbb" stroke-dasharray="4 4"/><text x="284" y="20" text-anchor="middle" font-weight="700" font-size="15">II Int. · 1889</text><text x="284" y="38" text-anchor="middle" font-size="13" fill="#777">París</text><line x1="468" y1="46" x2="468" y2="420" stroke="#bbb" stroke-dasharray="4 4"/><text x="468" y="20" text-anchor="middle" font-weight="700" font-size="15">III Int. · 1919</text><text x="468" y="38" text-anchor="middle" font-size="13" fill="#777">Komintern</text><line x1="585" y1="46" x2="585" y2="420" stroke="#bbb" stroke-dasharray="4 4"/><text x="585" y="20" text-anchor="middle" font-weight="700" font-size="15">IV Int. · 1938</text><text x="585" y="38" text-anchor="middle" font-size="13" fill="#777">Trotski</text><line x1="130" y1="205" x2="179" y2="205" stroke="#555" stroke-width="9" stroke-linecap="round"/><path d="M179,205 C204,205 194,95 219,95 L960,95" fill="none" stroke="#1b1b1b" stroke-width="9" stroke-linecap="round"/><line x1="179" y1="205" x2="468" y2="205" stroke="#c0392b" stroke-width="9"/><line x1="468" y1="205" x2="960" y2="205" stroke="#e8636f" stroke-width="9" stroke-linecap="round"/><path d="M468,205 C493,205 483,305 508,305 L960,305" fill="none" stroke="#8b0000" stroke-width="9" stroke-linecap="round"/><path d="M585,305 C610,305 600,395 625,395 L960,395" fill="none" stroke="#c77d00" stroke-width="9" stroke-linecap="round"/><text x="974" y="101" font-weight="700" font-size="17" fill="#1b1b1b">Anarquismo</text><text x="974" y="211" font-weight="700" font-size="17" fill="#d64550">Socialdemocracia</text><text x="974" y="311" font-weight="700" font-size="17" fill="#8b0000">Comunismo</text><text x="974" y="401" font-weight="700" font-size="17" fill="#c77d00">Trotskismo</text><text x="118" y="210" text-anchor="end" font-size="15" fill="#555" font-weight="700">Socialismo</text><text x="321" y="232" text-anchor="middle" font-size="15" fill="#c0392b" font-weight="700">Marxismo (socialistas)</text><circle cx="179" cy="205" r="6.5" fill="#fff" stroke="#1b1b1b" stroke-width="2.5"/><text x="189" y="232" text-anchor="end" font-size="14" fill="#333">1872: ruptura Marx–Bakunin</text><circle cx="413" cy="95" r="6.5" fill="#fff" stroke="#1b1b1b" stroke-width="2.5"/><text x="413" y="122" text-anchor="middle" font-size="14" fill="#333">CNT (1910)</text><circle cx="222" cy="205" r="6.5" fill="#fff" stroke="#1b1b1b" stroke-width="2.5"/><text x="216" y="191" text-anchor="start" font-size="14" fill="#333">PSOE (1879)</text><circle cx="437" cy="205" r="6.5" fill="#fff" stroke="#1b1b1b" stroke-width="2.5"/><text x="437" y="191" text-anchor="middle" font-size="14" fill="#333">1914: la guerra rompe la II Int.</text><circle cx="520" cy="305" r="6.5" fill="#fff" stroke="#1b1b1b" stroke-width="2.5"/><text x="520" y="332" text-anchor="middle" font-size="14" fill="#333">PCE (1921)</text><circle cx="573" cy="95" r="6.5" fill="#fff" stroke="#1b1b1b" stroke-width="2.5"/><text x="573" y="81" text-anchor="middle" font-size="14" fill="#333">Guerra Civil: auge y derrota</text><circle cx="714" cy="205" r="6.5" fill="#fff" stroke="#1b1b1b" stroke-width="2.5"/><text x="714" y="191" text-anchor="middle" font-size="14" fill="#333">Bad Godesberg (1959): el SPD deja el marxismo</text><circle cx="837" cy="205" r="6.5" fill="#fff" stroke="#1b1b1b" stroke-width="2.5"/><text x="837" y="232" text-anchor="middle" font-size="14" fill="#333">El PSOE deja el marxismo (1979)</text><circle cx="819" cy="305" r="6.5" fill="#fff" stroke="#1b1b1b" stroke-width="2.5"/><text x="819" y="332" text-anchor="middle" font-size="14" fill="#333">Eurocomunismo (años 70)</text></svg>
+
+::: {.chico}
+Cada Internacional nace de una ruptura: **anarquistas frente a marxistas** (1872), **comunistas frente a socialistas** (1919-1921) y **trotskistas frente a estalinistas** (1938).
+:::
+
+::: notes
+I Internacional (Asociación Internacional de los Trabajadores, Londres, 1864): reúne a todo el movimiento obrero. Choque entre Marx (partido obrero, conquista del Estado) y Bakunin (abolir el Estado, acción directa). En el congreso de La Haya (1872) se expulsa a Bakunin y la Internacional se rompe. El anarquismo tuvo en España una fuerza excepcional en Europa: la CNT (1910) fue el gran sindicato hasta la Guerra Civil.
+
+II Internacional (París, 1889): partidos socialistas de masas, como el SPD o el PSOE (1879, con la UGT en 1888). Debate entre reforma y revolución (revisionismo de Bernstein). En 1914 casi todos los partidos apoyan a su gobierno en la guerra y la Internacional se hunde.
+
+III Internacional o Komintern (Moscú, 1919): tras la Revolución rusa, Lenin exige a los partidos que rompan con los socialistas «reformistas» (las 21 condiciones, 1920). Nacen los partidos comunistas; en España, el PCE (1921).
+
+IV Internacional (1938): Trotski, expulsado por Stalin, funda su propia Internacional. Pequeña, pero da origen a las corrientes trotskistas.
+
+Después: los socialistas se reorganizan en la Internacional Socialista (1951) y abandonan el marxismo (SPD en Bad Godesberg, 1959; PSOE en 1979). En los años 70 el PCE de Carrillo impulsa el eurocomunismo, que acepta la democracia parlamentaria.
+:::
+
+# 3 · Las reglas del juego {background-color="#1b1b1b"}
+
+## Sistemas mayoritarios y proporcionales
+
+::: {.tarjetas style="--n:2"}
+::: {.tarjeta style="--c:#555"}
+[Mayoritario]{.tt}
+Se divide el país en distritos (normalmente de **1 escaño**). **Gana el más votado** y se lo lleva todo.
+
+- Prioriza la **gobernabilidad** y el vínculo diputado-territorio.
+- Reino Unido, EE. UU., Francia (a dos vueltas).
+:::
+::: {.tarjeta style="--c:#b3261e"}
+[Proporcional]{.tt}
+Distritos de **varios escaños** que se reparten **según el porcentaje de votos** (D'Hondt, Sainte-Laguë…).
+
+- Prioriza la **representatividad**.
+- La mayoría de Europa continental, España incluida.
+:::
+:::
+
+## Un ejemplo con los mismos votos
+
+En 5 distritos, los tres partidos sacan lo mismo en todos: **A 40 %**, **B 35 %**, **C 25 %**.
+
+::: {.columns}
+::: {.column width="50%"}
+**Mayoritario** (5 distritos de 1 escaño)
+
+| Partido | Votos | Escaños |
+|---|---:|---:|
+| A | 40 % | **5** |
+| B | 35 % | 0 |
+| C | 25 % | 0 |
+:::
+::: {.column width="50%"}
+**Proporcional** (1 distrito de 5, D'Hondt)
+
+| Partido | Votos | Escaños |
+|---|---:|---:|
+| A | 40 % | **2** |
+| B | 35 % | **2** |
+| C | 25 % | **1** |
+:::
+:::
+
+::: {.chico}
+Con los mismos votos, en un caso A tiene el 100 % del parlamento y en el otro el 40 %.
+:::
+
+## ¿Por qué Europa se pasa a la proporcional?
+
+- Bélgica la adopta en **1899**. En los años siguientes la siguen buena parte de los países europeos.
+- Coincide con el **sufragio universal** y el **auge socialista**.
+- Una explicación clásica (Rokkan, Boix): los partidos de notables temían que, con un sistema mayoritario, los socialistas ganaran **todos** los distritos obreros. Con la proporcional se aseguraban su parte.
+- Los sistemas electorales los diseñan **los que ya están dentro**, y suelen protegerse a sí mismos.
+
+## Ley de Duverger
+
+::: {.cita}
+El sistema mayoritario a una vuelta tiende al **bipartidismo**. La representación proporcional tiende al **multipartidismo**.
+<small>Maurice Duverger, *Los partidos políticos* (1951)</small>
+:::
+
+::: {.tarjetas style="--n:2"}
+::: {.tarjeta style="--c:#555"}
+[Efecto mecánico]{.tt}
+Las reglas **sobrerrepresentan** a los grandes e **infrarrepresentan** a los pequeños, que sacan votos pero no escaños.
+:::
+::: {.tarjeta style="--c:#b3261e"}
+[Efecto psicológico]{.tt}
+Los votantes lo saben y **no quieren tirar su voto**: abandonan a los pequeños por el grande más cercano.
+:::
+:::
+
+::: {.chico}
+El efecto psicológico es el **voto útil**. Lo veremos aplicado a España en la siguiente sesión.
+:::
+
+## La ley de hierro de la oligarquía
+
+::: {.cita}
+Quien dice organización, dice oligarquía.
+<small>Robert Michels, *Los partidos políticos* (1911), tras estudiar el SPD alemán</small>
+:::
+
+Hasta el partido más democrático acaba dirigido por **unos pocos**:
+
+- **Razones técnicas**: una organización grande necesita profesionales y especialistas.
+- **Razones psicológicas**: las bases delegan y siguen a los líderes.
+- **Interés propio**: los dirigentes quieren seguir siéndolo y controlan los recursos (dinero, listas, información).
+
+::: {.chico}
+Pregunta para España: con **listas cerradas y bloqueadas**, ¿a quién debe su escaño un diputado, a sus votantes o a quien hace la lista?
+:::
+
+## Resumen de la sesión
+
+1. El Estado se sostiene sobre la **legitimidad**. En las democracias es **legal-racional**.
+2. Primero se elegía a **personas** (notables, distritos mayoritarios). Con la política de masas se eligen **partidos**.
+3. Los partidos nacen de **clivajes**. Liberales y conservadores se funden frente al socialismo: **derecha vs. izquierda**.
+4. Las reglas electorales importan: **Duverger** (mayoritario → bipartidismo) y **Michels** (organización → oligarquía).
+
+**Próxima sesión:** ¿y en España, cómo funciona todo esto?
+
+<div class="volver"><a href="index.html">← Volver al índice del curso</a></div>
+<div class="volver sec"><a href="02-espana.html">Ir a la sesión 2 →</a></div>
