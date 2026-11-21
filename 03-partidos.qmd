@@ -392,3 +392,4 @@ Posición aproximada, con fines didácticos.
 5. En **Tarragona** los dos ejes se cruzan: hay derecha e izquierda tanto unionistas como independentistas.
 
 <div class="volver"><a href="index.html">← Volver al índice del curso</a></div>
+<div class="volver sec"><a href="04-efectos.html">Ir a la sesión 4 →</a></div>

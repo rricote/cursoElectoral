@@ -1,0 +1,320 @@
+---
+title: "Cómo afecta el sistema electoral al sistema de partidos"
+subtitle: "Sesión 4 · España en 2019 (abril y noviembre) y 2023"
+format:
+  revealjs:
+    theme: [default, recursos/curso.scss]
+    slide-number: true
+    hash-type: number
+    transition: fade
+    footer: "[Curso de política](index.html) · Sesión 4"
+execute:
+  echo: false
+---
+
+```{ojs}
+//| output: false
+efectos = FileAttachment("datos/efectos.json").json()
+mapa = FileAttachment("datos/mapa_provincias.json").json()
+
+categoria = s => s === 1 ? "Uninominal (1)" : s <= 5 ? "Pequeña (2-5)" : s <= 9 ? "Mediana (6-9)" : "Grande (10+)"
+colorCat = ({"Uninominal (1)": "#c9c4bd", "Pequeña (2-5)": "#f2c6b4", "Mediana (6-9)": "#e07a5f", "Grande (10+)": "#9b2226"})
+pct = v => v.toLocaleString("es-ES", {minimumFractionDigits: 1, maximumFractionDigits: 1}) + " %"
+miles = d3.formatLocale({decimal: ",", thousands: ".", grouping: [3], currency: ["", " €"]}).format(",d")
+
+// Dibuja un mapa de provincias. grupo = null → mapa general de escaños
+function mapaSVG(eleccion, grupo) {
+  const e = efectos[eleccion];
+  const W = mapa.w, H = mapa.h + 10;
+  const svg = d3.create("svg").attr("viewBox", `0 0 ${W} ${H}`).style("height", "282px").style("width", "auto");
+  const relleno = id => {
+    const s = e.escanos_prov[id];
+    if (!grupo) return colorCat[categoria(s)];
+    const d = grupo.prov[id];
+    if (!d) return "#efedea";
+    const color = grupo.k.startsWith("OTROS") ? d.c : grupo.c;
+    return d3.interpolateRgb("#f3efe9", color)(0.3 + 0.7 * d.es / s);
+  };
+  const texto = id => grupo ? (grupo.prov[id]?.es ?? "") : e.escanos_prov[id];
+  const titulo = id => {
+    const s = e.escanos_prov[id];
+    if (!grupo) return `${s} escaños`;
+    const d = grupo.prov[id];
+    return d ? `${d.es} de ${s} escaños${grupo.k.startsWith("OTROS") ? " · " + d.detalle : ""}` : `0 de ${s} escaños`;
+  };
+  const g = svg.append("g");
+  for (const [id, path] of Object.entries(mapa.paths)) {
+    g.append("path").attr("d", path).attr("fill", relleno(id)).attr("stroke", "#fff").attr("stroke-width", 1.5)
+      .append("title").text(titulo(id));
+  }
+  for (const [id, [x, y, s]] of Object.entries(mapa.sq)) {
+    g.append("rect").attr("x", x).attr("y", y).attr("width", s).attr("height", s).attr("rx", 6)
+      .attr("fill", relleno(id)).attr("stroke", "#aaa").append("title").text(titulo(id));
+  }
+  const [x0, y0, x1, y1] = mapa.box;
+  g.append("rect").attr("x", x0).attr("y", y0).attr("width", x1 - x0).attr("height", y1 - y0).attr("fill", "none").attr("stroke", "#ccc").attr("stroke-dasharray", "4 4");
+  g.append("path").attr("d", mapa.paths["43"]).attr("fill", "none").attr("stroke", "#111").attr("stroke-width", 3);
+  for (const [id, [x, y]] of Object.entries(mapa.lab)) {
+    const t = texto(id);
+    if (t === "") continue;
+    const oscuro = !grupo ? e.escanos_prov[id] >= 10 : (grupo.prov[id] && grupo.prov[id].es / e.escanos_prov[id] > 0.45);
+    g.append("text").attr("x", x).attr("y", y + 14).attr("text-anchor", "middle").attr("font-size", 46).attr("font-weight", 700)
+      .attr("font-family", "Inter, sans-serif").attr("fill", oscuro ? "#fff" : "#222").attr("pointer-events", "none").text(t);
+  }
+  for (const [id, [x, y, s]] of Object.entries(mapa.sq)) {
+    const t = texto(id);
+    if (t === "") continue;
+    g.append("text").attr("x", x + s / 2).attr("y", y + s / 2 + 14).attr("text-anchor", "middle").attr("font-size", 36).attr("font-weight", 700)
+      .attr("font-family", "Inter, sans-serif").attr("fill", "#222").text(t);
+  }
+  return svg.node();
+}
+
+function celda(eleccion, k) {
+  const e = efectos[eleccion];
+  if (!k) {
+    const orden = ["Uninominal (1)", "Pequeña (2-5)", "Mediana (6-9)", "Grande (10+)"];
+    return html`<div class="celda">${mapaSVG(eleccion, null)}
+      <div class="info"><div class="nombre">Escaños por provincia</div>
+        <div class="num" style="color:#9b2226">350</div>
+        ${orden.map(c => html`<div class="ley"><span style="background:${colorCat[c]}"></span>${c}</div>`)}</div></div>`;
+  }
+  const g = e.grupos.find(d => d.k === k);
+  const dif = g.pct_es - g.pct;
+  return html`<div class="celda">${mapaSVG(eleccion, g)}
+    <div class="info"><div class="nombre" style="color:${g.k.startsWith("OTROS") ? "#333" : g.c}">${g.n}</div>
+      <div class="num" style="color:${g.k.startsWith("OTROS") ? "#333" : g.c}">${g.es}</div><div>escaños</div>
+      <div class="dato">${pct(g.pct)} de los votos</div>
+      <div class="dato">${pct(g.pct_es)} de los escaños</div>
+      <div class="dato" style="color:${dif >= 0 ? "#1b7f3b" : "#b3261e"};font-weight:700">${dif >= 0 ? "+" : ""}${pct(dif)}</div>
+      <div class="dato gris">Escaño en ${Object.keys(g.prov).length} de 52 provincias</div></div></div>`;
+}
+
+cuadricula = (eleccion, ks) => html`<div class="cuadricula">${celda(eleccion, null)}${ks.map(k => celda(eleccion, k))}</div>`
+```
+
+## Lo que vamos a ver
+
+::: {.tarjetas style="--n:3"}
+::: {.tarjeta style="--c:#9b2226"}
+[1. Los mapas]{.tt}
+Dónde saca escaños cada partido en abril de 2019, noviembre de 2019 y 2023.
+:::
+::: {.tarjeta style="--c:#1d84ce"}
+[2. Votos y escaños]{.tt}
+Quién sale **premiado** y quién **castigado** por el sistema.
+:::
+::: {.tarjeta style="--c:#555"}
+[3. Desproporcionalidad]{.tt}
+Cuánto cuesta un escaño y cómo se mide la distorsión.
+:::
+:::
+
+## La idea clave
+
+El sistema español es **proporcional**, pero con **52 circunscripciones**, la mayoría pequeñas. Eso produce tres efectos:
+
+::: {.tarjetas style="--n:3"}
+::: {.tarjeta style="--c:#e30613"}
+[Premio a los grandes]{.tt}
+En las provincias de 2 a 5 escaños, el primer y el segundo partido se llevan casi todo.
+:::
+::: {.tarjeta style="--c:#7b3f98"}
+[Castigo a los terceros dispersos]{.tt}
+Un partido con el 10-15 % **repartido por toda España** se queda sin escaño en muchas provincias.
+:::
+::: {.tarjeta style="--c:#e8890c"}
+[Ninguna penalización a los concentrados]{.tt}
+Los nacionalistas solo compiten en su territorio, donde son grandes, y sacan escaños a buen precio.
+:::
+:::
+
+::: {.chico}
+Es el **efecto mecánico** de Duverger. El **efecto psicológico** (el voto útil) refuerza a los grandes en las siguientes elecciones.
+:::
+
+# Abril de 2019 {background-color="#1b1b1b"}
+
+## Abril de 2019 · PSOE, PP y Cs
+
+```{ojs}
+cuadricula("2019-04", ["PSOE", "PP", "CS"])
+```
+
+::: notes
+El PSOE gana con el 28,7 % de los votos y saca el 35 % de los escaños: está presente en 51 de las 52 provincias. PP y Cs casi empatan en votos (16,7 % y 15,9 %) y el PP saca 9 escaños más: el segundo puesto en las provincias pequeñas vale mucho.
+:::
+
+## Abril de 2019 · UP, Vox y otros
+
+```{ojs}
+cuadricula("2019-04", ["UP", "VOX", "OTROS"])
+```
+
+::: notes
+Vox, con el 10,3 % de los votos, solo saca escaño en 18 provincias: el voto disperso se pierde en las pequeñas. Los nacionalistas, en cambio, concentran sus escaños en Cataluña, el País Vasco, Navarra y Canarias. En el mapa de "otros" cada provincia tiene el color del partido que más escaños saca allí.
+:::
+
+# Noviembre de 2019 {background-color="#1b1b1b"}
+
+## Noviembre de 2019 · PSOE, PP y Vox
+
+```{ojs}
+cuadricula("2019-11", ["PSOE", "PP", "VOX"])
+```
+
+::: notes
+Vox pasa del 10,3 % al 15,1 % y de 24 a 52 escaños: al superar el umbral en muchas más provincias, sus escaños crecen mucho más que sus votos. El PP también recupera terreno.
+:::
+
+## Noviembre de 2019 · UP, Cs y otros
+
+```{ojs}
+cuadricula("2019-11", ["UP", "CS", "OTROS"])
+```
+
+::: notes
+El hundimiento de Ciudadanos es el mejor ejemplo del efecto mecánico: con el 6,8 % de los votos solo saca 10 escaños, casi todos en provincias grandes. Con un sistema proporcional puro habría tenido unos 24.
+:::
+
+# Julio de 2023 {background-color="#1b1b1b"}
+
+## 2023 · PP, PSOE y Vox
+
+```{ojs}
+cuadricula("2023-07", ["PP", "PSOE", "VOX"])
+```
+
+## 2023 · Sumar y otros
+
+```{ojs}
+cuadricula("2023-07", ["SUMAR", "OTROS_IZQ", "OTROS_DER"])
+```
+
+::: notes
+Desaparece Ciudadanos. "Otros de izquierda": ERC, EH Bildu y BNG. "Otros de derecha": Junts, PNV, CC y UPN. Cada provincia toma el color del partido que más escaños saca allí. Pasa el ratón por encima para ver el detalle.
+:::
+
+# ¿Quién gana y quién pierde? {background-color="#1b1b1b"}
+
+## Votos frente a escaños
+
+```{ojs}
+viewof elecVE = Inputs.radio(new Map([["Abril 2019", "2019-04"], ["Noviembre 2019", "2019-11"], ["2023", "2023-07"]]), {value: "2019-11", label: "Elección"})
+```
+
+```{ojs}
+{
+  const ps = efectos[elecVE].partidos.filter(p => p.es > 0 || p.pct >= 1).slice(0, 10);
+  const nombres = ps.map(p => p.n);
+  return Plot.plot({
+    width: 1000, height: 60 + 40 * ps.length, marginLeft: 140, marginRight: 90,
+    x: {label: "% →", grid: true, domain: [0, Math.max(40, d3.max(ps, p => Math.max(p.pct, p.pct_es)) + 2)]},
+    y: {domain: nombres, label: null},
+    marks: [
+      Plot.link(ps, {x1: "pct", x2: "pct_es", y1: "n", y2: "n", stroke: d => d.pct_es >= d.pct ? "#1b7f3b" : "#b3261e", strokeWidth: 3, markerEnd: "arrow"}),
+      Plot.dot(ps, {x: "pct", y: "n", r: 7, stroke: "c", strokeWidth: 2.5, fill: "#fff", title: d => `${d.n}: ${pct(d.pct)} de los votos`}),
+      Plot.dot(ps, {x: "pct_es", y: "n", r: 7, fill: "c", title: d => `${d.n}: ${pct(d.pct_es)} de los escaños (${d.es})`}),
+      Plot.text(ps, {x: d => Math.max(d.pct, d.pct_es), y: "n", text: d => `${d.pct_es - d.pct >= 0 ? "+" : ""}${(d.pct_es - d.pct).toFixed(1).replace(".", ",")}`, dx: 16, textAnchor: "start", fontSize: 15, fontWeight: 700, fill: d => d.pct_es >= d.pct ? "#1b7f3b" : "#b3261e"})
+    ]
+  });
+}
+```
+
+::: {.fuente}
+Círculo vacío: % de votos. Círculo lleno: % de escaños. Verde: el sistema le da más escaños que votos; rojo, menos. Unidas Podemos incluye En Comú Podem.
+:::
+
+## ¿Cuántos votos cuesta un escaño?
+
+```{ojs}
+viewof elecCoste = Inputs.radio(new Map([["Abril 2019", "2019-04"], ["Noviembre 2019", "2019-11"], ["2023", "2023-07"]]), {value: "2019-11", label: "Elección"})
+```
+
+```{ojs}
+{
+  const e = efectos[elecCoste];
+  const ps = e.partidos.filter(p => p.es > 0).sort((a, b) => b.coste - a.coste);
+  const media = d3.sum(e.partidos, p => p.votos) / 350;
+  const sin = e.partidos.filter(p => p.es === 0);
+  return html`${Plot.plot({
+    width: 1000, height: 40 + 27 * ps.length, marginLeft: 140, marginRight: 90,
+    x: {label: "Votos por escaño →", grid: true, tickFormat: d => miles(d)},
+    y: {domain: ps.map(p => p.n), label: null},
+    marks: [
+      Plot.barX(ps, {x: "coste", y: "n", fill: "c", title: d => `${d.n}: ${miles(d.votos)} votos, ${d.es} escaños`}),
+      Plot.text(ps, {x: "coste", y: "n", text: d => miles(d.coste), dx: 6, textAnchor: "start", fontSize: 13}),
+      Plot.ruleX([media], {stroke: "#1b1b1b", strokeDasharray: "4 4"}),
+      Plot.text([media], {x: d => d, y: ps[0].n, text: () => `media: ${miles(Math.round(media))}`, dx: 6, dy: -10, textAnchor: "start", fontSize: 13})
+    ]
+  })}
+  ${sin.length ? html`<div class="fuente">Sin ningún escaño: ${sin.map(p => `${p.n} (${miles(p.votos)} votos)`).join(", ")}.</div>` : ""}`;
+}
+```
+
+::: notes
+Noviembre de 2019: a Teruel Existe un escaño le cuesta unos 20.000 votos; a Ciudadanos, más de 165.000; a Más País, más de 200.000. La diferencia no es la fórmula D'Hondt en sí, sino dónde están los votos.
+:::
+
+## El índice de desproporcionalidad {.smaller}
+
+::: {.columns}
+::: {.column width="52%"}
+Gallagher (1991) mide la distancia entre votos y escaños:
+
+<div style="text-align:center;font-size:1.05em;margin:.4em 0"><b>LSq</b> = √( ½ · Σ (v<sub>i</sub> − e<sub>i</sub>)² )</div>
+
+- **v** es el % de votos de cada partido y **e**, su % de escaños.
+- **0** = proporcionalidad perfecta. Cuanto más alto, más distorsión.
+- Como referencia: los Países Bajos suelen estar en torno a 1; el Reino Unido, con distritos uninominales, suele pasar de 10.
+:::
+::: {.column width="48%"}
+```{ojs}
+html`<div class="tarjetas" style="--n:1">
+  ${["2019-04", "2019-11", "2023-07"].map(k => html`<div class="tarjeta" style="--c:#9b2226;display:flex;align-items:center;gap:1em">
+    <div class="gran">${efectos[k].gallagher.toFixed(1).replace(".", ",")}</div>
+    <div><span class="tt">${efectos[k].etiqueta}</span></div></div>`)}
+</div>`
+```
+:::
+:::
+
+::: {.chico}
+España está en un punto intermedio: es proporcional, pero con una distorsión moderada que favorece a los grandes y a los partidos concentrados.
+:::
+
+## Ganadores y perdedores del sistema
+
+::: {.tarjetas style="--n:3"}
+::: {.tarjeta style="--c:#1b7f3b"}
+[Ganan]{.tt}
+
+- El **primer partido** en cada elección (PSOE en 2019, PP en 2023).
+- El segundo, en menor medida.
+- Los **partidos concentrados**: PNV, EH Bildu, Junts, ERC, Navarra Suma, Teruel Existe.
+:::
+::: {.tarjeta style="--c:#b3261e"}
+[Pierden]{.tt}
+
+- Los **terceros y cuartos partidos estatales**: UP, Vox (abril de 2019), Sumar y Vox (2023).
+- Sobre todo **Ciudadanos** en noviembre de 2019.
+- Los que no llegan a escaño: PACMA.
+:::
+::: {.tarjeta style="--c:#555"}
+[Consecuencias]{.tt}
+
+- Los nuevos partidos lo tienen difícil para consolidarse.
+- El **voto útil** empuja hacia los grandes.
+- Los nacionalistas tienen más peso del que indican sus votos y son decisivos para formar gobierno.
+:::
+:::
+
+## Resumen de la sesión
+
+1. El sistema es **proporcional en teoría**, pero las provincias pequeñas le dan **efectos mayoritarios**.
+2. Los mapas muestran que los grandes sacan escaño en casi todas las provincias; los terceros dispersos, solo en las grandes.
+3. El **coste de un escaño** varía muchísimo: de unos 20.000 votos (Teruel Existe, 2019) a más de 200.000 (Más País, 2019).
+4. El índice de Gallagher se sitúa entre **5 y 7**: una **desproporcionalidad moderada**.
+5. Así se explica que España mantenga dos grandes partidos y que el multipartidismo nunca llegue a ser pleno.
+
+<div class="volver"><a href="index.html">← Volver al índice del curso</a></div>

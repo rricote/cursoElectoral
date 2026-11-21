@@ -1,5 +1,5 @@
 /.quarto/
 /docs/
 *_files/
-
-**/*.quarto_ipynb
+/.venv/
+/_site/

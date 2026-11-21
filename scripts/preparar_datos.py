@@ -9,6 +9,8 @@ Escribe en datos/:
   - mapa_provincias.json (contornos SVG de las provincias)
   - nep.csv            (número efectivo de partidos por votos y por escaños, 1977-2023)
   - congreso_2023.json (partidos con escaño en 2023: escaños, % de voto y color)
+  - efectos.json       (sesión 4: escaños por provincia de cada partido o grupo, votos frente
+                        a escaños, coste de un escaño e índice de Gallagher en 2019-A, 2019-N y 2023)
 """
 import glob
 import json
@@ -36,6 +38,78 @@ def dhondt(votos, escanos):
         i = max(range(len(votos)), key=lambda k: votos[k] / (asignados[k] + 1))
         asignados[i] += 1
     return asignados
+
+
+# Grupos de la sesión 4 ------------------------------------------------------
+UP = ["PODEMOS", "ECP"]
+GRUPOS = {
+    "2019-04": [("PSOE", ["PSOE"]), ("PP", ["PP"]), ("CS", ["CS"]), ("UP", UP), ("VOX", ["VOX"]), ("OTROS", None)],
+    "2019-11": [("PSOE", ["PSOE"]), ("PP", ["PP"]), ("VOX", ["VOX"]), ("UP", UP), ("CS", ["CS"]), ("OTROS", None)],
+    "2023-07": [("PP", ["PP"]), ("PSOE", ["PSOE"]), ("VOX", ["VOX"]), ("SUMAR", ["SUMAR"]),
+                ("OTROS_IZQ", ["ERC", "BILDU", "BNG", "CUP"]), ("OTROS_DER", ["JUNTS", "PNV", "CC", "UPN"])],
+}
+NOMBRES = {"PSOE": "PSOE", "PP": "PP", "CS": "Ciudadanos", "UP": "Unidas Podemos", "VOX": "Vox", "SUMAR": "Sumar",
+           "OTROS": "Otros y nacionalistas", "OTROS_IZQ": "Otros de izquierda", "OTROS_DER": "Otros de derecha"}
+COLORES = {"PSOE": "#e30613", "PP": "#1d84ce", "CS": "#eb6109", "UP": "#7b3f98", "VOX": "#5aa31f", "SUMAR": "#e6007e",
+           "OTROS": "#777777", "OTROS_IZQ": "#e8890c", "OTROS_DER": "#0b6b3a"}
+ETIQUETAS = {"2019-04": "Abril de 2019", "2019-11": "Noviembre de 2019", "2023-07": "Julio de 2023"}
+
+
+def efectos(origen):
+    salida = {}
+    for eleccion, grupos in GRUPOS.items():
+        j = cargar(os.path.join(origen, "datos", eleccion, "general.json.js"))
+        partidos, nat = j["parties"], j["nat"]
+        claves = [p["k"] for p in partidos]
+        total_v = sum(nat["v"]) + nat.get("bl", 0)
+        total_e = sum(nat["es"])
+        usados = set(k for _, ks in grupos if ks for k in ks)
+
+        def indices(ks):
+            if ks is None:
+                return [i for i, k in enumerate(claves) if k not in usados]
+            return [claves.index(k) for k in ks if k in claves]
+
+        lista = []
+        for g, ks in grupos:
+            idx = indices(ks)
+            v = sum(nat["v"][i] for i in idx)
+            e = sum(nat["es"][i] for i in idx)
+            prov = {}
+            for p in j["prov"]:
+                es = {claves[i]: p["es"][i] for i in idx if p["es"][i] > 0}
+                if not es:
+                    continue
+                lider = max(es, key=es.get)
+                prov[p["id"]] = {"es": sum(es.values()), "c": partidos[claves.index(lider)]["c"],
+                                 "lider": partidos[claves.index(lider)]["n"],
+                                 "detalle": ", ".join(f'{partidos[claves.index(k)]["n"]} {n}' for k, n in es.items())}
+            lista.append({"k": g, "n": NOMBRES[g], "c": COLORES[g], "votos": v, "pct": round(100 * v / total_v, 2),
+                          "es": e, "pct_es": round(100 * e / total_e, 2), "prov": prov})
+
+        # partidos individuales (UP agregado) para votos-escaños y coste
+        indiv = {}
+        for i, k in enumerate(claves):
+            kk = "UP" if k in UP else k
+            d = indiv.setdefault(kk, {"k": kk, "n": NOMBRES.get(kk, partidos[i]["n"]),
+                                      "c": COLORES.get(kk, partidos[i]["c"]), "votos": 0, "es": 0})
+            d["votos"] += nat["v"][i]
+            d["es"] += nat["es"][i]
+        indiv = [d for d in indiv.values() if d["es"] > 0 or d["votos"] / total_v >= 0.01]
+        for d in indiv:
+            d["pct"] = round(100 * d["votos"] / total_v, 2)
+            d["pct_es"] = round(100 * d["es"] / total_e, 2)
+            d["coste"] = round(d["votos"] / d["es"]) if d["es"] else None
+        indiv.sort(key=lambda d: -d["votos"])
+
+        gallagher = (0.5 * sum((100 * v / total_v - 100 * e / total_e) ** 2
+                               for v, e in zip(nat["v"], nat["es"]))) ** 0.5
+        salida[eleccion] = {
+            "etiqueta": ETIQUETAS[eleccion],
+            "escanos_prov": {p["id"]: p["s"] for p in j["prov"]},
+            "grupos": lista, "partidos": indiv, "gallagher": round(gallagher, 2),
+        }
+    return salida
 
 
 def main():
@@ -108,7 +182,10 @@ def main():
     ]
     json.dump(congreso, open(os.path.join(DESTINO, "congreso_2023.json"), "w", encoding="utf-8"), ensure_ascii=False)
 
-    # 5. Mapa
+    # 5. Sesión 4
+    json.dump(efectos(ORIGEN), open(os.path.join(DESTINO, "efectos.json"), "w", encoding="utf-8"), ensure_ascii=False)
+
+    # 6. Mapa
     shutil.copy(os.path.join(ORIGEN, "fuentes", "mapa_provincias.json"), os.path.join(DESTINO, "mapa_provincias.json"))
 
 

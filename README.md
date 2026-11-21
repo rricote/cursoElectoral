@@ -8,6 +8,7 @@ Presentaciones en [Quarto](https://quarto.org) (formato revealjs) para explicar 
 | `01-teoria.qmd` | Sesión 1: Estado y legitimidad, notables y partidos de masas, clivajes, izquierda y derecha, sistemas electorales, Duverger y Michels |
 | `02-espana.qmd` | Sesión 2: circunscripciones, D'Hondt (con simulador), bipartidismo, voto estratégico y dual |
 | `03-partidos.qmd` | Sesión 3: tipos de sistemas de partidos, número efectivo de partidos, Congreso 2023, oferta 2019/2023 y Tarragona |
+| `04-efectos.qmd` | Sesión 4: efectos del sistema electoral (mapas por partido 2019-2023, votos/escaños, coste por escaño, Gallagher) |
 | `recursos/img/` | Capturas de la oferta de partidos (2019 y 2023) |
 | `recursos/curso.scss` | Estilo visual común |
 | `datos/` | Datos que usan los gráficos (generados desde *Simulador elecciones*) |

@@ -1,12 +1,16 @@
 project:
-  type: default
+  type: website
   output-dir: docs
   render:
     - index.qmd
     - 01-teoria.qmd
     - 02-espana.qmd
     - 03-partidos.qmd
+    - 04-efectos.qmd
   resources:
     - datos/
+
+website:
+  title: "Curso de política"
 
 lang: es

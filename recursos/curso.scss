@@ -102,3 +102,18 @@ $presentation-h2-font-size: 1.45em;
 .reveal table.tabla-partidos th { font-size: inherit !important; text-align: left; border-bottom: 2px solid #1b1b1b; padding: .25em .45em; }
 .reveal table.tabla-partidos td { font-size: inherit !important; padding: .22em .45em; border: none; line-height: 1.2; vertical-align: top; }
 .reveal .punto { display: inline-block; width: .75em; height: .75em; border-radius: 50%; margin-right: .4em; vertical-align: baseline; }
+
+/* Sesión 4: cuadrícula de mapas */
+.reveal .cuadricula { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 20px; margin-top: 0; }
+.reveal .celda { display: flex; align-items: center; gap: 12px; }
+.reveal .celda svg { height: 282px; width: auto; flex: 0 0 auto; }
+.reveal .celda .info { font-family: Inter, sans-serif; font-size: 15px; line-height: 1.25; color: #333; }
+.reveal .celda .nombre { font-weight: 700; font-size: 17px; }
+.reveal .celda .num { font-size: 44px; font-weight: 700; line-height: 1; margin-top: 2px; }
+.reveal .celda .dato { margin-top: 3px; }
+.reveal .celda .gris { color: #888; font-size: 13px; }
+.reveal .celda .ley { display: flex; align-items: center; gap: 6px; font-size: 13px; margin-top: 3px; }
+.reveal .celda .ley span { display: inline-block; width: 12px; height: 12px; border-radius: 3px; }
+
+.reveal .tarjeta ul { margin: .2em 0 0 0; padding-left: 1.1em; }
+.reveal .tarjeta li { margin: .15em 0; }
