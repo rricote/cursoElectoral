@@ -33,6 +33,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-66bd81fbca03af80cecb5eb6efe3a13e.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -126,6 +192,8 @@
       margin-right: 0; 
     }
   </style>
+  <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -138,6 +206,109 @@
 <div class="quarto-title-authors">
 </div>
 
+</section>
+<section class="slide level2">
+
+<div class="cell hidden">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="17" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 16;"><span id="cb1-17"><a aria-label="17"></a><span class="kw">function</span> <span class="fu">hemiciclo</span>(partidos<span class="op">,</span> filas <span class="op">=</span> <span class="dv">9</span><span class="op">,</span> r0 <span class="op">=</span> <span class="fl">0.42</span>) {</span>
+<span id="cb1-18"><a aria-label="18"></a>  <span class="kw">const</span> total <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span>(partidos<span class="op">,</span> p <span class="kw">=&gt;</span> p<span class="op">.</span><span class="at">es</span>)<span class="op">;</span></span>
+<span id="cb1-19"><a aria-label="19"></a>  <span class="kw">const</span> radios <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(filas)<span class="op">.</span><span class="fu">map</span>(i <span class="kw">=&gt;</span> r0 <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> r0) <span class="op">*</span> i <span class="op">/</span> (filas <span class="op">-</span> <span class="dv">1</span>))<span class="op">;</span></span>
+<span id="cb1-20"><a aria-label="20"></a>  <span class="kw">const</span> sumR <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span>(radios)<span class="op">;</span></span>
+<span id="cb1-21"><a aria-label="21"></a>  <span class="kw">const</span> porFila <span class="op">=</span> radios<span class="op">.</span><span class="fu">map</span>(r <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(total <span class="op">*</span> r <span class="op">/</span> sumR))<span class="op">;</span></span>
+<span id="cb1-22"><a aria-label="22"></a>  porFila[filas <span class="op">-</span> <span class="dv">1</span>] <span class="op">+=</span> total <span class="op">-</span> d3<span class="op">.</span><span class="fu">sum</span>(porFila)<span class="op">;</span></span>
+<span id="cb1-23"><a aria-label="23"></a>  <span class="kw">const</span> asientos <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb1-24"><a aria-label="24"></a>  radios<span class="op">.</span><span class="fu">forEach</span>((r<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
+<span id="cb1-25"><a aria-label="25"></a>    <span class="kw">const</span> n <span class="op">=</span> porFila[i]<span class="op">;</span></span>
+<span id="cb1-26"><a aria-label="26"></a>    <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">;</span> j<span class="op">++</span>) {</span>
+<span id="cb1-27"><a aria-label="27"></a>      <span class="kw">const</span> a <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">-</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> j <span class="op">/</span> (n <span class="op">-</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb1-28"><a aria-label="28"></a>      asientos<span class="op">.</span><span class="fu">push</span>({a<span class="op">,</span> r<span class="op">,</span> <span class="dt">x</span><span class="op">:</span> r <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(a)<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> r <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(a)})<span class="op">;</span></span>
+<span id="cb1-29"><a aria-label="29"></a>    }</span>
+<span id="cb1-30"><a aria-label="30"></a>  })<span class="op">;</span></span>
+<span id="cb1-31"><a aria-label="31"></a>  asientos<span class="op">.</span><span class="fu">sort</span>((p<span class="op">,</span> q) <span class="kw">=&gt;</span> q<span class="op">.</span><span class="at">a</span> <span class="op">-</span> p<span class="op">.</span><span class="at">a</span> <span class="op">||</span> p<span class="op">.</span><span class="at">r</span> <span class="op">-</span> q<span class="op">.</span><span class="at">r</span>)<span class="op">;</span></span>
+<span id="cb1-32"><a aria-label="32"></a>  <span class="kw">let</span> k <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-33"><a aria-label="33"></a>  <span class="cf">for</span> (<span class="kw">const</span> p <span class="kw">of</span> partidos) <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> p<span class="op">.</span><span class="at">es</span><span class="op">;</span> i<span class="op">++</span>) <span class="bu">Object</span><span class="op">.</span><span class="fu">assign</span>(asientos[k<span class="op">++</span>]<span class="op">,</span> {<span class="dt">partido</span><span class="op">:</span> p<span class="op">.</span><span class="at">n</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> p<span class="op">.</span><span class="at">c</span>})<span class="op">;</span></span>
+<span id="cb1-34"><a aria-label="34"></a>  <span class="cf">return</span> asientos<span class="op">;</span></span>
+<span id="cb1-35"><a aria-label="35"></a>}</span>
+<span id="cb1-36"><a aria-label="36"></a></span>
+<span id="cb1-37"><a aria-label="37"></a><span class="kw">function</span> <span class="fu">parlamento</span>(partidos<span class="op">,</span> total<span class="op">,</span> mayoria<span class="op">,</span> radio<span class="op">,</span> letra <span class="op">=</span> <span class="dv">19</span>) {</span>
+<span id="cb1-38"><a aria-label="38"></a>  <span class="kw">const</span> asientos <span class="op">=</span> <span class="fu">hemiciclo</span>(partidos<span class="op">,</span> total <span class="op">&gt;</span> <span class="dv">300</span> <span class="op">?</span> <span class="dv">12</span> <span class="op">:</span> <span class="dv">8</span>)<span class="op">;</span></span>
+<span id="cb1-39"><a aria-label="39"></a>  <span class="kw">const</span> plot <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb1-40"><a aria-label="40"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">510</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">290</span><span class="op">,</span> <span class="dt">margin</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span></span>
+<span id="cb1-41"><a aria-label="41"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">1.04</span><span class="op">,</span> <span class="fl">1.04</span>]}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.04</span><span class="op">,</span> <span class="fl">1.04</span>]}<span class="op">,</span></span>
+<span id="cb1-42"><a aria-label="42"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb1-43"><a aria-label="43"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(asientos<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"c"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> radio<span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">"partido"</span>})<span class="op">,</span></span>
+<span id="cb1-44"><a aria-label="44"></a>      Plot<span class="op">.</span><span class="fu">text</span>([<span class="vs">`</span><span class="sc">${</span>total<span class="sc">}</span><span class="vs"> escaños`</span>]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.2</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">22</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#333"</span>})<span class="op">,</span></span>
+<span id="cb1-45"><a aria-label="45"></a>      Plot<span class="op">.</span><span class="fu">text</span>([<span class="vs">`mayoría: </span><span class="sc">${</span>mayoria<span class="sc">}</span><span class="vs">`</span>]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.08</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#555"</span>})</span>
+<span id="cb1-46"><a aria-label="46"></a>    ]</span>
+<span id="cb1-47"><a aria-label="47"></a>  })<span class="op">;</span></span>
+<span id="cb1-48"><a aria-label="48"></a>  <span class="kw">const</span> tabla <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;table class="tabla-esc mini" style="font-size:</span><span class="sc">${</span>letra<span class="sc">}</span><span class="vs">px !important"&gt;</span></span>
+<span id="cb1-49"><a aria-label="49"></a><span class="vs">    &lt;tr&gt;&lt;th&gt;Partido&lt;/th&gt;&lt;th&gt;% voto&lt;/th&gt;&lt;th&gt;% esc.&lt;/th&gt;&lt;th&gt;Esc.&lt;/th&gt;&lt;/tr&gt;</span></span>
+<span id="cb1-50"><a aria-label="50"></a><span class="vs">    </span><span class="sc">${</span>partidos<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;tr style="background:</span><span class="sc">${</span>p<span class="op">.</span><span class="at">c</span><span class="sc">}</span><span class="vs">22"&gt;</span></span>
+<span id="cb1-51"><a aria-label="51"></a><span class="vs">      &lt;td&gt;&lt;span style="display:inline-block;width:.8em;height:.8em;background:</span><span class="sc">${</span>p<span class="op">.</span><span class="at">c</span><span class="sc">}</span><span class="vs">;border-radius:2px"&gt;&lt;/span&gt; </span><span class="sc">${</span>p<span class="op">.</span><span class="at">n</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb1-52"><a aria-label="52"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">v</span> <span class="op">==</span> <span class="kw">null</span> <span class="op">?</span> <span class="st">"—"</span> <span class="op">:</span> p<span class="op">.</span><span class="at">v</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"es-ES"</span><span class="op">,</span> {<span class="dt">minimumFractionDigits</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">maximumFractionDigits</span><span class="op">:</span> <span class="dv">1</span>})<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb1-53"><a aria-label="53"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>(<span class="dv">100</span> <span class="op">*</span> p<span class="op">.</span><span class="at">es</span> <span class="op">/</span> total)<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"es-ES"</span><span class="op">,</span> {<span class="dt">minimumFractionDigits</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">maximumFractionDigits</span><span class="op">:</span> <span class="dv">1</span>})<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb1-54"><a aria-label="54"></a><span class="vs">      &lt;td&gt;&lt;b&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">es</span><span class="sc">}</span><span class="vs">&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;`</span>)<span class="sc">}</span></span>
+<span id="cb1-55"><a aria-label="55"></a><span class="vs">  &lt;/table&gt;`</span><span class="op">;</span></span>
+<span id="cb1-56"><a aria-label="56"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:center;width:100%;max-width:100%"&gt;</span><span class="sc">${</span>plot<span class="sc">}${</span>tabla<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb1-57"><a aria-label="57"></a>}</span>
+<span id="cb1-58"><a aria-label="58"></a></span>
+<span id="cb1-59"><a aria-label="59"></a>reinoUnido <span class="op">=</span> [</span>
+<span id="cb1-60"><a aria-label="60"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"Verdes"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#02a95b"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">6.7</span>}<span class="op">,</span></span>
+<span id="cb1-61"><a aria-label="61"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"SNP"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#d8c200"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">9</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">2.5</span>}<span class="op">,</span></span>
+<span id="cb1-62"><a aria-label="62"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"Plaid Cymru"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#005b54"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.7</span>}<span class="op">,</span></span>
+<span id="cb1-63"><a aria-label="63"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"Laboristas"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#e4003b"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">411</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">33.7</span>}<span class="op">,</span></span>
+<span id="cb1-64"><a aria-label="64"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"Liberal Demócratas"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#faa61a"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">72</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">12.2</span>}<span class="op">,</span></span>
+<span id="cb1-65"><a aria-label="65"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"Otros*"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#9a9a9a"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">24</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="kw">null</span>}<span class="op">,</span></span>
+<span id="cb1-66"><a aria-label="66"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"Conservadores"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#0087dc"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">121</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">23.7</span>}<span class="op">,</span></span>
+<span id="cb1-67"><a aria-label="67"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"Reform UK"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#12b6cf"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">14.3</span>}</span>
+<span id="cb1-68"><a aria-label="68"></a>]</span>
+<span id="cb1-69"><a aria-label="69"></a></span>
+<span id="cb1-70"><a aria-label="70"></a>paisesBajos <span class="op">=</span> [</span>
+<span id="cb1-71"><a aria-label="71"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"SP"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#ee2e24"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">1.9</span>}<span class="op">,</span></span>
+<span id="cb1-72"><a aria-label="72"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"PvdD"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#3f7d3a"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">2.1</span>}<span class="op">,</span></span>
+<span id="cb1-73"><a aria-label="73"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"GL-PvdA"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#c8102e"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">12.7</span>}<span class="op">,</span></span>
+<span id="cb1-74"><a aria-label="74"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"DENK"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#00b7c3"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">2.4</span>}<span class="op">,</span></span>
+<span id="cb1-75"><a aria-label="75"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"Volt"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#502379"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">1.1</span>}<span class="op">,</span></span>
+<span id="cb1-76"><a aria-label="76"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"D66"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#00ae41"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">26</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">16.9</span>}<span class="op">,</span></span>
+<span id="cb1-77"><a aria-label="77"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"50PLUS"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#92278f"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">1.4</span>}<span class="op">,</span></span>
+<span id="cb1-78"><a aria-label="78"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"ChristenUnie"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#00a7eb"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">1.9</span>}<span class="op">,</span></span>
+<span id="cb1-79"><a aria-label="79"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"CDA"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#1a6b3b"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">18</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">11.8</span>}<span class="op">,</span></span>
+<span id="cb1-80"><a aria-label="80"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"BBB"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#94c11f"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">2.7</span>}<span class="op">,</span></span>
+<span id="cb1-81"><a aria-label="81"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"VVD"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#f47920"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">22</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">14.2</span>}<span class="op">,</span></span>
+<span id="cb1-82"><a aria-label="82"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"SGP"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#e9a100"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">2.3</span>}<span class="op">,</span></span>
+<span id="cb1-83"><a aria-label="83"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"JA21"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#5f86c4"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">9</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">6.0</span>}<span class="op">,</span></span>
+<span id="cb1-84"><a aria-label="84"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"PVV"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#12305e"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">26</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">16.8</span>}<span class="op">,</span></span>
+<span id="cb1-85"><a aria-label="85"></a>  {<span class="dt">n</span><span class="op">:</span> <span class="st">"FvD"</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#841818"</span><span class="op">,</span> <span class="dt">es</span><span class="op">:</span> <span class="dv">7</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">4.6</span>}</span>
+<span id="cb1-86"><a aria-label="86"></a>]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
 </section>
 <section class="slide level2">
 <h2>Hoja de ruta</h2>
@@ -169,7 +340,19 @@
 <section>
 <section class="title-slide slide level1 center" data-background-color="#1b1b1b">
 <h1>1 · Estado y legitimidad</h1>
-
+<aside class="notes">
+<p>Empezamos por la base: antes de hablar de partidos y elecciones hay que entender qué es el Estado y por qué aceptamos que nos mande.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>¿Qué es el Estado?</h2>
@@ -215,6 +398,19 @@
 <div class="chico">
 <p>En la práctica se mezclan: una monarquía parlamentaria como la española combina legitimidad <strong>tradicional</strong> (la Corona) con legitimidad <strong>legal-racional</strong> (la Constitución de 1978).</p>
 </div>
+<aside class="notes">
+<p>Weber distingue tres razones por las que aceptamos una autoridad. Tradicional: el poder se hereda y se acepta porque siempre ha sido así. Carismática: seguimos a alguien por sus cualidades excepcionales, y por eso es inestable y suele desaparecer con el líder. Legal-racional: obedecemos a las normas y al cargo, no a la persona; si cambia el presidente, la autoridad sigue en el cargo. En la realidad se mezclan, como en la monarquía parlamentaria española.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>De la legitimidad a la representación</h2>
@@ -226,11 +422,36 @@
 <li>Se elige a <strong>personas</strong>, no a partidos: el diputado representa a <em>su</em> distrito.</li>
 <li>Esto encaja de forma natural con los <strong>sistemas mayoritarios</strong>: un distrito, un escaño, gana el más votado.</li>
 </ul>
+<aside class="notes">
+<p>Si la autoridad viene de las reglas, la siguiente pregunta es quién las hace. La respuesta liberal es: representantes elegidos. Pero al principio votaba muy poca gente (sufragio censitario) y se elegía a personas concretas por distrito. Por eso los primeros sistemas electorales fueron mayoritarios: un distrito, un diputado, gana el más votado.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section class="title-slide slide level1 center" data-background-color="#1b1b1b">
 <h1>2 · De los notables a las masas</h1>
-
+<aside class="notes">
+<p>Segundo bloque: cómo pasamos de una política de élites a una política de masas, y cómo nacen los partidos modernos.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>Los partidos de notables (siglo XIX)</h2>
@@ -294,6 +515,19 @@
 <li>El modelo es el <strong>partido socialista</strong> (el SPD alemán; en España, el PSOE desde 1879).</li>
 <li>Los partidos de notables tendrán que imitarlos o desaparecer.</li>
 </ul>
+<aside class="notes">
+<p>La industrialización concentra a millones de obreros en las ciudades. Con el sufragio universal masculino, su fuerza ya no es el dinero ni el prestigio, sino el número y la organización. Nacen los partidos de masas: afiliados que pagan cuota, prensa propia y sindicatos. El modelo es el SPD alemán; en España, el PSOE (1879) y la UGT (1888). A partir de aquí se vota a un partido, no a una persona.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>Los partidos modernos: clivajes</h2>
@@ -454,6 +688,19 @@ Derecha radical populista
 <div class="chico">
 <p>El contenido cambia con el tiempo. En el XIX, “izquierda” eran los <strong>liberales</strong>. En el XX, los <strong>socialistas</strong>.</p>
 </div>
+<aside class="notes">
+<p>Es una anécdota real de 1789. En la Asamblea Nacional francesa se discutía si el rey debía tener derecho de veto: los partidarios se sentaron a la derecha del presidente y los contrarios, a la izquierda. La etiqueta se quedó. Lo importante es que su contenido cambia: en el siglo XIX la izquierda eran los liberales y en el siglo XX pasan a serlo los socialistas.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>De liberales vs.&nbsp;conservadores a derecha vs.&nbsp;izquierda</h2>
@@ -600,7 +847,19 @@ Voto rural, propietarios, confesionales, clases medias tradicionales
 <section>
 <section class="title-slide slide level1 center" data-background-color="#1b1b1b">
 <h1>3 · Las reglas del juego</h1>
-
+<aside class="notes">
+<p>Tercer bloque: las reglas electorales. Veremos que no son neutrales: deciden cuántos partidos sobreviven y cómo se organizan por dentro.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>Sistemas mayoritarios y proporcionales</h2>
@@ -620,6 +879,19 @@ Voto rural, propietarios, confesionales, clases medias tradicionales
 </ul>
 </div>
 </div>
+<aside class="notes">
+<p>Los dos grandes modelos. En el mayoritario el país se divide en distritos de un escaño y el ganador se lo lleva todo: favorece gobiernos fuertes y la relación diputado-territorio. En el proporcional los distritos tienen varios escaños y se reparten según los votos: favorece que el parlamento refleje la diversidad. España es proporcional, pero, como veremos, con matices importantes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>Un ejemplo con los mismos votos</h2>
@@ -685,6 +957,19 @@ Voto rural, propietarios, confesionales, clases medias tradicionales
 <div class="chico">
 <p>Con los mismos votos, en un caso A tiene el 100 % del parlamento y en el otro el 40 %.</p>
 </div>
+<aside class="notes">
+<p>Este ejemplo enseña el poder de las reglas. Con exactamente los mismos votos, el partido A tiene todo el parlamento en el sistema mayoritario y solo el 40 % en el proporcional. B y C desaparecen en el primero y están representados en el segundo. Ningún sistema es neutral: cada uno elige qué valores prioriza.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>¿Por qué Europa se pasa a la proporcional?</h2>
@@ -694,6 +979,19 @@ Voto rural, propietarios, confesionales, clases medias tradicionales
 <li>Una explicación clásica (Rokkan, Boix): los partidos de notables temían que, con un sistema mayoritario, los socialistas ganaran <strong>todos</strong> los distritos obreros. Con la proporcional se aseguraban su parte.</li>
 <li>Los sistemas electorales los diseñan <strong>los que ya están dentro</strong>, y suelen protegerse a sí mismos.</li>
 </ul>
+<aside class="notes">
+<p>Bélgica es la primera, en 1899. La explicación clásica de Rokkan, retomada por Boix, es estratégica: con el sufragio universal y el auge socialista, los partidos tradicionales temían que en un sistema mayoritario los socialistas ganaran todos los distritos obreros. La proporcional les garantizaba seguir en el parlamento. Moraleja: las reglas las escriben los que ya están dentro.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>Ley de Duverger</h2>
@@ -711,6 +1009,19 @@ Voto rural, propietarios, confesionales, clases medias tradicionales
 <div class="chico">
 <p>El efecto psicológico es el <strong>voto útil</strong>. Lo veremos aplicado a España en la siguiente sesión.</p>
 </div>
+<aside class="notes">
+<p>Duverger formula en 1951 su famosa ley. Funciona por dos vías. El efecto mecánico: las reglas convierten los votos en escaños favoreciendo a los grandes. El efecto psicológico: los votantes lo saben y no quieren desperdiciar su voto, así que abandonan a los pequeños. Es lo que llamamos voto útil, y lo veremos con datos de España en la próxima sesión.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>La ley de hierro de la oligarquía</h2>
@@ -726,6 +1037,76 @@ Voto rural, propietarios, confesionales, clases medias tradicionales
 <div class="chico">
 <p>Pregunta para España: con <strong>listas cerradas y bloqueadas</strong>, ¿a quién debe su escaño un diputado, a sus votantes o a quien hace la lista?</p>
 </div>
+<aside class="notes">
+<p>Michels estudió el SPD, el partido socialista más democrático de su época, y concluyó que incluso ahí mandaban unos pocos. Las organizaciones grandes necesitan profesionales; las bases delegan; y los dirigentes controlan las listas, el dinero y la información. Buena pregunta para debatir: con listas cerradas y bloqueadas, ¿a quién debe lealtad un diputado español?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Un parlamento mayoritario: Reino Unido (2024)</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="502" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 501;"><span id="cb2-502"><a aria-label="502"></a><span class="fu">parlamento</span>(reinoUnido<span class="op">,</span> <span class="dv">650</span><span class="op">,</span> <span class="dv">326</span><span class="op">,</span> <span class="fl">3.3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="chico">
+<p><strong>650 distritos de un escaño</strong>: en cada uno gana el más votado. Los laboristas, con el <strong>33,7 %</strong> de los votos, se llevan el <strong>63 %</strong> de los escaños. Reform UK, con el <strong>14,3 %</strong>, solo 5 escaños.</p>
+</div>
+<div class="fuente">
+<p>*Otros: partidos de Irlanda del Norte (Sinn Féin, DUP, SDLP, Alianza, UUP, TUV), 6 independientes y el Speaker. Fuente: House of Commons.</p>
+</div>
+<aside class="notes">
+<p>Es el ejemplo más claro del efecto mecánico de Duverger. Con un tercio de los votos, los laboristas logran una mayoría aplastante. Reform UK, tercero en votos, apenas saca escaños porque su voto está repartido por todo el país y no gana casi ningún distrito. En cambio, los Liberal Demócratas, con menos votos que Reform, sacan 72 escaños porque concentran su voto en ciertas zonas. Los nacionalistas escoceses y galeses también se benefician de esa concentración. Se considera una de las elecciones menos proporcionales de la historia británica.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Un parlamento proporcional: Países Bajos (2025)</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="521" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 520;"><span id="cb3-521"><a aria-label="521"></a><span class="fu">parlamento</span>(paisesBajos<span class="op">,</span> <span class="dv">150</span><span class="op">,</span> <span class="dv">76</span><span class="op">,</span> <span class="fl">6.2</span><span class="op">,</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="chico">
+<p><strong>Un único distrito de 150 escaños</strong>: unos 70.000 votos (0,67 %) dan un escaño. Entran <strong>15 partidos</strong> y el % de escaños es casi igual al % de votos.</p>
+</div>
+<aside class="notes">
+<p>Elecciones del 29 de octubre de 2025. Todo el país es una sola circunscripción, así que la proporcionalidad es casi perfecta: D66 y PVV empatan a 26 escaños con un 16,9 % y un 16,8 % de los votos. El precio es la fragmentación: ningún partido pasa de 26 escaños y hacen falta al menos cuatro partidos para llegar a la mayoría de 76. Es el modelo opuesto al británico. España está entre los dos: es proporcional, pero con 52 circunscripciones pequeñas.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>Resumen de la sesión</h2>
@@ -734,14 +1115,27 @@ Voto rural, propietarios, confesionales, clases medias tradicionales
 <li>Primero se elegía a <strong>personas</strong> (notables, distritos mayoritarios). Con la política de masas se eligen <strong>partidos</strong>.</li>
 <li>Los partidos nacen de <strong>clivajes</strong>. Liberales y conservadores se funden frente al socialismo: <strong>derecha vs.&nbsp;izquierda</strong>.</li>
 <li>Las reglas electorales importan: <strong>Duverger</strong> (mayoritario → bipartidismo) y <strong>Michels</strong> (organización → oligarquía).</li>
+<li>Reino Unido y Países Bajos muestran los dos extremos: <strong>mayorías fabricadas</strong> frente a <strong>parlamentos fragmentados</strong>.</li>
 </ol>
-<p><strong>Próxima sesión:</strong> ¿y en España, cómo funciona todo esto?</p>
 <div class="volver">
 <a href="index.html">← Volver al índice del curso</a>
 </div>
 <div class="volver sec">
-<a href="02-espana.html">Ir a la sesión 2 →</a>
+<a href="02-espana.html">Sesión 2: ¿y en España? →</a>
 </div>
+<aside class="notes">
+<p>Repaso rápido de las cuatro ideas. Si hay tiempo, preguntad a los asistentes con qué partido actual asociarían cada clivaje. Desde aquí se puede ir directamente a la sesión 2 con el botón.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 
 </section></section>
@@ -959,6 +1353,17 @@ Voto rural, propietarios, confesionales, clases medias tradicionales
           RevealZoom
         ]
       });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZ1bmN0aW9uIGhlbWljaWNsbyhwYXJ0aWRvcywgZmlsYXMgPSA5LCByMCA9IDAuNDIpIHtcbiAgY29uc3QgdG90YWwgPSBkMy5zdW0ocGFydGlkb3MsIHAgPT4gcC5lcyk7XG4gIGNvbnN0IHJhZGlvcyA9IGQzLnJhbmdlKGZpbGFzKS5tYXAoaSA9PiByMCArICgxIC0gcjApICogaSAvIChmaWxhcyAtIDEpKTtcbiAgY29uc3Qgc3VtUiA9IGQzLnN1bShyYWRpb3MpO1xuICBjb25zdCBwb3JGaWxhID0gcmFkaW9zLm1hcChyID0+IE1hdGgucm91bmQodG90YWwgKiByIC8gc3VtUikpO1xuICBwb3JGaWxhW2ZpbGFzIC0gMV0gKz0gdG90YWwgLSBkMy5zdW0ocG9yRmlsYSk7XG4gIGNvbnN0IGFzaWVudG9zID0gW107XG4gIHJhZGlvcy5mb3JFYWNoKChyLCBpKSA9PiB7XG4gICAgY29uc3QgbiA9IHBvckZpbGFbaV07XG4gICAgZm9yIChsZXQgaiA9IDA7IGogPCBuOyBqKyspIHtcbiAgICAgIGNvbnN0IGEgPSBNYXRoLlBJIC0gTWF0aC5QSSAqIGogLyAobiAtIDEpO1xuICAgICAgYXNpZW50b3MucHVzaCh7YSwgciwgeDogciAqIE1hdGguY29zKGEpLCB5OiByICogTWF0aC5zaW4oYSl9KTtcbiAgICB9XG4gIH0pO1xuICBhc2llbnRvcy5zb3J0KChwLCBxKSA9PiBxLmEgLSBwLmEgfHwgcC5yIC0gcS5yKTtcbiAgbGV0IGsgPSAwO1xuICBmb3IgKGNvbnN0IHAgb2YgcGFydGlkb3MpIGZvciAobGV0IGkgPSAwOyBpIDwgcC5lczsgaSsrKSBPYmplY3QuYXNzaWduKGFzaWVudG9zW2srK10sIHtwYXJ0aWRvOiBwLm4sIGM6IHAuY30pO1xuICByZXR1cm4gYXNpZW50b3M7XG59XG5cbmZ1bmN0aW9uIHBhcmxhbWVudG8ocGFydGlkb3MsIHRvdGFsLCBtYXlvcmlhLCByYWRpbywgbGV0cmEgPSAxOSkge1xuICBjb25zdCBhc2llbnRvcyA9IGhlbWljaWNsbyhwYXJ0aWRvcywgdG90YWwgPiAzMDAgPyAxMiA6IDgpO1xuICBjb25zdCBwbG90ID0gUGxvdC5wbG90KHtcbiAgICB3aWR0aDogNTEwLCBoZWlnaHQ6IDI5MCwgbWFyZ2luOiA2LFxuICAgIHg6IHtheGlzOiBudWxsLCBkb21haW46IFstMS4wNCwgMS4wNF19LCB5OiB7YXhpczogbnVsbCwgZG9tYWluOiBbLTAuMDQsIDEuMDRdfSxcbiAgICBtYXJrczogW1xuICAgICAgUGxvdC5kb3QoYXNpZW50b3MsIHt4OiBcInhcIiwgeTogXCJ5XCIsIGZpbGw6IFwiY1wiLCByOiByYWRpbywgdGl0bGU6IFwicGFydGlkb1wifSksXG4gICAgICBQbG90LnRleHQoW2Ake3RvdGFsfSBlc2Nhw7Fvc2BdLCB7eDogMCwgeTogMC4yLCBmb250U2l6ZTogMjIsIGZvbnRXZWlnaHQ6IDcwMCwgZmlsbDogXCIjMzMzXCJ9KSxcbiAgICAgIFBsb3QudGV4dChbYG1heW9yw61hOiAke21heW9yaWF9YF0sIHt4OiAwLCB5OiAwLjA4LCBmb250U2l6ZTogMTUsIGZpbGw6IFwiIzU1NVwifSlcbiAgICBdXG4gIH0pO1xuICBjb25zdCB0YWJsYSA9IGh0bWxgPHRhYmxlIGNsYXNzPVwidGFibGEtZXNjIG1pbmlcIiBzdHlsZT1cImZvbnQtc2l6ZToke2xldHJhfXB4ICFpbXBvcnRhbnRcIj5cbiAgICA8dHI+PHRoPlBhcnRpZG88L3RoPjx0aD4lIHZvdG88L3RoPjx0aD4lIGVzYy48L3RoPjx0aD5Fc2MuPC90aD48L3RyPlxuICAgICR7cGFydGlkb3MubWFwKHAgPT4gaHRtbGA8dHIgc3R5bGU9XCJiYWNrZ3JvdW5kOiR7cC5jfTIyXCI+XG4gICAgICA8dGQ+PHNwYW4gc3R5bGU9XCJkaXNwbGF5OmlubGluZS1ibG9jazt3aWR0aDouOGVtO2hlaWdodDouOGVtO2JhY2tncm91bmQ6JHtwLmN9O2JvcmRlci1yYWRpdXM6MnB4XCI+PC9zcGFuPiAke3Aubn08L3RkPlxuICAgICAgPHRkPiR7cC52ID09IG51bGwgPyBcIuKAlFwiIDogcC52LnRvTG9jYWxlU3RyaW5nKFwiZXMtRVNcIiwge21pbmltdW1GcmFjdGlvbkRpZ2l0czogMSwgbWF4aW11bUZyYWN0aW9uRGlnaXRzOiAxfSl9PC90ZD5cbiAgICAgIDx0ZD4keygxMDAgKiBwLmVzIC8gdG90YWwpLnRvTG9jYWxlU3RyaW5nKFwiZXMtRVNcIiwge21pbmltdW1GcmFjdGlvbkRpZ2l0czogMSwgbWF4aW11bUZyYWN0aW9uRGlnaXRzOiAxfSl9PC90ZD5cbiAgICAgIDx0ZD48Yj4ke3AuZXN9PC9iPjwvdGQ+PC90cj5gKX1cbiAgPC90YWJsZT5gO1xuICByZXR1cm4gaHRtbGA8ZGl2IHN0eWxlPVwiZGlzcGxheTpncmlkO2dyaWQtdGVtcGxhdGUtY29sdW1uczptaW5tYXgoMCwxZnIpIG1pbm1heCgwLDFmcik7Z2FwOjEwcHg7YWxpZ24taXRlbXM6Y2VudGVyO3dpZHRoOjEwMCU7bWF4LXdpZHRoOjEwMCVcIj4ke3Bsb3R9JHt0YWJsYX08L2Rpdj5gO1xufVxuXG5yZWlub1VuaWRvID0gW1xuICB7bjogXCJWZXJkZXNcIiwgYzogXCIjMDJhOTViXCIsIGVzOiA0LCB2OiA2Ljd9LFxuICB7bjogXCJTTlBcIiwgYzogXCIjZDhjMjAwXCIsIGVzOiA5LCB2OiAyLjV9LFxuICB7bjogXCJQbGFpZCBDeW1ydVwiLCBjOiBcIiMwMDViNTRcIiwgZXM6IDQsIHY6IDAuN30sXG4gIHtuOiBcIkxhYm9yaXN0YXNcIiwgYzogXCIjZTQwMDNiXCIsIGVzOiA0MTEsIHY6IDMzLjd9LFxuICB7bjogXCJMaWJlcmFsIERlbcOzY3JhdGFzXCIsIGM6IFwiI2ZhYTYxYVwiLCBlczogNzIsIHY6IDEyLjJ9LFxuICB7bjogXCJPdHJvcypcIiwgYzogXCIjOWE5YTlhXCIsIGVzOiAyNCwgdjogbnVsbH0sXG4gIHtuOiBcIkNvbnNlcnZhZG9yZXNcIiwgYzogXCIjMDA4N2RjXCIsIGVzOiAxMjEsIHY6IDIzLjd9LFxuICB7bjogXCJSZWZvcm0gVUtcIiwgYzogXCIjMTJiNmNmXCIsIGVzOiA1LCB2OiAxNC4zfVxuXVxuXG5wYWlzZXNCYWpvcyA9IFtcbiAge246IFwiU1BcIiwgYzogXCIjZWUyZTI0XCIsIGVzOiAzLCB2OiAxLjl9LFxuICB7bjogXCJQdmREXCIsIGM6IFwiIzNmN2QzYVwiLCBlczogMywgdjogMi4xfSxcbiAge246IFwiR0wtUHZkQVwiLCBjOiBcIiNjODEwMmVcIiwgZXM6IDIwLCB2OiAxMi43fSxcbiAge246IFwiREVOS1wiLCBjOiBcIiMwMGI3YzNcIiwgZXM6IDMsIHY6IDIuNH0sXG4gIHtuOiBcIlZvbHRcIiwgYzogXCIjNTAyMzc5XCIsIGVzOiAxLCB2OiAxLjF9LFxuICB7bjogXCJENjZcIiwgYzogXCIjMDBhZTQxXCIsIGVzOiAyNiwgdjogMTYuOX0sXG4gIHtuOiBcIjUwUExVU1wiLCBjOiBcIiM5MjI3OGZcIiwgZXM6IDIsIHY6IDEuNH0sXG4gIHtuOiBcIkNocmlzdGVuVW5pZVwiLCBjOiBcIiMwMGE3ZWJcIiwgZXM6IDMsIHY6IDEuOX0sXG4gIHtuOiBcIkNEQVwiLCBjOiBcIiMxYTZiM2JcIiwgZXM6IDE4LCB2OiAxMS44fSxcbiAge246IFwiQkJCXCIsIGM6IFwiIzk0YzExZlwiLCBlczogNCwgdjogMi43fSxcbiAge246IFwiVlZEXCIsIGM6IFwiI2Y0NzkyMFwiLCBlczogMjIsIHY6IDE0LjJ9LFxuICB7bjogXCJTR1BcIiwgYzogXCIjZTlhMTAwXCIsIGVzOiAzLCB2OiAyLjN9LFxuICB7bjogXCJKQTIxXCIsIGM6IFwiIzVmODZjNFwiLCBlczogOSwgdjogNi4wfSxcbiAge246IFwiUFZWXCIsIGM6IFwiIzEyMzA1ZVwiLCBlczogMjYsIHY6IDE2Ljh9LFxuICB7bjogXCJGdkRcIiwgYzogXCIjODQxODE4XCIsIGVzOiA3LCB2OiA0LjZ9XG5dXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJwYXJsYW1lbnRvKHJlaW5vVW5pZG8sIDY1MCwgMzI2LCAzLjMpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJwYXJsYW1lbnRvKHBhaXNlc0Jham9zLCAxNTAsIDc2LCA2LjIsIDE1KVxuIn1dfQ==
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../..";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {

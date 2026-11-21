@@ -281,11 +281,36 @@
 <p><span class="tt">4. Tarragona</span> Los partidos que compiten en nuestra provincia.</p>
 </div>
 </div>
+<aside class="notes">
+<p>Esta sesión va del sistema electoral al sistema de partidos: qué tipos hay, cómo es el español y cómo se ve todo esto en Tarragona.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section>
 <section class="title-slide slide level1 center" data-background-color="#1b1b1b">
 <h1>1 · Tipos de sistemas de partidos</h1>
-
+<aside class="notes">
+<p>Primero, la teoría: cómo clasifica la ciencia política los sistemas de partidos.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>¿Qué es un sistema de partidos?</h2>
@@ -301,6 +326,19 @@
 <div class="chico">
 <p>Giovanni Sartori, <em>Partidos y sistemas de partidos</em> (1976): combinando número y distancia salen los distintos tipos.</p>
 </div>
+<aside class="notes">
+<p>Un sistema de partidos no es una lista de partidos, sino cómo compiten y se relacionan entre ellos. Sartori usa dos criterios: cuántos partidos cuentan de verdad (los que pueden gobernar o son imprescindibles para una mayoría) y cuánta distancia ideológica hay entre ellos.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2 smaller">
 <h2>La tipología de Sartori</h2>
@@ -394,30 +432,43 @@
 <div class="chico">
 <p>Se puede calcular con los <strong>votos</strong> (lo que quieren los votantes) o con los <strong>escaños</strong> (lo que sale del sistema electoral).</p>
 </div>
+<aside class="notes">
+<p>Contar partidos es engañoso: no es lo mismo diez partidos con uno al 90 % que diez partidos iguales. El número efectivo pondera cada partido por su tamaño. Haced los tres ejemplos en voz alta: dos partidos iguales dan 2; un partido muy dominante baja el resultado; cinco iguales dan 5.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>España: número efectivo de partidos, 1977-2023</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="135" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb2-135"><a aria-label="135"></a>{</span>
-<span id="cb2-136"><a aria-label="136"></a>  <span class="kw">const</span> largo <span class="op">=</span> nep<span class="op">.</span><span class="fu">flatMap</span>(d <span class="kw">=&gt;</span> [</span>
-<span id="cb2-137"><a aria-label="137"></a>    {<span class="dt">etiqueta</span><span class="op">:</span> d<span class="op">.</span><span class="at">etiqueta</span><span class="op">,</span> <span class="dt">serie</span><span class="op">:</span> <span class="st">"Por votos"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> d<span class="op">.</span><span class="at">nep_votos</span>}<span class="op">,</span></span>
-<span id="cb2-138"><a aria-label="138"></a>    {<span class="dt">etiqueta</span><span class="op">:</span> d<span class="op">.</span><span class="at">etiqueta</span><span class="op">,</span> <span class="dt">serie</span><span class="op">:</span> <span class="st">"Por escaños"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> d<span class="op">.</span><span class="at">nep_escanos</span>}</span>
-<span id="cb2-139"><a aria-label="139"></a>  ])<span class="op">;</span></span>
-<span id="cb2-140"><a aria-label="140"></a>  <span class="kw">const</span> etiquetas <span class="op">=</span> nep<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">etiqueta</span>)<span class="op">;</span></span>
-<span id="cb2-141"><a aria-label="141"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb2-142"><a aria-label="142"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">1040</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">420</span><span class="op">,</span> <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">45</span><span class="op">,</span></span>
-<span id="cb2-143"><a aria-label="143"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> etiquetas<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">type</span><span class="op">:</span> <span class="st">"point"</span><span class="op">,</span> <span class="dt">padding</span><span class="op">:</span> <span class="fl">0.4</span><span class="op">,</span> <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="fu">replace</span>(<span class="st">" ("</span><span class="op">,</span> <span class="st">"</span><span class="sc">\n</span><span class="st">("</span>)}<span class="op">,</span></span>
-<span id="cb2-144"><a aria-label="144"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Número efectivo de partidos"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
-<span id="cb2-145"><a aria-label="145"></a>    <span class="dt">color</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="st">"Por votos"</span><span class="op">,</span> <span class="st">"Por escaños"</span>]<span class="op">,</span> <span class="dt">range</span><span class="op">:</span> [<span class="st">"#9b2226"</span><span class="op">,</span> <span class="st">"#1d84ce"</span>]<span class="op">,</span> <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
-<span id="cb2-146"><a aria-label="146"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb2-147"><a aria-label="147"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">2</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#1b1b1b"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4 4"</span><span class="op">,</span> <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="op">.</span><span class="dv">5</span>})<span class="op">,</span></span>
-<span id="cb2-148"><a aria-label="148"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="st">"2008"</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"Bipartidismo puro = 2"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">14</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#555"</span>})<span class="op">,</span></span>
-<span id="cb2-149"><a aria-label="149"></a>      Plot<span class="op">.</span><span class="fu">line</span>(largo<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"etiqueta"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"serie"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span>})<span class="op">,</span></span>
-<span id="cb2-150"><a aria-label="150"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(largo<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"etiqueta"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"serie"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">5</span>})<span class="op">,</span></span>
-<span id="cb2-151"><a aria-label="151"></a>      Plot<span class="op">.</span><span class="fu">text</span>(largo<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"etiqueta"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">v</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="st">"."</span><span class="op">,</span> <span class="st">","</span>)<span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">serie</span> <span class="op">===</span> <span class="st">"Por votos"</span> <span class="op">?</span> <span class="op">-</span><span class="dv">14</span> <span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"serie"</span>})</span>
-<span id="cb2-152"><a aria-label="152"></a>    ]</span>
-<span id="cb2-153"><a aria-label="153"></a>  })<span class="op">;</span></span>
-<span id="cb2-154"><a aria-label="154"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="152" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 151;"><span id="cb2-152"><a aria-label="152"></a>{</span>
+<span id="cb2-153"><a aria-label="153"></a>  <span class="kw">const</span> largo <span class="op">=</span> nep<span class="op">.</span><span class="fu">flatMap</span>(d <span class="kw">=&gt;</span> [</span>
+<span id="cb2-154"><a aria-label="154"></a>    {<span class="dt">etiqueta</span><span class="op">:</span> d<span class="op">.</span><span class="at">etiqueta</span><span class="op">,</span> <span class="dt">serie</span><span class="op">:</span> <span class="st">"Por votos"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> d<span class="op">.</span><span class="at">nep_votos</span>}<span class="op">,</span></span>
+<span id="cb2-155"><a aria-label="155"></a>    {<span class="dt">etiqueta</span><span class="op">:</span> d<span class="op">.</span><span class="at">etiqueta</span><span class="op">,</span> <span class="dt">serie</span><span class="op">:</span> <span class="st">"Por escaños"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> d<span class="op">.</span><span class="at">nep_escanos</span>}</span>
+<span id="cb2-156"><a aria-label="156"></a>  ])<span class="op">;</span></span>
+<span id="cb2-157"><a aria-label="157"></a>  <span class="kw">const</span> etiquetas <span class="op">=</span> nep<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">etiqueta</span>)<span class="op">;</span></span>
+<span id="cb2-158"><a aria-label="158"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb2-159"><a aria-label="159"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">1040</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">420</span><span class="op">,</span> <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">45</span><span class="op">,</span></span>
+<span id="cb2-160"><a aria-label="160"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> etiquetas<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">type</span><span class="op">:</span> <span class="st">"point"</span><span class="op">,</span> <span class="dt">padding</span><span class="op">:</span> <span class="fl">0.4</span><span class="op">,</span> <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="fu">replace</span>(<span class="st">" ("</span><span class="op">,</span> <span class="st">"</span><span class="sc">\n</span><span class="st">("</span>)}<span class="op">,</span></span>
+<span id="cb2-161"><a aria-label="161"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Número efectivo de partidos"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb2-162"><a aria-label="162"></a>    <span class="dt">color</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="st">"Por votos"</span><span class="op">,</span> <span class="st">"Por escaños"</span>]<span class="op">,</span> <span class="dt">range</span><span class="op">:</span> [<span class="st">"#9b2226"</span><span class="op">,</span> <span class="st">"#1d84ce"</span>]<span class="op">,</span> <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb2-163"><a aria-label="163"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb2-164"><a aria-label="164"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">2</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#1b1b1b"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4 4"</span><span class="op">,</span> <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="op">.</span><span class="dv">5</span>})<span class="op">,</span></span>
+<span id="cb2-165"><a aria-label="165"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="st">"2008"</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"Bipartidismo puro = 2"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">14</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#555"</span>})<span class="op">,</span></span>
+<span id="cb2-166"><a aria-label="166"></a>      Plot<span class="op">.</span><span class="fu">line</span>(largo<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"etiqueta"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"serie"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span>})<span class="op">,</span></span>
+<span id="cb2-167"><a aria-label="167"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(largo<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"etiqueta"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"serie"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">5</span>})<span class="op">,</span></span>
+<span id="cb2-168"><a aria-label="168"></a>      Plot<span class="op">.</span><span class="fu">text</span>(largo<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"etiqueta"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">v</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="st">"."</span><span class="op">,</span> <span class="st">","</span>)<span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">serie</span> <span class="op">===</span> <span class="st">"Por votos"</span> <span class="op">?</span> <span class="op">-</span><span class="dv">14</span> <span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"serie"</span>})</span>
+<span id="cb2-169"><a aria-label="169"></a>    ]</span>
+<span id="cb2-170"><a aria-label="170"></a>  })<span class="op">;</span></span>
+<span id="cb2-171"><a aria-label="171"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
 
@@ -444,7 +495,19 @@
 <section>
 <section class="title-slide slide level1 center" data-background-color="#1b1b1b">
 <h1>2 · El caso español</h1>
-
+<aside class="notes">
+<p>Segundo bloque: cómo encaja España en estas categorías.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>Dos ejes de competición</h2>
@@ -473,6 +536,19 @@
 <div class="chico">
 <p>Por eso en Cataluña o el País Vasco funciona un <strong>sistema de partidos propio</strong>, distinto del español.</p>
 </div>
+<aside class="notes">
+<p>La clave del caso español es que se compite en dos ejes a la vez: izquierda-derecha y centro-periferia. Por eso conviven partidos de ámbito estatal y partidos que solo se presentan en su territorio, y por eso en Cataluña o el País Vasco hay un sistema de partidos propio.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>Así evoluciona el sistema</h2>
@@ -490,24 +566,37 @@
 <div class="chico">
 <p>Hoy el debate es si España sigue en el <strong>pluralismo moderado</strong> o si la polarización la acerca al <strong>pluralismo polarizado</strong> de Sartori.</p>
 </div>
+<aside class="notes">
+<p>Tres etapas. Los nacionalistas, CiU y PNV sobre todo, fueron durante décadas los socios necesarios de PSOE y PP cuando no tenían mayoría absoluta. Desde 2015 la competición es por bloques, y el debate abierto es si la polarización nos acerca al pluralismo polarizado de Sartori.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>El Congreso de 2023</h2>
 <div class="columns">
 <div class="column" style="width:64%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="225" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 224;"><span id="cb3-225"><a aria-label="225"></a>{</span>
-<span id="cb3-226"><a aria-label="226"></a>  <span class="kw">const</span> asientos <span class="op">=</span> <span class="fu">hemiciclo</span>(congreso)<span class="op">;</span></span>
-<span id="cb3-227"><a aria-label="227"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb3-228"><a aria-label="228"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">680</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">380</span><span class="op">,</span> <span class="dt">margin</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
-<span id="cb3-229"><a aria-label="229"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">1.05</span><span class="op">,</span> <span class="fl">1.05</span>]}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.05</span><span class="op">,</span> <span class="fl">1.05</span>]}<span class="op">,</span></span>
-<span id="cb3-230"><a aria-label="230"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb3-231"><a aria-label="231"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(asientos<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"c"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="fl">5.6</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">"partido"</span>})<span class="op">,</span></span>
-<span id="cb3-232"><a aria-label="232"></a>      Plot<span class="op">.</span><span class="fu">text</span>([<span class="st">"350 escaños"</span>]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.2</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">22</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#333"</span>})<span class="op">,</span></span>
-<span id="cb3-233"><a aria-label="233"></a>      Plot<span class="op">.</span><span class="fu">text</span>([<span class="st">"mayoría absoluta: 176"</span>]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.08</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#555"</span>})</span>
-<span id="cb3-234"><a aria-label="234"></a>    ]</span>
-<span id="cb3-235"><a aria-label="235"></a>  })<span class="op">;</span></span>
-<span id="cb3-236"><a aria-label="236"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="255" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 254;"><span id="cb3-255"><a aria-label="255"></a>{</span>
+<span id="cb3-256"><a aria-label="256"></a>  <span class="kw">const</span> asientos <span class="op">=</span> <span class="fu">hemiciclo</span>(congreso)<span class="op">;</span></span>
+<span id="cb3-257"><a aria-label="257"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb3-258"><a aria-label="258"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">680</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">380</span><span class="op">,</span> <span class="dt">margin</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb3-259"><a aria-label="259"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">1.05</span><span class="op">,</span> <span class="fl">1.05</span>]}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.05</span><span class="op">,</span> <span class="fl">1.05</span>]}<span class="op">,</span></span>
+<span id="cb3-260"><a aria-label="260"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb3-261"><a aria-label="261"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(asientos<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"c"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="fl">5.6</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">"partido"</span>})<span class="op">,</span></span>
+<span id="cb3-262"><a aria-label="262"></a>      Plot<span class="op">.</span><span class="fu">text</span>([<span class="st">"350 escaños"</span>]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.2</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">22</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#333"</span>})<span class="op">,</span></span>
+<span id="cb3-263"><a aria-label="263"></a>      Plot<span class="op">.</span><span class="fu">text</span>([<span class="st">"mayoría absoluta: 176"</span>]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.08</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#555"</span>})</span>
+<span id="cb3-264"><a aria-label="264"></a>    ]</span>
+<span id="cb3-265"><a aria-label="265"></a>  })<span class="op">;</span></span>
+<span id="cb3-266"><a aria-label="266"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="expression">
 
@@ -516,13 +605,13 @@
 </div>
 </div><div class="column" style="width:36%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="241" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 240;"><span id="cb4-241"><a aria-label="241"></a><span class="fu">html</span><span class="vs">`&lt;table class="tabla-esc mini"&gt;</span></span>
-<span id="cb4-242"><a aria-label="242"></a><span class="vs">  &lt;tr&gt;&lt;th&gt;Partido&lt;/th&gt;&lt;th&gt;% voto&lt;/th&gt;&lt;th&gt;Escaños&lt;/th&gt;&lt;/tr&gt;</span></span>
-<span id="cb4-243"><a aria-label="243"></a><span class="vs">  </span><span class="sc">${</span>congreso<span class="op">.</span><span class="fu">slice</span>()<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> ordenHemiciclo<span class="op">.</span><span class="fu">indexOf</span>(a<span class="op">.</span><span class="at">k</span>) <span class="op">-</span> ordenHemiciclo<span class="op">.</span><span class="fu">indexOf</span>(b<span class="op">.</span><span class="at">k</span>))<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;tr style="background:</span><span class="sc">${</span>p<span class="op">.</span><span class="at">c</span><span class="sc">}</span><span class="vs">22"&gt;</span></span>
-<span id="cb4-244"><a aria-label="244"></a><span class="vs">    &lt;td&gt;&lt;span style="display:inline-block;width:.8em;height:.8em;background:</span><span class="sc">${</span>p<span class="op">.</span><span class="at">c</span><span class="sc">}</span><span class="vs">;border-radius:2px"&gt;&lt;/span&gt; </span><span class="sc">${</span>p<span class="op">.</span><span class="at">n</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
-<span id="cb4-245"><a aria-label="245"></a><span class="vs">    &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">pct</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"es-ES"</span><span class="op">,</span> {<span class="dt">minimumFractionDigits</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">maximumFractionDigits</span><span class="op">:</span> <span class="dv">1</span>})<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
-<span id="cb4-246"><a aria-label="246"></a><span class="vs">    &lt;td&gt;&lt;b&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">es</span><span class="sc">}</span><span class="vs">&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;`</span>)<span class="sc">}</span></span>
-<span id="cb4-247"><a aria-label="247"></a><span class="vs">&lt;/table&gt;`</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="271" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 270;"><span id="cb4-271"><a aria-label="271"></a><span class="fu">html</span><span class="vs">`&lt;table class="tabla-esc mini"&gt;</span></span>
+<span id="cb4-272"><a aria-label="272"></a><span class="vs">  &lt;tr&gt;&lt;th&gt;Partido&lt;/th&gt;&lt;th&gt;% voto&lt;/th&gt;&lt;th&gt;Escaños&lt;/th&gt;&lt;/tr&gt;</span></span>
+<span id="cb4-273"><a aria-label="273"></a><span class="vs">  </span><span class="sc">${</span>congreso<span class="op">.</span><span class="fu">slice</span>()<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> ordenHemiciclo<span class="op">.</span><span class="fu">indexOf</span>(a<span class="op">.</span><span class="at">k</span>) <span class="op">-</span> ordenHemiciclo<span class="op">.</span><span class="fu">indexOf</span>(b<span class="op">.</span><span class="at">k</span>))<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;tr style="background:</span><span class="sc">${</span>p<span class="op">.</span><span class="at">c</span><span class="sc">}</span><span class="vs">22"&gt;</span></span>
+<span id="cb4-274"><a aria-label="274"></a><span class="vs">    &lt;td&gt;&lt;span style="display:inline-block;width:.8em;height:.8em;background:</span><span class="sc">${</span>p<span class="op">.</span><span class="at">c</span><span class="sc">}</span><span class="vs">;border-radius:2px"&gt;&lt;/span&gt; </span><span class="sc">${</span>p<span class="op">.</span><span class="at">n</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb4-275"><a aria-label="275"></a><span class="vs">    &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">pct</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"es-ES"</span><span class="op">,</span> {<span class="dt">minimumFractionDigits</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">maximumFractionDigits</span><span class="op">:</span> <span class="dv">1</span>})<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb4-276"><a aria-label="276"></a><span class="vs">    &lt;td&gt;&lt;b&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">es</span><span class="sc">}</span><span class="vs">&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;`</span>)<span class="sc">}</span></span>
+<span id="cb4-277"><a aria-label="277"></a><span class="vs">&lt;/table&gt;`</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="expression">
 
@@ -533,6 +622,19 @@
 <div class="chico">
 <p><strong>11 partidos</strong> con escaño. Investidura de Sánchez (noviembre de 2023): <strong>179</strong> votos a favor (PSOE, Sumar, ERC, Junts, EH Bildu, PNV, BNG y CC).</p>
 </div>
+<aside class="notes">
+<p>El hemiciclo ordena los escaños de izquierda a derecha. Para gobernar hacen falta 176. Sánchez fue investido con 179 votos gracias a la suma de su bloque con los nacionalistas. Se ve muy bien el peso de los partidos pequeños: sin ellos no hay mayoría.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2 smaller">
 <h2>Los partidos del Congreso de 2023</h2>
@@ -747,11 +849,36 @@ Derecha radical populista
 <div class="fuente">
 <p>Clasificación orientativa. Las etiquetas “derecha radical populista” y similares siguen el uso habitual en ciencia política (Mudde).</p>
 </div>
+<aside class="notes">
+<p>Una ficha de cada partido, ordenada de izquierda a derecha. Fijaos en las dos columnas de ejes: hay partidos de derecha e izquierda tanto estatales como nacionalistas. Las etiquetas son orientativas y pueden discutirse.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section class="title-slide slide level1 center" data-background-color="#1b1b1b">
 <h1>3 · La oferta en España</h1>
-
+<aside class="notes">
+<p>Tercer bloque: cómo ha cambiado la oferta de partidos entre 2019 y 2023.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>La oferta en 2019 (noviembre)</h2>
@@ -811,11 +938,36 @@ Derecha radical populista
 <div class="chico">
 <p>Resultado: menos partidos (de 16 a 11) y un número efectivo de partidos que baja de 4,7 a 3,4 por escaños. Pero la competición sigue siendo <strong>por bloques</strong>.</p>
 </div>
+<aside class="notes">
+<p>Tres movimientos. La izquierda se concentra en Sumar; el centro desaparece con el hundimiento de Ciudadanos; y la derecha se reordena: el PP se recupera y Vox baja. Hay menos partidos, pero la lógica de bloques sigue.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section class="title-slide slide level1 center" data-background-color="#1b1b1b">
 <h1>4 · Tarragona</h1>
-
+<aside class="notes">
+<p>Y para acabar, nuestra provincia.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2 smaller">
 <h2>Los partidos en la provincia de Tarragona</h2>
@@ -1023,32 +1175,32 @@ Se presenta
 <section class="slide level2">
 <h2>Tarragona en los dos ejes</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="353" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 352;"><span id="cb5-353"><a aria-label="353"></a>{</span>
-<span id="cb5-354"><a aria-label="354"></a>  <span class="kw">const</span> tg <span class="op">=</span> [</span>
-<span id="cb5-355"><a aria-label="355"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"CUP"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">4.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">4.2</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#ffd500"</span>}<span class="op">,</span></span>
-<span id="cb5-356"><a aria-label="356"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"ERC"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">2.6</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">3.0</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#e8890c"</span>}<span class="op">,</span></span>
-<span id="cb5-357"><a aria-label="357"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"Comuns / Front Ampli"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">3.0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">1.4</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#e6007e"</span>}<span class="op">,</span></span>
-<span id="cb5-358"><a aria-label="358"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"PSC"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">1.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.8</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#e30613"</span>}<span class="op">,</span></span>
-<span id="cb5-359"><a aria-label="359"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"Junts"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="fl">1.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">3.4</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#00a99d"</span>}<span class="op">,</span></span>
-<span id="cb5-360"><a aria-label="360"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"Aliança Catalana"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="fl">3.9</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">4.4</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#1b4f8a"</span>}<span class="op">,</span></span>
-<span id="cb5-361"><a aria-label="361"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"PP"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="fl">2.8</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">3.0</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#1d84ce"</span>}<span class="op">,</span></span>
-<span id="cb5-362"><a aria-label="362"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"Vox"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="fl">4.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">4.4</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#5aa31f"</span>}</span>
-<span id="cb5-363"><a aria-label="363"></a>  ]<span class="op">;</span></span>
-<span id="cb5-364"><a aria-label="364"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb5-365"><a aria-label="365"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">480</span><span class="op">,</span> <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span></span>
-<span id="cb5-366"><a aria-label="366"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">5.5</span><span class="op">,</span> <span class="fl">5.5</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span>}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">5.3</span><span class="op">,</span> <span class="fl">5.3</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span>}<span class="op">,</span></span>
-<span id="cb5-367"><a aria-label="367"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb5-368"><a aria-label="368"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#1b1b1b"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span>})<span class="op">,</span></span>
-<span id="cb5-369"><a aria-label="369"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#1b1b1b"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span>})<span class="op">,</span></span>
-<span id="cb5-370"><a aria-label="370"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">5.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.35</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"IZQUIERDA"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})<span class="op">,</span></span>
-<span id="cb5-371"><a aria-label="371"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">5.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.35</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"DERECHA"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"end"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})<span class="op">,</span></span>
-<span id="cb5-372"><a aria-label="372"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">0.15</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">5.1</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"UNIONISTA / ESPAÑOL"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})<span class="op">,</span></span>
-<span id="cb5-373"><a aria-label="373"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">0.15</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">5.1</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"INDEPENDENTISTA"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})<span class="op">,</span></span>
-<span id="cb5-374"><a aria-label="374"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(tg<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"c"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#fff"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
-<span id="cb5-375"><a aria-label="375"></a>      Plot<span class="op">.</span><span class="fu">text</span>(tg<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="op">-</span><span class="dv">26</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">17</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})</span>
-<span id="cb5-376"><a aria-label="376"></a>    ]</span>
-<span id="cb5-377"><a aria-label="377"></a>  })<span class="op">;</span></span>
-<span id="cb5-378"><a aria-label="378"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="405" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 404;"><span id="cb5-405"><a aria-label="405"></a>{</span>
+<span id="cb5-406"><a aria-label="406"></a>  <span class="kw">const</span> tg <span class="op">=</span> [</span>
+<span id="cb5-407"><a aria-label="407"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"CUP"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">4.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">4.2</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#ffd500"</span>}<span class="op">,</span></span>
+<span id="cb5-408"><a aria-label="408"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"ERC"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">2.6</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">3.0</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#e8890c"</span>}<span class="op">,</span></span>
+<span id="cb5-409"><a aria-label="409"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"Comuns / Front Ampli"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">3.0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">1.4</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#e6007e"</span>}<span class="op">,</span></span>
+<span id="cb5-410"><a aria-label="410"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"PSC"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">1.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.8</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#e30613"</span>}<span class="op">,</span></span>
+<span id="cb5-411"><a aria-label="411"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"Junts"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="fl">1.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">3.4</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#00a99d"</span>}<span class="op">,</span></span>
+<span id="cb5-412"><a aria-label="412"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"Aliança Catalana"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="fl">3.9</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">4.4</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#1b4f8a"</span>}<span class="op">,</span></span>
+<span id="cb5-413"><a aria-label="413"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"PP"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="fl">2.8</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">3.0</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#1d84ce"</span>}<span class="op">,</span></span>
+<span id="cb5-414"><a aria-label="414"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"Vox"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="fl">4.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">4.4</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#5aa31f"</span>}</span>
+<span id="cb5-415"><a aria-label="415"></a>  ]<span class="op">;</span></span>
+<span id="cb5-416"><a aria-label="416"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb5-417"><a aria-label="417"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">480</span><span class="op">,</span> <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span></span>
+<span id="cb5-418"><a aria-label="418"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">5.5</span><span class="op">,</span> <span class="fl">5.5</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span>}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">5.3</span><span class="op">,</span> <span class="fl">5.3</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span>}<span class="op">,</span></span>
+<span id="cb5-419"><a aria-label="419"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb5-420"><a aria-label="420"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#1b1b1b"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span>})<span class="op">,</span></span>
+<span id="cb5-421"><a aria-label="421"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#1b1b1b"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span>})<span class="op">,</span></span>
+<span id="cb5-422"><a aria-label="422"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">5.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.35</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"IZQUIERDA"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})<span class="op">,</span></span>
+<span id="cb5-423"><a aria-label="423"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">5.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.35</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"DERECHA"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"end"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})<span class="op">,</span></span>
+<span id="cb5-424"><a aria-label="424"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">0.15</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">5.1</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"UNIONISTA / ESPAÑOL"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})<span class="op">,</span></span>
+<span id="cb5-425"><a aria-label="425"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">0.15</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">5.1</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"INDEPENDENTISTA"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})<span class="op">,</span></span>
+<span id="cb5-426"><a aria-label="426"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(tg<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"c"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#fff"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb5-427"><a aria-label="427"></a>      Plot<span class="op">.</span><span class="fu">text</span>(tg<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="op">-</span><span class="dv">26</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">17</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})</span>
+<span id="cb5-428"><a aria-label="428"></a>    ]</span>
+<span id="cb5-429"><a aria-label="429"></a>  })<span class="op">;</span></span>
+<span id="cb5-430"><a aria-label="430"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="expression">
 
@@ -1058,6 +1210,19 @@ Se presenta
 <div class="fuente">
 <p>Posición aproximada, con fines didácticos.</p>
 </div>
+<aside class="notes">
+<p>Este plano es orientativo, pero ayuda a ver lo que pasa en Tarragona. Hay izquierda independentista (CUP, ERC), izquierda no independentista (Comuns, PSC), derecha independentista (Junts, Aliança Catalana) y derecha unionista (PP, Vox). Los dos ejes se cruzan, y por eso es tan difícil predecir los pactos.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>Resumen de la sesión</h2>
@@ -1074,6 +1239,19 @@ Se presenta
 <div class="volver sec">
 <a href="04-efectos.html">Ir a la sesión 4 →</a>
 </div>
+<aside class="notes">
+<p>Cinco ideas. Si da tiempo, preguntad dónde situarían ellos a cada partido en el plano de los dos ejes. Suele salir un buen debate.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 
 </section></section>
@@ -1293,7 +1471,7 @@ Se presenta
       });
     </script>
     <script type="ojs-module-contents">
-    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImNvbmdyZXNvID0gRmlsZUF0dGFjaG1lbnQoXCJkYXRvcy9jb25ncmVzb18yMDIzLmpzb25cIikuanNvbigpXHJcbm5lcCA9IChhd2FpdCBGaWxlQXR0YWNobWVudChcImRhdG9zL25lcC5jc3ZcIikuY3N2KHt0eXBlZDogdHJ1ZX0pKS5tYXAoZCA9PiAoey4uLmQsIGV0aXF1ZXRhOiBTdHJpbmcoZC5ldGlxdWV0YSl9KSlcclxuXHJcbm9yZGVuSGVtaWNpY2xvID0gW1wiQ1VQXCIsIFwiU1VNQVJcIiwgXCJCSUxEVVwiLCBcIkVSQ1wiLCBcIkJOR1wiLCBcIlBTT0VcIiwgXCJQTlZcIiwgXCJDQ1wiLCBcIkpVTlRTXCIsIFwiVVBOXCIsIFwiUFBcIiwgXCJWT1hcIl1cclxuXHJcbmZ1bmN0aW9uIGhlbWljaWNsbyhwYXJ0aWRvcywgZmlsYXMgPSA5LCByMCA9IDAuNDIpIHtcclxuICBjb25zdCB0b3RhbCA9IGQzLnN1bShwYXJ0aWRvcywgcCA9PiBwLmVzKTtcclxuICBjb25zdCByYWRpb3MgPSBkMy5yYW5nZShmaWxhcykubWFwKGkgPT4gcjAgKyAoMSAtIHIwKSAqIGkgLyAoZmlsYXMgLSAxKSk7XHJcbiAgY29uc3Qgc3VtUiA9IGQzLnN1bShyYWRpb3MpO1xyXG4gIGNvbnN0IHBvckZpbGEgPSByYWRpb3MubWFwKHIgPT4gTWF0aC5yb3VuZCh0b3RhbCAqIHIgLyBzdW1SKSk7XHJcbiAgcG9yRmlsYVtmaWxhcyAtIDFdICs9IHRvdGFsIC0gZDMuc3VtKHBvckZpbGEpO1xyXG4gIGNvbnN0IGFzaWVudG9zID0gW107XHJcbiAgcmFkaW9zLmZvckVhY2goKHIsIGkpID0+IHtcclxuICAgIGNvbnN0IG4gPSBwb3JGaWxhW2ldO1xyXG4gICAgZm9yIChsZXQgaiA9IDA7IGogPCBuOyBqKyspIHtcclxuICAgICAgY29uc3QgYSA9IE1hdGguUEkgLSBNYXRoLlBJICogaiAvIChuIC0gMSk7XHJcbiAgICAgIGFzaWVudG9zLnB1c2goe2EsIHIsIHg6IHIgKiBNYXRoLmNvcyhhKSwgeTogciAqIE1hdGguc2luKGEpfSk7XHJcbiAgICB9XHJcbiAgfSk7XHJcbiAgYXNpZW50b3Muc29ydCgocCwgcSkgPT4gcS5hIC0gcC5hIHx8IHAuciAtIHEucik7XHJcbiAgY29uc3QgbGlzdGEgPSBwYXJ0aWRvcy5zbGljZSgpLnNvcnQoKHAsIHEpID0+IG9yZGVuSGVtaWNpY2xvLmluZGV4T2YocC5rKSAtIG9yZGVuSGVtaWNpY2xvLmluZGV4T2YocS5rKSk7XHJcbiAgbGV0IGsgPSAwO1xyXG4gIGZvciAoY29uc3QgcCBvZiBsaXN0YSkgZm9yIChsZXQgaSA9IDA7IGkgPCBwLmVzOyBpKyspIE9iamVjdC5hc3NpZ24oYXNpZW50b3NbaysrXSwge3BhcnRpZG86IHAubiwgYzogcC5jfSk7XHJcbiAgcmV0dXJuIGFzaWVudG9zO1xyXG59XHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcclxuICBjb25zdCBsYXJnbyA9IG5lcC5mbGF0TWFwKGQgPT4gW1xyXG4gICAge2V0aXF1ZXRhOiBkLmV0aXF1ZXRhLCBzZXJpZTogXCJQb3Igdm90b3NcIiwgdjogZC5uZXBfdm90b3N9LFxyXG4gICAge2V0aXF1ZXRhOiBkLmV0aXF1ZXRhLCBzZXJpZTogXCJQb3IgZXNjYcOxb3NcIiwgdjogZC5uZXBfZXNjYW5vc31cclxuICBdKTtcclxuICBjb25zdCBldGlxdWV0YXMgPSBuZXAubWFwKGQgPT4gZC5ldGlxdWV0YSk7XHJcbiAgcmV0dXJuIFBsb3QucGxvdCh7XHJcbiAgICB3aWR0aDogMTA0MCwgaGVpZ2h0OiA0MjAsIG1hcmdpblRvcDogMzAsIG1hcmdpbkJvdHRvbTogNDUsXHJcbiAgICB4OiB7ZG9tYWluOiBldGlxdWV0YXMsIGxhYmVsOiBudWxsLCB0eXBlOiBcInBvaW50XCIsIHBhZGRpbmc6IDAuNCwgdGlja0Zvcm1hdDogZCA9PiBkLnJlcGxhY2UoXCIgKFwiLCBcIlxcbihcIil9LFxyXG4gICAgeToge2RvbWFpbjogWzAsIDddLCBsYWJlbDogXCLihpEgTsO6bWVybyBlZmVjdGl2byBkZSBwYXJ0aWRvc1wiLCBncmlkOiB0cnVlfSxcclxuICAgIGNvbG9yOiB7ZG9tYWluOiBbXCJQb3Igdm90b3NcIiwgXCJQb3IgZXNjYcOxb3NcIl0sIHJhbmdlOiBbXCIjOWIyMjI2XCIsIFwiIzFkODRjZVwiXSwgbGVnZW5kOiB0cnVlfSxcclxuICAgIG1hcmtzOiBbXHJcbiAgICAgIFBsb3QucnVsZVkoWzJdLCB7c3Ryb2tlOiBcIiMxYjFiMWJcIiwgc3Ryb2tlRGFzaGFycmF5OiBcIjQgNFwiLCBzdHJva2VPcGFjaXR5OiAuNX0pLFxyXG4gICAgICBQbG90LnRleHQoW3t4OiBcIjIwMDhcIiwgdDogXCJCaXBhcnRpZGlzbW8gcHVybyA9IDJcIn1dLCB7eDogXCJ4XCIsIHk6IDIsIHRleHQ6IFwidFwiLCBkeTogMTIsIGZvbnRTaXplOiAxNCwgZmlsbDogXCIjNTU1XCJ9KSxcclxuICAgICAgUGxvdC5saW5lKGxhcmdvLCB7eDogXCJldGlxdWV0YVwiLCB5OiBcInZcIiwgc3Ryb2tlOiBcInNlcmllXCIsIHN0cm9rZVdpZHRoOiAzfSksXHJcbiAgICAgIFBsb3QuZG90KGxhcmdvLCB7eDogXCJldGlxdWV0YVwiLCB5OiBcInZcIiwgZmlsbDogXCJzZXJpZVwiLCByOiA1fSksXHJcbiAgICAgIFBsb3QudGV4dChsYXJnbywge3g6IFwiZXRpcXVldGFcIiwgeTogXCJ2XCIsIHRleHQ6IGQgPT4gZC52LnRvRml4ZWQoMSkucmVwbGFjZShcIi5cIiwgXCIsXCIpLCBkeTogZCA9PiBkLnNlcmllID09PSBcIlBvciB2b3Rvc1wiID8gLTE0IDogMTYsIGZvbnRTaXplOiAxMywgZmlsbDogXCJzZXJpZVwifSlcclxuICAgIF1cclxuICB9KTtcclxufVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ7XHJcbiAgY29uc3QgYXNpZW50b3MgPSBoZW1pY2ljbG8oY29uZ3Jlc28pO1xyXG4gIHJldHVybiBQbG90LnBsb3Qoe1xyXG4gICAgd2lkdGg6IDY4MCwgaGVpZ2h0OiAzODAsIG1hcmdpbjogMTAsIG1hcmdpbkJvdHRvbTogMTAsXHJcbiAgICB4OiB7YXhpczogbnVsbCwgZG9tYWluOiBbLTEuMDUsIDEuMDVdfSwgeToge2F4aXM6IG51bGwsIGRvbWFpbjogWy0wLjA1LCAxLjA1XX0sXHJcbiAgICBtYXJrczogW1xyXG4gICAgICBQbG90LmRvdChhc2llbnRvcywge3g6IFwieFwiLCB5OiBcInlcIiwgZmlsbDogXCJjXCIsIHI6IDUuNiwgdGl0bGU6IFwicGFydGlkb1wifSksXHJcbiAgICAgIFBsb3QudGV4dChbXCIzNTAgZXNjYcOxb3NcIl0sIHt4OiAwLCB5OiAwLjIsIGZvbnRTaXplOiAyMiwgZm9udFdlaWdodDogNzAwLCBmaWxsOiBcIiMzMzNcIn0pLFxyXG4gICAgICBQbG90LnRleHQoW1wibWF5b3LDrWEgYWJzb2x1dGE6IDE3NlwiXSwge3g6IDAsIHk6IDAuMDgsIGZvbnRTaXplOiAxNSwgZmlsbDogXCIjNTU1XCJ9KVxyXG4gICAgXVxyXG4gIH0pO1xyXG59XHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgPHRhYmxlIGNsYXNzPVwidGFibGEtZXNjIG1pbmlcIj5cclxuICA8dHI+PHRoPlBhcnRpZG88L3RoPjx0aD4lIHZvdG88L3RoPjx0aD5Fc2Nhw7FvczwvdGg+PC90cj5cclxuICAke2NvbmdyZXNvLnNsaWNlKCkuc29ydCgoYSwgYikgPT4gb3JkZW5IZW1pY2ljbG8uaW5kZXhPZihhLmspIC0gb3JkZW5IZW1pY2ljbG8uaW5kZXhPZihiLmspKS5tYXAocCA9PiBodG1sYDx0ciBzdHlsZT1cImJhY2tncm91bmQ6JHtwLmN9MjJcIj5cclxuICAgIDx0ZD48c3BhbiBzdHlsZT1cImRpc3BsYXk6aW5saW5lLWJsb2NrO3dpZHRoOi44ZW07aGVpZ2h0Oi44ZW07YmFja2dyb3VuZDoke3AuY307Ym9yZGVyLXJhZGl1czoycHhcIj48L3NwYW4+ICR7cC5ufTwvdGQ+XHJcbiAgICA8dGQ+JHtwLnBjdC50b0xvY2FsZVN0cmluZyhcImVzLUVTXCIsIHttaW5pbXVtRnJhY3Rpb25EaWdpdHM6IDEsIG1heGltdW1GcmFjdGlvbkRpZ2l0czogMX0pfTwvdGQ+XHJcbiAgICA8dGQ+PGI+JHtwLmVzfTwvYj48L3RkPjwvdHI+YCl9XHJcbjwvdGFibGU+YFxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ7XHJcbiAgY29uc3QgdGcgPSBbXHJcbiAgICB7bjogXCJDVVBcIiwgeDogLTQuNCwgeTogLTQuMiwgYzogXCIjZmZkNTAwXCJ9LFxyXG4gICAge246IFwiRVJDXCIsIHg6IC0yLjYsIHk6IC0zLjAsIGM6IFwiI2U4ODkwY1wifSxcclxuICAgIHtuOiBcIkNvbXVucyAvIEZyb250IEFtcGxpXCIsIHg6IC0zLjAsIHk6IC0xLjQsIGM6IFwiI2U2MDA3ZVwifSxcclxuICAgIHtuOiBcIlBTQ1wiLCB4OiAtMS40LCB5OiAwLjgsIGM6IFwiI2UzMDYxM1wifSxcclxuICAgIHtuOiBcIkp1bnRzXCIsIHg6IDEuNCwgeTogLTMuNCwgYzogXCIjMDBhOTlkXCJ9LFxyXG4gICAge246IFwiQWxpYW7Dp2EgQ2F0YWxhbmFcIiwgeDogMy45LCB5OiAtNC40LCBjOiBcIiMxYjRmOGFcIn0sXHJcbiAgICB7bjogXCJQUFwiLCB4OiAyLjgsIHk6IDMuMCwgYzogXCIjMWQ4NGNlXCJ9LFxyXG4gICAge246IFwiVm94XCIsIHg6IDQuNCwgeTogNC40LCBjOiBcIiM1YWEzMWZcIn1cclxuICBdO1xyXG4gIHJldHVybiBQbG90LnBsb3Qoe1xyXG4gICAgd2lkdGg6IDEwMDAsIGhlaWdodDogNDgwLCBtYXJnaW5Ub3A6IDIwLCBtYXJnaW5MZWZ0OiAyMCwgbWFyZ2luUmlnaHQ6IDIwLFxyXG4gICAgeDoge2RvbWFpbjogWy01LjUsIDUuNV0sIGF4aXM6IG51bGx9LCB5OiB7ZG9tYWluOiBbLTUuMywgNS4zXSwgYXhpczogbnVsbH0sXHJcbiAgICBtYXJrczogW1xyXG4gICAgICBQbG90LnJ1bGVZKFswXSwge3N0cm9rZTogXCIjMWIxYjFiXCIsIHN0cm9rZVdpZHRoOiAzfSksXHJcbiAgICAgIFBsb3QucnVsZVgoWzBdLCB7c3Ryb2tlOiBcIiMxYjFiMWJcIiwgc3Ryb2tlV2lkdGg6IDN9KSxcclxuICAgICAgUGxvdC50ZXh0KFt7eDogLTUuNCwgeTogMC4zNSwgdDogXCJJWlFVSUVSREFcIn1dLCB7eDogXCJ4XCIsIHk6IFwieVwiLCB0ZXh0OiBcInRcIiwgdGV4dEFuY2hvcjogXCJzdGFydFwiLCBmb250U2l6ZTogMTYsIGZvbnRXZWlnaHQ6IDcwMH0pLFxyXG4gICAgICBQbG90LnRleHQoW3t4OiA1LjQsIHk6IDAuMzUsIHQ6IFwiREVSRUNIQVwifV0sIHt4OiBcInhcIiwgeTogXCJ5XCIsIHRleHQ6IFwidFwiLCB0ZXh0QW5jaG9yOiBcImVuZFwiLCBmb250U2l6ZTogMTYsIGZvbnRXZWlnaHQ6IDcwMH0pLFxyXG4gICAgICBQbG90LnRleHQoW3t4OiAwLjE1LCB5OiA1LjEsIHQ6IFwiVU5JT05JU1RBIC8gRVNQQcORT0xcIn1dLCB7eDogXCJ4XCIsIHk6IFwieVwiLCB0ZXh0OiBcInRcIiwgdGV4dEFuY2hvcjogXCJzdGFydFwiLCBmb250U2l6ZTogMTYsIGZvbnRXZWlnaHQ6IDcwMH0pLFxyXG4gICAgICBQbG90LnRleHQoW3t4OiAwLjE1LCB5OiAtNS4xLCB0OiBcIklOREVQRU5ERU5USVNUQVwifV0sIHt4OiBcInhcIiwgeTogXCJ5XCIsIHRleHQ6IFwidFwiLCB0ZXh0QW5jaG9yOiBcInN0YXJ0XCIsIGZvbnRTaXplOiAxNiwgZm9udFdlaWdodDogNzAwfSksXHJcbiAgICAgIFBsb3QuZG90KHRnLCB7eDogXCJ4XCIsIHk6IFwieVwiLCByOiAxNiwgZmlsbDogXCJjXCIsIHN0cm9rZTogXCIjZmZmXCIsIHN0cm9rZVdpZHRoOiAyfSksXHJcbiAgICAgIFBsb3QudGV4dCh0Zywge3g6IFwieFwiLCB5OiBcInlcIiwgdGV4dDogXCJuXCIsIGR5OiAtMjYsIGZvbnRTaXplOiAxNywgZm9udFdlaWdodDogNzAwfSlcclxuICAgIF1cclxuICB9KTtcclxufVxyXG4ifV19
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImNvbmdyZXNvID0gRmlsZUF0dGFjaG1lbnQoXCJkYXRvcy9jb25ncmVzb18yMDIzLmpzb25cIikuanNvbigpXG5uZXAgPSAoYXdhaXQgRmlsZUF0dGFjaG1lbnQoXCJkYXRvcy9uZXAuY3N2XCIpLmNzdih7dHlwZWQ6IHRydWV9KSkubWFwKGQgPT4gKHsuLi5kLCBldGlxdWV0YTogU3RyaW5nKGQuZXRpcXVldGEpfSkpXG5cbm9yZGVuSGVtaWNpY2xvID0gW1wiQ1VQXCIsIFwiU1VNQVJcIiwgXCJCSUxEVVwiLCBcIkVSQ1wiLCBcIkJOR1wiLCBcIlBTT0VcIiwgXCJQTlZcIiwgXCJDQ1wiLCBcIkpVTlRTXCIsIFwiVVBOXCIsIFwiUFBcIiwgXCJWT1hcIl1cblxuZnVuY3Rpb24gaGVtaWNpY2xvKHBhcnRpZG9zLCBmaWxhcyA9IDksIHIwID0gMC40Mikge1xuICBjb25zdCB0b3RhbCA9IGQzLnN1bShwYXJ0aWRvcywgcCA9PiBwLmVzKTtcbiAgY29uc3QgcmFkaW9zID0gZDMucmFuZ2UoZmlsYXMpLm1hcChpID0+IHIwICsgKDEgLSByMCkgKiBpIC8gKGZpbGFzIC0gMSkpO1xuICBjb25zdCBzdW1SID0gZDMuc3VtKHJhZGlvcyk7XG4gIGNvbnN0IHBvckZpbGEgPSByYWRpb3MubWFwKHIgPT4gTWF0aC5yb3VuZCh0b3RhbCAqIHIgLyBzdW1SKSk7XG4gIHBvckZpbGFbZmlsYXMgLSAxXSArPSB0b3RhbCAtIGQzLnN1bShwb3JGaWxhKTtcbiAgY29uc3QgYXNpZW50b3MgPSBbXTtcbiAgcmFkaW9zLmZvckVhY2goKHIsIGkpID0+IHtcbiAgICBjb25zdCBuID0gcG9yRmlsYVtpXTtcbiAgICBmb3IgKGxldCBqID0gMDsgaiA8IG47IGorKykge1xuICAgICAgY29uc3QgYSA9IE1hdGguUEkgLSBNYXRoLlBJICogaiAvIChuIC0gMSk7XG4gICAgICBhc2llbnRvcy5wdXNoKHthLCByLCB4OiByICogTWF0aC5jb3MoYSksIHk6IHIgKiBNYXRoLnNpbihhKX0pO1xuICAgIH1cbiAgfSk7XG4gIGFzaWVudG9zLnNvcnQoKHAsIHEpID0+IHEuYSAtIHAuYSB8fCBwLnIgLSBxLnIpO1xuICBjb25zdCBsaXN0YSA9IHBhcnRpZG9zLnNsaWNlKCkuc29ydCgocCwgcSkgPT4gb3JkZW5IZW1pY2ljbG8uaW5kZXhPZihwLmspIC0gb3JkZW5IZW1pY2ljbG8uaW5kZXhPZihxLmspKTtcbiAgbGV0IGsgPSAwO1xuICBmb3IgKGNvbnN0IHAgb2YgbGlzdGEpIGZvciAobGV0IGkgPSAwOyBpIDwgcC5lczsgaSsrKSBPYmplY3QuYXNzaWduKGFzaWVudG9zW2srK10sIHtwYXJ0aWRvOiBwLm4sIGM6IHAuY30pO1xuICByZXR1cm4gYXNpZW50b3M7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ7XG4gIGNvbnN0IGxhcmdvID0gbmVwLmZsYXRNYXAoZCA9PiBbXG4gICAge2V0aXF1ZXRhOiBkLmV0aXF1ZXRhLCBzZXJpZTogXCJQb3Igdm90b3NcIiwgdjogZC5uZXBfdm90b3N9LFxuICAgIHtldGlxdWV0YTogZC5ldGlxdWV0YSwgc2VyaWU6IFwiUG9yIGVzY2HDsW9zXCIsIHY6IGQubmVwX2VzY2Fub3N9XG4gIF0pO1xuICBjb25zdCBldGlxdWV0YXMgPSBuZXAubWFwKGQgPT4gZC5ldGlxdWV0YSk7XG4gIHJldHVybiBQbG90LnBsb3Qoe1xuICAgIHdpZHRoOiAxMDQwLCBoZWlnaHQ6IDQyMCwgbWFyZ2luVG9wOiAzMCwgbWFyZ2luQm90dG9tOiA0NSxcbiAgICB4OiB7ZG9tYWluOiBldGlxdWV0YXMsIGxhYmVsOiBudWxsLCB0eXBlOiBcInBvaW50XCIsIHBhZGRpbmc6IDAuNCwgdGlja0Zvcm1hdDogZCA9PiBkLnJlcGxhY2UoXCIgKFwiLCBcIlxcbihcIil9LFxuICAgIHk6IHtkb21haW46IFswLCA3XSwgbGFiZWw6IFwi4oaRIE7Dum1lcm8gZWZlY3Rpdm8gZGUgcGFydGlkb3NcIiwgZ3JpZDogdHJ1ZX0sXG4gICAgY29sb3I6IHtkb21haW46IFtcIlBvciB2b3Rvc1wiLCBcIlBvciBlc2Nhw7Fvc1wiXSwgcmFuZ2U6IFtcIiM5YjIyMjZcIiwgXCIjMWQ4NGNlXCJdLCBsZWdlbmQ6IHRydWV9LFxuICAgIG1hcmtzOiBbXG4gICAgICBQbG90LnJ1bGVZKFsyXSwge3N0cm9rZTogXCIjMWIxYjFiXCIsIHN0cm9rZURhc2hhcnJheTogXCI0IDRcIiwgc3Ryb2tlT3BhY2l0eTogLjV9KSxcbiAgICAgIFBsb3QudGV4dChbe3g6IFwiMjAwOFwiLCB0OiBcIkJpcGFydGlkaXNtbyBwdXJvID0gMlwifV0sIHt4OiBcInhcIiwgeTogMiwgdGV4dDogXCJ0XCIsIGR5OiAxMiwgZm9udFNpemU6IDE0LCBmaWxsOiBcIiM1NTVcIn0pLFxuICAgICAgUGxvdC5saW5lKGxhcmdvLCB7eDogXCJldGlxdWV0YVwiLCB5OiBcInZcIiwgc3Ryb2tlOiBcInNlcmllXCIsIHN0cm9rZVdpZHRoOiAzfSksXG4gICAgICBQbG90LmRvdChsYXJnbywge3g6IFwiZXRpcXVldGFcIiwgeTogXCJ2XCIsIGZpbGw6IFwic2VyaWVcIiwgcjogNX0pLFxuICAgICAgUGxvdC50ZXh0KGxhcmdvLCB7eDogXCJldGlxdWV0YVwiLCB5OiBcInZcIiwgdGV4dDogZCA9PiBkLnYudG9GaXhlZCgxKS5yZXBsYWNlKFwiLlwiLCBcIixcIiksIGR5OiBkID0+IGQuc2VyaWUgPT09IFwiUG9yIHZvdG9zXCIgPyAtMTQgOiAxNiwgZm9udFNpemU6IDEzLCBmaWxsOiBcInNlcmllXCJ9KVxuICAgIF1cbiAgfSk7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ7XG4gIGNvbnN0IGFzaWVudG9zID0gaGVtaWNpY2xvKGNvbmdyZXNvKTtcbiAgcmV0dXJuIFBsb3QucGxvdCh7XG4gICAgd2lkdGg6IDY4MCwgaGVpZ2h0OiAzODAsIG1hcmdpbjogMTAsIG1hcmdpbkJvdHRvbTogMTAsXG4gICAgeDoge2F4aXM6IG51bGwsIGRvbWFpbjogWy0xLjA1LCAxLjA1XX0sIHk6IHtheGlzOiBudWxsLCBkb21haW46IFstMC4wNSwgMS4wNV19LFxuICAgIG1hcmtzOiBbXG4gICAgICBQbG90LmRvdChhc2llbnRvcywge3g6IFwieFwiLCB5OiBcInlcIiwgZmlsbDogXCJjXCIsIHI6IDUuNiwgdGl0bGU6IFwicGFydGlkb1wifSksXG4gICAgICBQbG90LnRleHQoW1wiMzUwIGVzY2HDsW9zXCJdLCB7eDogMCwgeTogMC4yLCBmb250U2l6ZTogMjIsIGZvbnRXZWlnaHQ6IDcwMCwgZmlsbDogXCIjMzMzXCJ9KSxcbiAgICAgIFBsb3QudGV4dChbXCJtYXlvcsOtYSBhYnNvbHV0YTogMTc2XCJdLCB7eDogMCwgeTogMC4wOCwgZm9udFNpemU6IDE1LCBmaWxsOiBcIiM1NTVcIn0pXG4gICAgXVxuICB9KTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgPHRhYmxlIGNsYXNzPVwidGFibGEtZXNjIG1pbmlcIj5cbiAgPHRyPjx0aD5QYXJ0aWRvPC90aD48dGg+JSB2b3RvPC90aD48dGg+RXNjYcOxb3M8L3RoPjwvdHI+XG4gICR7Y29uZ3Jlc28uc2xpY2UoKS5zb3J0KChhLCBiKSA9PiBvcmRlbkhlbWljaWNsby5pbmRleE9mKGEuaykgLSBvcmRlbkhlbWljaWNsby5pbmRleE9mKGIuaykpLm1hcChwID0+IGh0bWxgPHRyIHN0eWxlPVwiYmFja2dyb3VuZDoke3AuY30yMlwiPlxuICAgIDx0ZD48c3BhbiBzdHlsZT1cImRpc3BsYXk6aW5saW5lLWJsb2NrO3dpZHRoOi44ZW07aGVpZ2h0Oi44ZW07YmFja2dyb3VuZDoke3AuY307Ym9yZGVyLXJhZGl1czoycHhcIj48L3NwYW4+ICR7cC5ufTwvdGQ+XG4gICAgPHRkPiR7cC5wY3QudG9Mb2NhbGVTdHJpbmcoXCJlcy1FU1wiLCB7bWluaW11bUZyYWN0aW9uRGlnaXRzOiAxLCBtYXhpbXVtRnJhY3Rpb25EaWdpdHM6IDF9KX08L3RkPlxuICAgIDx0ZD48Yj4ke3AuZXN9PC9iPjwvdGQ+PC90cj5gKX1cbjwvdGFibGU+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC01IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICBjb25zdCB0ZyA9IFtcbiAgICB7bjogXCJDVVBcIiwgeDogLTQuNCwgeTogLTQuMiwgYzogXCIjZmZkNTAwXCJ9LFxuICAgIHtuOiBcIkVSQ1wiLCB4OiAtMi42LCB5OiAtMy4wLCBjOiBcIiNlODg5MGNcIn0sXG4gICAge246IFwiQ29tdW5zIC8gRnJvbnQgQW1wbGlcIiwgeDogLTMuMCwgeTogLTEuNCwgYzogXCIjZTYwMDdlXCJ9LFxuICAgIHtuOiBcIlBTQ1wiLCB4OiAtMS40LCB5OiAwLjgsIGM6IFwiI2UzMDYxM1wifSxcbiAgICB7bjogXCJKdW50c1wiLCB4OiAxLjQsIHk6IC0zLjQsIGM6IFwiIzAwYTk5ZFwifSxcbiAgICB7bjogXCJBbGlhbsOnYSBDYXRhbGFuYVwiLCB4OiAzLjksIHk6IC00LjQsIGM6IFwiIzFiNGY4YVwifSxcbiAgICB7bjogXCJQUFwiLCB4OiAyLjgsIHk6IDMuMCwgYzogXCIjMWQ4NGNlXCJ9LFxuICAgIHtuOiBcIlZveFwiLCB4OiA0LjQsIHk6IDQuNCwgYzogXCIjNWFhMzFmXCJ9XG4gIF07XG4gIHJldHVybiBQbG90LnBsb3Qoe1xuICAgIHdpZHRoOiAxMDAwLCBoZWlnaHQ6IDQ4MCwgbWFyZ2luVG9wOiAyMCwgbWFyZ2luTGVmdDogMjAsIG1hcmdpblJpZ2h0OiAyMCxcbiAgICB4OiB7ZG9tYWluOiBbLTUuNSwgNS41XSwgYXhpczogbnVsbH0sIHk6IHtkb21haW46IFstNS4zLCA1LjNdLCBheGlzOiBudWxsfSxcbiAgICBtYXJrczogW1xuICAgICAgUGxvdC5ydWxlWShbMF0sIHtzdHJva2U6IFwiIzFiMWIxYlwiLCBzdHJva2VXaWR0aDogM30pLFxuICAgICAgUGxvdC5ydWxlWChbMF0sIHtzdHJva2U6IFwiIzFiMWIxYlwiLCBzdHJva2VXaWR0aDogM30pLFxuICAgICAgUGxvdC50ZXh0KFt7eDogLTUuNCwgeTogMC4zNSwgdDogXCJJWlFVSUVSREFcIn1dLCB7eDogXCJ4XCIsIHk6IFwieVwiLCB0ZXh0OiBcInRcIiwgdGV4dEFuY2hvcjogXCJzdGFydFwiLCBmb250U2l6ZTogMTYsIGZvbnRXZWlnaHQ6IDcwMH0pLFxuICAgICAgUGxvdC50ZXh0KFt7eDogNS40LCB5OiAwLjM1LCB0OiBcIkRFUkVDSEFcIn1dLCB7eDogXCJ4XCIsIHk6IFwieVwiLCB0ZXh0OiBcInRcIiwgdGV4dEFuY2hvcjogXCJlbmRcIiwgZm9udFNpemU6IDE2LCBmb250V2VpZ2h0OiA3MDB9KSxcbiAgICAgIFBsb3QudGV4dChbe3g6IDAuMTUsIHk6IDUuMSwgdDogXCJVTklPTklTVEEgLyBFU1BBw5FPTFwifV0sIHt4OiBcInhcIiwgeTogXCJ5XCIsIHRleHQ6IFwidFwiLCB0ZXh0QW5jaG9yOiBcInN0YXJ0XCIsIGZvbnRTaXplOiAxNiwgZm9udFdlaWdodDogNzAwfSksXG4gICAgICBQbG90LnRleHQoW3t4OiAwLjE1LCB5OiAtNS4xLCB0OiBcIklOREVQRU5ERU5USVNUQVwifV0sIHt4OiBcInhcIiwgeTogXCJ5XCIsIHRleHQ6IFwidFwiLCB0ZXh0QW5jaG9yOiBcInN0YXJ0XCIsIGZvbnRTaXplOiAxNiwgZm9udFdlaWdodDogNzAwfSksXG4gICAgICBQbG90LmRvdCh0Zywge3g6IFwieFwiLCB5OiBcInlcIiwgcjogMTYsIGZpbGw6IFwiY1wiLCBzdHJva2U6IFwiI2ZmZlwiLCBzdHJva2VXaWR0aDogMn0pLFxuICAgICAgUGxvdC50ZXh0KHRnLCB7eDogXCJ4XCIsIHk6IFwieVwiLCB0ZXh0OiBcIm5cIiwgZHk6IC0yNiwgZm9udFNpemU6IDE3LCBmb250V2VpZ2h0OiA3MDB9KVxuICAgIF1cbiAgfSk7XG59XG4ifV19
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
