@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.11.9">
+
+  <title>Curso de política – El sistema de partidos español</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-66bd81fbca03af80cecb5eb6efe3a13e.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section class="quarto-title-block center">
+  <h1 class="title">El sistema de partidos español</h1>
+  <p class="subtitle">Sesión 3 · Tipos de sistemas de partidos, el caso español y Tarragona</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section class="slide level2">
+
+<div class="cell hidden">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="17" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 16;"><span id="cb1-17"><a aria-label="17"></a>congreso <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"datos/congreso_2023.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb1-18"><a aria-label="18"></a>nep <span class="op">=</span> (<span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"datos/nep.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>}))<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({<span class="op">...</span>d<span class="op">,</span> <span class="dt">etiqueta</span><span class="op">:</span> <span class="bu">String</span>(d<span class="op">.</span><span class="at">etiqueta</span>)}))</span>
+<span id="cb1-19"><a aria-label="19"></a></span>
+<span id="cb1-20"><a aria-label="20"></a>ordenHemiciclo <span class="op">=</span> [<span class="st">"CUP"</span><span class="op">,</span> <span class="st">"SUMAR"</span><span class="op">,</span> <span class="st">"BILDU"</span><span class="op">,</span> <span class="st">"ERC"</span><span class="op">,</span> <span class="st">"BNG"</span><span class="op">,</span> <span class="st">"PSOE"</span><span class="op">,</span> <span class="st">"PNV"</span><span class="op">,</span> <span class="st">"CC"</span><span class="op">,</span> <span class="st">"JUNTS"</span><span class="op">,</span> <span class="st">"UPN"</span><span class="op">,</span> <span class="st">"PP"</span><span class="op">,</span> <span class="st">"VOX"</span>]</span>
+<span id="cb1-21"><a aria-label="21"></a></span>
+<span id="cb1-22"><a aria-label="22"></a><span class="kw">function</span> <span class="fu">hemiciclo</span>(partidos<span class="op">,</span> filas <span class="op">=</span> <span class="dv">9</span><span class="op">,</span> r0 <span class="op">=</span> <span class="fl">0.42</span>) {</span>
+<span id="cb1-23"><a aria-label="23"></a>  <span class="kw">const</span> total <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span>(partidos<span class="op">,</span> p <span class="kw">=&gt;</span> p<span class="op">.</span><span class="at">es</span>)<span class="op">;</span></span>
+<span id="cb1-24"><a aria-label="24"></a>  <span class="kw">const</span> radios <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(filas)<span class="op">.</span><span class="fu">map</span>(i <span class="kw">=&gt;</span> r0 <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> r0) <span class="op">*</span> i <span class="op">/</span> (filas <span class="op">-</span> <span class="dv">1</span>))<span class="op">;</span></span>
+<span id="cb1-25"><a aria-label="25"></a>  <span class="kw">const</span> sumR <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span>(radios)<span class="op">;</span></span>
+<span id="cb1-26"><a aria-label="26"></a>  <span class="kw">const</span> porFila <span class="op">=</span> radios<span class="op">.</span><span class="fu">map</span>(r <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(total <span class="op">*</span> r <span class="op">/</span> sumR))<span class="op">;</span></span>
+<span id="cb1-27"><a aria-label="27"></a>  porFila[filas <span class="op">-</span> <span class="dv">1</span>] <span class="op">+=</span> total <span class="op">-</span> d3<span class="op">.</span><span class="fu">sum</span>(porFila)<span class="op">;</span></span>
+<span id="cb1-28"><a aria-label="28"></a>  <span class="kw">const</span> asientos <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb1-29"><a aria-label="29"></a>  radios<span class="op">.</span><span class="fu">forEach</span>((r<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
+<span id="cb1-30"><a aria-label="30"></a>    <span class="kw">const</span> n <span class="op">=</span> porFila[i]<span class="op">;</span></span>
+<span id="cb1-31"><a aria-label="31"></a>    <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">;</span> j<span class="op">++</span>) {</span>
+<span id="cb1-32"><a aria-label="32"></a>      <span class="kw">const</span> a <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">-</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> j <span class="op">/</span> (n <span class="op">-</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb1-33"><a aria-label="33"></a>      asientos<span class="op">.</span><span class="fu">push</span>({a<span class="op">,</span> r<span class="op">,</span> <span class="dt">x</span><span class="op">:</span> r <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(a)<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> r <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(a)})<span class="op">;</span></span>
+<span id="cb1-34"><a aria-label="34"></a>    }</span>
+<span id="cb1-35"><a aria-label="35"></a>  })<span class="op">;</span></span>
+<span id="cb1-36"><a aria-label="36"></a>  asientos<span class="op">.</span><span class="fu">sort</span>((p<span class="op">,</span> q) <span class="kw">=&gt;</span> q<span class="op">.</span><span class="at">a</span> <span class="op">-</span> p<span class="op">.</span><span class="at">a</span> <span class="op">||</span> p<span class="op">.</span><span class="at">r</span> <span class="op">-</span> q<span class="op">.</span><span class="at">r</span>)<span class="op">;</span></span>
+<span id="cb1-37"><a aria-label="37"></a>  <span class="kw">const</span> lista <span class="op">=</span> partidos<span class="op">.</span><span class="fu">slice</span>()<span class="op">.</span><span class="fu">sort</span>((p<span class="op">,</span> q) <span class="kw">=&gt;</span> ordenHemiciclo<span class="op">.</span><span class="fu">indexOf</span>(p<span class="op">.</span><span class="at">k</span>) <span class="op">-</span> ordenHemiciclo<span class="op">.</span><span class="fu">indexOf</span>(q<span class="op">.</span><span class="at">k</span>))<span class="op">;</span></span>
+<span id="cb1-38"><a aria-label="38"></a>  <span class="kw">let</span> k <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-39"><a aria-label="39"></a>  <span class="cf">for</span> (<span class="kw">const</span> p <span class="kw">of</span> lista) <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> p<span class="op">.</span><span class="at">es</span><span class="op">;</span> i<span class="op">++</span>) <span class="bu">Object</span><span class="op">.</span><span class="fu">assign</span>(asientos[k<span class="op">++</span>]<span class="op">,</span> {<span class="dt">partido</span><span class="op">:</span> p<span class="op">.</span><span class="at">n</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> p<span class="op">.</span><span class="at">c</span>})<span class="op">;</span></span>
+<span id="cb1-40"><a aria-label="40"></a>  <span class="cf">return</span> asientos<span class="op">;</span></span>
+<span id="cb1-41"><a aria-label="41"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Hoja de ruta</h2>
+<div class="tarjetas" style="--n:4">
+<div class="tarjeta" style="--c:#555">
+<p><span class="tt">1. La teoría</span> ¿Qué tipos de sistemas de partidos hay y cómo se miden?</p>
+</div>
+<div class="tarjeta" style="--c:#b3261e">
+<p><span class="tt">2. España</span> Dos ejes de competición y los partidos del Congreso de 2023.</p>
+</div>
+<div class="tarjeta" style="--c:#1d84ce">
+<p><span class="tt">3. La oferta</span> Cómo ha cambiado el mapa de partidos entre 2019 y 2023.</p>
+</div>
+<div class="tarjeta" style="--c:#9b2226">
+<p><span class="tt">4. Tarragona</span> Los partidos que compiten en nuestra provincia.</p>
+</div>
+</div>
+</section>
+<section>
+<section class="title-slide slide level1 center" data-background-color="#1b1b1b">
+<h1>1 · Tipos de sistemas de partidos</h1>
+
+</section>
+<section class="slide level2">
+<h2>¿Qué es un sistema de partidos?</h2>
+<p>No es solo <strong>cuántos</strong> partidos hay, sino <strong>cómo se relacionan</strong> entre sí.</p>
+<div class="tarjetas" style="--n:2">
+<div class="tarjeta" style="--c:#555">
+<p><span class="tt">Número (fragmentación)</span> ¿Cuántos partidos <strong>cuentan</strong> de verdad? Solo los que pueden gobernar o tienen capacidad de chantaje (sin ellos no hay mayoría).</p>
+</div>
+<div class="tarjeta" style="--c:#b3261e">
+<p><span class="tt">Distancia ideológica (polarización)</span> ¿Cuánto se separan los extremos? ¿Hay partidos <strong>antisistema</strong> que rechazan las reglas del juego?</p>
+</div>
+</div>
+<div class="chico">
+<p>Giovanni Sartori, <em>Partidos y sistemas de partidos</em> (1976): combinando número y distancia salen los distintos tipos.</p>
+</div>
+</section>
+<section class="slide level2 smaller">
+<h2>La tipología de Sartori</h2>
+<div class="tabla-peq">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th>Cómo funciona</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Partido único</strong></td>
+<td>Solo un partido es legal.</td>
+<td>China, la URSS</td>
+</tr>
+<tr class="even">
+<td><strong>Partido hegemónico</strong></td>
+<td>Hay otros partidos, pero no pueden ganar.</td>
+<td>México con el PRI (hasta 2000)</td>
+</tr>
+<tr class="odd">
+<td><strong>Partido predominante</strong></td>
+<td>Hay competencia libre, pero el mismo partido gana una y otra vez.</td>
+<td>Japón (PLD), Andalucía (PSOE, 1982-2018)</td>
+</tr>
+<tr class="even">
+<td><strong>Bipartidismo</strong></td>
+<td>Dos partidos se alternan y gobiernan solos.</td>
+<td>Reino Unido, EE. UU.</td>
+</tr>
+<tr class="odd">
+<td><strong>Pluralismo moderado</strong></td>
+<td>3-5 partidos relevantes, poca distancia ideológica, <strong>competición centrípeta</strong> y gobiernos de coalición por bloques.</td>
+<td>Alemania, Países Bajos, España hoy</td>
+</tr>
+<tr class="even">
+<td><strong>Pluralismo polarizado</strong></td>
+<td>6 o más partidos, partidos antisistema en ambos extremos, <strong>competición centrífuga</strong>.</td>
+<td>República de Weimar, Italia (1948-1992)</td>
+</tr>
+<tr class="odd">
+<td><strong>Atomizado</strong></td>
+<td>Tantos partidos que ninguno pesa.</td>
+<td>Sistemas en formación</td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="notes">
+<p>Centrípeta: los partidos compiten hacia el centro para captar al votante moderado. Centrífuga: los extremos crecen y el centro se vacía. El debate actual en España es si la polarización nos acerca al pluralismo polarizado.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Cómo se mide: el número efectivo de partidos</h2>
+<p>Laakso y Taagepera (1979) proponen una fórmula que “pesa” a cada partido por su tamaño:</p>
+<div style="text-align:center;font-size:1.3em;margin:.4em 0">
+<b>NEP</b> = 1 / Σ p<sub>i</sub>²
+</div>
+<div class="chico" style="text-align:center">
+<p>p<sub>i</sub> es la proporción de votos (o escaños) de cada partido.</p>
+</div>
+<div class="tarjetas" style="--n:3">
+<div class="tarjeta" style="--c:#1d84ce">
+<p><span class="tt">Dos partidos al 50 %</span> 1 / (0,5² + 0,5²) = <strong>2</strong></p>
+</div>
+<div class="tarjeta" style="--c:#e07a5f">
+<p><span class="tt">60 % + 30 % + 10 %</span> 1 / (0,36 + 0,09 + 0,01) ≈ <strong>2,2</strong></p>
+</div>
+<div class="tarjeta" style="--c:#9b2226">
+<p><span class="tt">Cinco partidos al 20 %</span> 1 / (5 × 0,04) = <strong>5</strong></p>
+</div>
+</div>
+<div class="chico">
+<p>Se puede calcular con los <strong>votos</strong> (lo que quieren los votantes) o con los <strong>escaños</strong> (lo que sale del sistema electoral).</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>España: número efectivo de partidos, 1977-2023</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="135" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb2-135"><a aria-label="135"></a>{</span>
+<span id="cb2-136"><a aria-label="136"></a>  <span class="kw">const</span> largo <span class="op">=</span> nep<span class="op">.</span><span class="fu">flatMap</span>(d <span class="kw">=&gt;</span> [</span>
+<span id="cb2-137"><a aria-label="137"></a>    {<span class="dt">etiqueta</span><span class="op">:</span> d<span class="op">.</span><span class="at">etiqueta</span><span class="op">,</span> <span class="dt">serie</span><span class="op">:</span> <span class="st">"Por votos"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> d<span class="op">.</span><span class="at">nep_votos</span>}<span class="op">,</span></span>
+<span id="cb2-138"><a aria-label="138"></a>    {<span class="dt">etiqueta</span><span class="op">:</span> d<span class="op">.</span><span class="at">etiqueta</span><span class="op">,</span> <span class="dt">serie</span><span class="op">:</span> <span class="st">"Por escaños"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> d<span class="op">.</span><span class="at">nep_escanos</span>}</span>
+<span id="cb2-139"><a aria-label="139"></a>  ])<span class="op">;</span></span>
+<span id="cb2-140"><a aria-label="140"></a>  <span class="kw">const</span> etiquetas <span class="op">=</span> nep<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">etiqueta</span>)<span class="op">;</span></span>
+<span id="cb2-141"><a aria-label="141"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb2-142"><a aria-label="142"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">1040</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">420</span><span class="op">,</span> <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">45</span><span class="op">,</span></span>
+<span id="cb2-143"><a aria-label="143"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> etiquetas<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">type</span><span class="op">:</span> <span class="st">"point"</span><span class="op">,</span> <span class="dt">padding</span><span class="op">:</span> <span class="fl">0.4</span><span class="op">,</span> <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="fu">replace</span>(<span class="st">" ("</span><span class="op">,</span> <span class="st">"</span><span class="sc">\n</span><span class="st">("</span>)}<span class="op">,</span></span>
+<span id="cb2-144"><a aria-label="144"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Número efectivo de partidos"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb2-145"><a aria-label="145"></a>    <span class="dt">color</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="st">"Por votos"</span><span class="op">,</span> <span class="st">"Por escaños"</span>]<span class="op">,</span> <span class="dt">range</span><span class="op">:</span> [<span class="st">"#9b2226"</span><span class="op">,</span> <span class="st">"#1d84ce"</span>]<span class="op">,</span> <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb2-146"><a aria-label="146"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb2-147"><a aria-label="147"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">2</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#1b1b1b"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4 4"</span><span class="op">,</span> <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="op">.</span><span class="dv">5</span>})<span class="op">,</span></span>
+<span id="cb2-148"><a aria-label="148"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="st">"2008"</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"Bipartidismo puro = 2"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">14</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#555"</span>})<span class="op">,</span></span>
+<span id="cb2-149"><a aria-label="149"></a>      Plot<span class="op">.</span><span class="fu">line</span>(largo<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"etiqueta"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"serie"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span>})<span class="op">,</span></span>
+<span id="cb2-150"><a aria-label="150"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(largo<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"etiqueta"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"serie"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">5</span>})<span class="op">,</span></span>
+<span id="cb2-151"><a aria-label="151"></a>      Plot<span class="op">.</span><span class="fu">text</span>(largo<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"etiqueta"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">v</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="st">"."</span><span class="op">,</span> <span class="st">","</span>)<span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">serie</span> <span class="op">===</span> <span class="st">"Por votos"</span> <span class="op">?</span> <span class="op">-</span><span class="dv">14</span> <span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"serie"</span>})</span>
+<span id="cb2-152"><a aria-label="152"></a>    ]</span>
+<span id="cb2-153"><a aria-label="153"></a>  })<span class="op">;</span></span>
+<span id="cb2-154"><a aria-label="154"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="fuente">
+<p>Fuente: Ministerio del Interior. Elaboración propia. La diferencia entre las dos líneas es el efecto reductor del sistema electoral.</p>
+</div>
+<aside class="notes">
+<p>En 2008 el número efectivo por escaños fue de 2,3: casi bipartidismo puro. En 2019 se acercó a 5 escaños y 6 votos. En 2023 baja a 3,4 por la recuperación de PP y PSOE.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section class="title-slide slide level1 center" data-background-color="#1b1b1b">
+<h1>2 · El caso español</h1>
+
+</section>
+<section class="slide level2">
+<h2>Dos ejes de competición</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Eje izquierda-derecha</strong> (clivaje de clase)</p>
+<ul>
+<li>Economía, impuestos, Estado del bienestar, valores.</li>
+<li>En él compiten todos los partidos.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Eje centro-periferia</strong> (clivaje territorial)</p>
+<ul>
+<li>Modelo de Estado: centralismo, autonomía, federalismo, independencia.</li>
+<li>Muy fuerte en Cataluña, el País Vasco, Galicia, Navarra y Canarias.</li>
+</ul>
+</div></div>
+<div class="tarjetas" style="--n:2">
+<div class="tarjeta" style="--c:#1d84ce">
+<p><span class="tt">Partidos de ámbito estatal (PAE)</span> Se presentan en toda España: PSOE, PP, Vox, Sumar…</p>
+</div>
+<div class="tarjeta" style="--c:#e8890c">
+<p><span class="tt">Partidos de ámbito no estatal (PANE)</span> Solo en su territorio: ERC, Junts, PNV, EH Bildu, BNG, CC, UPN…</p>
+</div>
+</div>
+<div class="chico">
+<p>Por eso en Cataluña o el País Vasco funciona un <strong>sistema de partidos propio</strong>, distinto del español.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Así evoluciona el sistema</h2>
+<div class="tarjetas" style="--n:3">
+<div class="tarjeta" style="--c:#2e9e5b">
+<p><span class="tt">1977-1982 · Pluralismo moderado</span> UCD, PSOE, PCE, AP y nacionalistas. La UCD se hunde en 1982.</p>
+</div>
+<div class="tarjeta" style="--c:#1d84ce">
+<p><span class="tt">1982-2011 · Bipartidismo imperfecto</span> PSOE y PP se alternan. Cuando no tienen mayoría absoluta, pactan con <strong>CiU, PNV o CC</strong>: los nacionalistas actúan de <strong>bisagra</strong>.</p>
+</div>
+<div class="tarjeta" style="--c:#9b2226">
+<p><span class="tt">2015-hoy · Pluralismo de bloques</span> Llegan Podemos, Cs y Vox. Se compite <strong>por bloques</strong> (izquierda + nacionalistas frente a derecha) y suben la fragmentación y la <strong>polarización</strong>.</p>
+</div>
+</div>
+<div class="chico">
+<p>Hoy el debate es si España sigue en el <strong>pluralismo moderado</strong> o si la polarización la acerca al <strong>pluralismo polarizado</strong> de Sartori.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>El Congreso de 2023</h2>
+<div class="columns">
+<div class="column" style="width:64%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="225" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 224;"><span id="cb3-225"><a aria-label="225"></a>{</span>
+<span id="cb3-226"><a aria-label="226"></a>  <span class="kw">const</span> asientos <span class="op">=</span> <span class="fu">hemiciclo</span>(congreso)<span class="op">;</span></span>
+<span id="cb3-227"><a aria-label="227"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb3-228"><a aria-label="228"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">680</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">380</span><span class="op">,</span> <span class="dt">margin</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb3-229"><a aria-label="229"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">1.05</span><span class="op">,</span> <span class="fl">1.05</span>]}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.05</span><span class="op">,</span> <span class="fl">1.05</span>]}<span class="op">,</span></span>
+<span id="cb3-230"><a aria-label="230"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb3-231"><a aria-label="231"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(asientos<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"c"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="fl">5.6</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">"partido"</span>})<span class="op">,</span></span>
+<span id="cb3-232"><a aria-label="232"></a>      Plot<span class="op">.</span><span class="fu">text</span>([<span class="st">"350 escaños"</span>]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.2</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">22</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#333"</span>})<span class="op">,</span></span>
+<span id="cb3-233"><a aria-label="233"></a>      Plot<span class="op">.</span><span class="fu">text</span>([<span class="st">"mayoría absoluta: 176"</span>]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.08</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#555"</span>})</span>
+<span id="cb3-234"><a aria-label="234"></a>    ]</span>
+<span id="cb3-235"><a aria-label="235"></a>  })<span class="op">;</span></span>
+<span id="cb3-236"><a aria-label="236"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div><div class="column" style="width:36%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="241" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 240;"><span id="cb4-241"><a aria-label="241"></a><span class="fu">html</span><span class="vs">`&lt;table class="tabla-esc mini"&gt;</span></span>
+<span id="cb4-242"><a aria-label="242"></a><span class="vs">  &lt;tr&gt;&lt;th&gt;Partido&lt;/th&gt;&lt;th&gt;% voto&lt;/th&gt;&lt;th&gt;Escaños&lt;/th&gt;&lt;/tr&gt;</span></span>
+<span id="cb4-243"><a aria-label="243"></a><span class="vs">  </span><span class="sc">${</span>congreso<span class="op">.</span><span class="fu">slice</span>()<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> ordenHemiciclo<span class="op">.</span><span class="fu">indexOf</span>(a<span class="op">.</span><span class="at">k</span>) <span class="op">-</span> ordenHemiciclo<span class="op">.</span><span class="fu">indexOf</span>(b<span class="op">.</span><span class="at">k</span>))<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;tr style="background:</span><span class="sc">${</span>p<span class="op">.</span><span class="at">c</span><span class="sc">}</span><span class="vs">22"&gt;</span></span>
+<span id="cb4-244"><a aria-label="244"></a><span class="vs">    &lt;td&gt;&lt;span style="display:inline-block;width:.8em;height:.8em;background:</span><span class="sc">${</span>p<span class="op">.</span><span class="at">c</span><span class="sc">}</span><span class="vs">;border-radius:2px"&gt;&lt;/span&gt; </span><span class="sc">${</span>p<span class="op">.</span><span class="at">n</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb4-245"><a aria-label="245"></a><span class="vs">    &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">pct</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"es-ES"</span><span class="op">,</span> {<span class="dt">minimumFractionDigits</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">maximumFractionDigits</span><span class="op">:</span> <span class="dv">1</span>})<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb4-246"><a aria-label="246"></a><span class="vs">    &lt;td&gt;&lt;b&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">es</span><span class="sc">}</span><span class="vs">&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;`</span>)<span class="sc">}</span></span>
+<span id="cb4-247"><a aria-label="247"></a><span class="vs">&lt;/table&gt;`</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div></div>
+<div class="chico">
+<p><strong>11 partidos</strong> con escaño. Investidura de Sánchez (noviembre de 2023): <strong>179</strong> votos a favor (PSOE, Sumar, ERC, Junts, EH Bildu, PNV, BNG y CC).</p>
+</div>
+</section>
+<section class="slide level2 smaller">
+<h2>Los partidos del Congreso de 2023</h2>
+<div class="tabla-peq">
+<table class="tabla-partidos">
+<tbody><tr>
+<th>
+Partido
+</th>
+<th style="text-align:right">
+Escaños
+</th>
+<th>
+Eje izquierda-derecha
+</th>
+<th>
+Eje territorial
+</th>
+<th>
+Familia ideológica
+</th>
+</tr>
+<tr style="background:#e6007e22">
+<td>
+<span class="punto" style="background:#e6007e"></span><b>Sumar</b>
+</td>
+<td style="text-align:right">
+31
+</td>
+<td>
+Izquierda
+</td>
+<td>
+Estatal, plurinacional
+</td>
+<td>
+Coalición de izquierdas (IU, Más Madrid, Comuns, Compromís…)
+</td>
+</tr>
+<tr style="background:#8a9a0a22">
+<td>
+<span class="punto" style="background:#8a9a0a"></span><b>EH Bildu</b>
+</td>
+<td style="text-align:right">
+6
+</td>
+<td>
+Izquierda
+</td>
+<td>
+Independentista vasco
+</td>
+<td>
+Izquierda <i>abertzale</i>
+</td>
+</tr>
+<tr style="background:#e8890c22">
+<td>
+<span class="punto" style="background:#e8890c"></span><b>ERC</b>
+</td>
+<td style="text-align:right">
+7
+</td>
+<td>
+Izquierda
+</td>
+<td>
+Independentista catalán
+</td>
+<td>
+Republicanismo de izquierdas
+</td>
+</tr>
+<tr style="background:#3aa0c422">
+<td>
+<span class="punto" style="background:#3aa0c4"></span><b>BNG</b>
+</td>
+<td style="text-align:right">
+1
+</td>
+<td>
+Izquierda
+</td>
+<td>
+Nacionalista gallego
+</td>
+<td>
+Izquierda nacionalista
+</td>
+</tr>
+<tr style="background:#e3061322">
+<td>
+<span class="punto" style="background:#e30613"></span><b>PSOE</b>
+</td>
+<td style="text-align:right">
+121
+</td>
+<td>
+Centro-izquierda
+</td>
+<td>
+Estatal
+</td>
+<td>
+Socialdemócrata
+</td>
+</tr>
+<tr style="background:#0b6b3a22">
+<td>
+<span class="punto" style="background:#0b6b3a"></span><b>PNV</b>
+</td>
+<td style="text-align:right">
+5
+</td>
+<td>
+Centro-derecha
+</td>
+<td>
+Nacionalista vasco
+</td>
+<td>
+Democristiano
+</td>
+</tr>
+<tr style="background:#d9b80022">
+<td>
+<span class="punto" style="background:#d9b800"></span><b>CC</b>
+</td>
+<td style="text-align:right">
+1
+</td>
+<td>
+Centro
+</td>
+<td>
+Nacionalista canario
+</td>
+<td>
+Regionalista
+</td>
+</tr>
+<tr style="background:#00a99d22">
+<td>
+<span class="punto" style="background:#00a99d"></span><b>Junts</b>
+</td>
+<td style="text-align:right">
+7
+</td>
+<td>
+Centro-derecha
+</td>
+<td>
+Independentista catalán
+</td>
+<td>
+Liberal, heredero de CiU
+</td>
+</tr>
+<tr style="background:#a3324a22">
+<td>
+<span class="punto" style="background:#a3324a"></span><b>UPN</b>
+</td>
+<td style="text-align:right">
+1
+</td>
+<td>
+Centro-derecha
+</td>
+<td>
+Regionalista navarro
+</td>
+<td>
+Conservador
+</td>
+</tr>
+<tr style="background:#1d84ce22">
+<td>
+<span class="punto" style="background:#1d84ce"></span><b>PP</b>
+</td>
+<td style="text-align:right">
+137
+</td>
+<td>
+Centro-derecha
+</td>
+<td>
+Estatal
+</td>
+<td>
+Liberal-conservador, democristiano
+</td>
+</tr>
+<tr style="background:#5aa31f22">
+<td>
+<span class="punto" style="background:#5aa31f"></span><b>Vox</b>
+</td>
+<td style="text-align:right">
+33
+</td>
+<td>
+Derecha radical
+</td>
+<td>
+Estatal, recentralizador
+</td>
+<td>
+Derecha radical populista
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="fuente">
+<p>Clasificación orientativa. Las etiquetas “derecha radical populista” y similares siguen el uso habitual en ciencia política (Mudde).</p>
+</div>
+</section></section>
+<section>
+<section class="title-slide slide level1 center" data-background-color="#1b1b1b">
+<h1>3 · La oferta en España</h1>
+
+</section>
+<section class="slide level2">
+<h2>La oferta en 2019 (noviembre)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="recursos/img/oferta_2019.png" class="quarto-figure quarto-figure-center" height="520"></p>
+</figure>
+</div>
+<aside class="notes">
+<p>Noviembre de 2019 es el momento de máxima fragmentación: 16 partidos con representación. Aparecen Cs en el centro, Podemos y Más País a la izquierda del PSOE, Vox a la derecha del PP, y muchos partidos territoriales pequeños: Teruel Existe, PRC, Navarra Suma, Foro, Compromís… Las dos líneas grises muestran que los ejes reales están inclinados: en España, ser de izquierdas se asocia algo más con posiciones periféricas, y ser de derechas, con posiciones nacionales.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>La oferta en 2023</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="recursos/img/oferta_2023.png" class="quarto-figure quarto-figure-center" height="520"></p>
+</figure>
+</div>
+<aside class="notes">
+<p>Continuidad: los partidos que defienden el sistema del 78 tal como es (PP, PSOE, PNV, CC, UPN). Reforma desafiante: quieren cambiar el sistema desde la izquierda (Sumar, BNG, ERC, EH Bildu). Retroceso desafiante: quieren cambiarlo hacia atrás, por ejemplo recentralizando el Estado (Vox). Ruptura: quieren salir del sistema, con la independencia (CUP, ERC, EH Bildu, Junts). Respecto a 2019 desaparecen Cs y muchos pequeños partidos territoriales, y Podemos, Más País y Compromís se integran en Sumar.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>De 2019 a 2023: qué cambia</h2>
+<div class="tarjetas" style="--n:3">
+<div class="tarjeta" style="--c:#e6007e">
+<p><span class="tt">Concentración en la izquierda</span> Podemos, Más País y Compromís se integran en <strong>Sumar</strong>.</p>
+</div>
+<div class="tarjeta" style="--c:#ff7f0e">
+<p><span class="tt">Desaparece el centro</span> <strong>Ciudadanos</strong> pasa de 57 escaños (abril de 2019) a ninguno. Sus votantes vuelven sobre todo al PP.</p>
+</div>
+<div class="tarjeta" style="--c:#5aa31f">
+<p><span class="tt">La derecha se reordena</span> El PP se recupera y <strong>Vox</strong> baja de 52 a 33 escaños.</p>
+</div>
+</div>
+<div class="chico">
+<p>Resultado: menos partidos (de 16 a 11) y un número efectivo de partidos que baja de 4,7 a 3,4 por escaños. Pero la competición sigue siendo <strong>por bloques</strong>.</p>
+</div>
+</section></section>
+<section>
+<section class="title-slide slide level1 center" data-background-color="#1b1b1b">
+<h1>4 · Tarragona</h1>
+
+</section>
+<section class="slide level2 smaller">
+<h2>Los partidos en la provincia de Tarragona</h2>
+<div class="tabla-peq">
+<table class="tabla-partidos">
+<tbody><tr>
+<th>
+Partido
+</th>
+<th>
+2023 (Tarragona)
+</th>
+<th>
+Izquierda-derecha
+</th>
+<th>
+Eje nacional
+</th>
+<th>
+Familia ideológica
+</th>
+<th>
+29-N
+</th>
+</tr>
+<tr style="background:#ffd50022">
+<td>
+<span class="punto" style="background:#ffd500"></span><b>CUP</b>
+</td>
+<td>
+2,4 % · 0 esc.
+</td>
+<td>
+Izquierda radical
+</td>
+<td>
+Independentista
+</td>
+<td>
+Anticapitalista, asamblearia
+</td>
+<td>
+<b>No se presenta</b>
+</td>
+</tr>
+<tr style="background:#e6007e22">
+<td>
+<span class="punto" style="background:#e6007e"></span><b>Sumar (Comuns)</b>
+</td>
+<td>
+11,3 % · 1 esc.
+</td>
+<td>
+Izquierda
+</td>
+<td>
+Plurinacional, a favor de un referéndum
+</td>
+<td>
+Izquierda alternativa, ecologista
+</td>
+<td>
+Como <b>Front Ampli</b>
+</td>
+</tr>
+<tr style="background:#e8890c22">
+<td>
+<span class="punto" style="background:#e8890c"></span><b>ERC</b>
+</td>
+<td>
+15,1 % · 1 esc.
+</td>
+<td>
+Izquierda
+</td>
+<td>
+Independentista
+</td>
+<td>
+Republicanismo de izquierdas
+</td>
+<td>
+En coalición con Podemos
+</td>
+</tr>
+<tr style="background:#e3061322">
+<td>
+<span class="punto" style="background:#e30613"></span><b>PSC (PSOE)</b>
+</td>
+<td>
+32,9 % · 2 esc.
+</td>
+<td>
+Centro-izquierda
+</td>
+<td>
+Catalanista no independentista, federalista
+</td>
+<td>
+Socialdemócrata
+</td>
+<td>
+Se presenta
+</td>
+</tr>
+<tr style="background:#00a99d22">
+<td>
+<span class="punto" style="background:#00a99d"></span><b>Junts</b>
+</td>
+<td>
+11,1 % · 1 esc.
+</td>
+<td>
+Centro-derecha
+</td>
+<td>
+Independentista
+</td>
+<td>
+Liberal, heredero de CiU
+</td>
+<td>
+Se presenta
+</td>
+</tr>
+<tr style="background:#1d84ce22">
+<td>
+<span class="punto" style="background:#1d84ce"></span><b>PP</b>
+</td>
+<td>
+13,9 % · 1 esc.
+</td>
+<td>
+Centro-derecha
+</td>
+<td>
+Unionista
+</td>
+<td>
+Liberal-conservador
+</td>
+<td>
+Se presenta
+</td>
+</tr>
+<tr style="background:#1b4f8a22">
+<td>
+<span class="punto" style="background:#1b4f8a"></span><b>Aliança Catalana</b>
+</td>
+<td>
+No se presentó
+</td>
+<td>
+Derecha radical
+</td>
+<td>
+Independentista
+</td>
+<td>
+Derecha radical populista, identitaria
+</td>
+<td>
+<b>No se presenta</b> a elecciones españolas
+</td>
+</tr>
+<tr style="background:#5aa31f22">
+<td>
+<span class="punto" style="background:#5aa31f"></span><b>Vox</b>
+</td>
+<td>
+10,3 % · 0 esc.
+</td>
+<td>
+Derecha radical
+</td>
+<td>
+Nacionalismo español, recentralizador
+</td>
+<td>
+Derecha radical populista
+</td>
+<td>
+Se presenta
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="fuente">
+<p>2023: elecciones generales, votos válidos de la provincia (6 escaños). Aliança Catalana entró en el Parlament en 2024 con 2 diputados (Girona y Lleida), ninguno por Tarragona. En el 29-N también se presenta Alhora (independentista).</p>
+</div>
+<aside class="notes">
+<p>Tarragona es una provincia muy competida: en 2015 sus seis escaños se repartieron entre seis partidos distintos. En 2023 Vox se quedó a las puertas del sexto escaño, que se llevó Junts. Aliança Catalana y Vox compiten por un electorado parecido en inmigración, pero en ejes nacionales opuestos: es el mejor ejemplo de que el eje territorial y el izquierda-derecha se cruzan.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Tarragona en los dos ejes</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="353" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 352;"><span id="cb5-353"><a aria-label="353"></a>{</span>
+<span id="cb5-354"><a aria-label="354"></a>  <span class="kw">const</span> tg <span class="op">=</span> [</span>
+<span id="cb5-355"><a aria-label="355"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"CUP"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">4.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">4.2</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#ffd500"</span>}<span class="op">,</span></span>
+<span id="cb5-356"><a aria-label="356"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"ERC"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">2.6</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">3.0</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#e8890c"</span>}<span class="op">,</span></span>
+<span id="cb5-357"><a aria-label="357"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"Comuns / Front Ampli"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">3.0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">1.4</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#e6007e"</span>}<span class="op">,</span></span>
+<span id="cb5-358"><a aria-label="358"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"PSC"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">1.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.8</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#e30613"</span>}<span class="op">,</span></span>
+<span id="cb5-359"><a aria-label="359"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"Junts"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="fl">1.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">3.4</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#00a99d"</span>}<span class="op">,</span></span>
+<span id="cb5-360"><a aria-label="360"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"Aliança Catalana"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="fl">3.9</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">4.4</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#1b4f8a"</span>}<span class="op">,</span></span>
+<span id="cb5-361"><a aria-label="361"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"PP"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="fl">2.8</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">3.0</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#1d84ce"</span>}<span class="op">,</span></span>
+<span id="cb5-362"><a aria-label="362"></a>    {<span class="dt">n</span><span class="op">:</span> <span class="st">"Vox"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="fl">4.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">4.4</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="st">"#5aa31f"</span>}</span>
+<span id="cb5-363"><a aria-label="363"></a>  ]<span class="op">;</span></span>
+<span id="cb5-364"><a aria-label="364"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb5-365"><a aria-label="365"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">480</span><span class="op">,</span> <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span></span>
+<span id="cb5-366"><a aria-label="366"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">5.5</span><span class="op">,</span> <span class="fl">5.5</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span>}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">5.3</span><span class="op">,</span> <span class="fl">5.3</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span>}<span class="op">,</span></span>
+<span id="cb5-367"><a aria-label="367"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb5-368"><a aria-label="368"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#1b1b1b"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span>})<span class="op">,</span></span>
+<span id="cb5-369"><a aria-label="369"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#1b1b1b"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span>})<span class="op">,</span></span>
+<span id="cb5-370"><a aria-label="370"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="op">-</span><span class="fl">5.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.35</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"IZQUIERDA"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})<span class="op">,</span></span>
+<span id="cb5-371"><a aria-label="371"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">5.4</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.35</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"DERECHA"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"end"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})<span class="op">,</span></span>
+<span id="cb5-372"><a aria-label="372"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">0.15</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">5.1</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"UNIONISTA / ESPAÑOL"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})<span class="op">,</span></span>
+<span id="cb5-373"><a aria-label="373"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">0.15</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span><span class="fl">5.1</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"INDEPENDENTISTA"</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})<span class="op">,</span></span>
+<span id="cb5-374"><a aria-label="374"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(tg<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"c"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#fff"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb5-375"><a aria-label="375"></a>      Plot<span class="op">.</span><span class="fu">text</span>(tg<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="op">-</span><span class="dv">26</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">17</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span>})</span>
+<span id="cb5-376"><a aria-label="376"></a>    ]</span>
+<span id="cb5-377"><a aria-label="377"></a>  })<span class="op">;</span></span>
+<span id="cb5-378"><a aria-label="378"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="fuente">
+<p>Posición aproximada, con fines didácticos.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Resumen de la sesión</h2>
+<ol type="1">
+<li>Un sistema de partidos se define por el <strong>número</strong> de partidos relevantes y la <strong>distancia ideológica</strong> entre ellos (Sartori).</li>
+<li>España pasó del <strong>bipartidismo imperfecto</strong> (1982-2011) a un <strong>pluralismo de bloques</strong> más fragmentado y polarizado.</li>
+<li>Se compite en <strong>dos ejes</strong>: izquierda-derecha y centro-periferia. Por eso hay partidos estatales y no estatales.</li>
+<li>En 2023 el sistema se concentra (11 partidos, NEP 3,4), pero los partidos territoriales siguen siendo decisivos para formar gobierno.</li>
+<li>En <strong>Tarragona</strong> los dos ejes se cruzan: hay derecha e izquierda tanto unionistas como independentistas.</li>
+</ol>
+<div class="volver">
+<a href="index.html">← Volver al índice del curso</a>
+</div>
+<div class="volver sec">
+<a href="04-efectos.html">Ir a la sesión 4 →</a>
+</div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p><a href="index.html">Curso de política</a> · Sesión 3</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"\u003ci class=\"fas fa-gear\">\u003c/i>","content":"\u003cul class=\"slide-menu-items\">\n\u003cli class=\"slide-tool-item active\" data-item=\"0\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\">\u003ckbd>f\u003c/kbd> Fullscreen\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"1\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\">\u003ckbd>s\u003c/kbd> Speaker View\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"2\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\">\u003ckbd>o\u003c/kbd> Slide Overview\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"3\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\">\u003ckbd>e\u003c/kbd> PDF Export Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"4\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\">\u003ckbd>r\u003c/kbd> Scroll View Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"5\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\">\u003ckbd>?\u003c/kbd> Keyboard Help\u003c/a>\u003c/li>\n\u003c/ul>"}],"openButton":true,"openButtonLabel":"Slide menu"},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImNvbmdyZXNvID0gRmlsZUF0dGFjaG1lbnQoXCJkYXRvcy9jb25ncmVzb18yMDIzLmpzb25cIikuanNvbigpXHJcbm5lcCA9IChhd2FpdCBGaWxlQXR0YWNobWVudChcImRhdG9zL25lcC5jc3ZcIikuY3N2KHt0eXBlZDogdHJ1ZX0pKS5tYXAoZCA9PiAoey4uLmQsIGV0aXF1ZXRhOiBTdHJpbmcoZC5ldGlxdWV0YSl9KSlcclxuXHJcbm9yZGVuSGVtaWNpY2xvID0gW1wiQ1VQXCIsIFwiU1VNQVJcIiwgXCJCSUxEVVwiLCBcIkVSQ1wiLCBcIkJOR1wiLCBcIlBTT0VcIiwgXCJQTlZcIiwgXCJDQ1wiLCBcIkpVTlRTXCIsIFwiVVBOXCIsIFwiUFBcIiwgXCJWT1hcIl1cclxuXHJcbmZ1bmN0aW9uIGhlbWljaWNsbyhwYXJ0aWRvcywgZmlsYXMgPSA5LCByMCA9IDAuNDIpIHtcclxuICBjb25zdCB0b3RhbCA9IGQzLnN1bShwYXJ0aWRvcywgcCA9PiBwLmVzKTtcclxuICBjb25zdCByYWRpb3MgPSBkMy5yYW5nZShmaWxhcykubWFwKGkgPT4gcjAgKyAoMSAtIHIwKSAqIGkgLyAoZmlsYXMgLSAxKSk7XHJcbiAgY29uc3Qgc3VtUiA9IGQzLnN1bShyYWRpb3MpO1xyXG4gIGNvbnN0IHBvckZpbGEgPSByYWRpb3MubWFwKHIgPT4gTWF0aC5yb3VuZCh0b3RhbCAqIHIgLyBzdW1SKSk7XHJcbiAgcG9yRmlsYVtmaWxhcyAtIDFdICs9IHRvdGFsIC0gZDMuc3VtKHBvckZpbGEpO1xyXG4gIGNvbnN0IGFzaWVudG9zID0gW107XHJcbiAgcmFkaW9zLmZvckVhY2goKHIsIGkpID0+IHtcclxuICAgIGNvbnN0IG4gPSBwb3JGaWxhW2ldO1xyXG4gICAgZm9yIChsZXQgaiA9IDA7IGogPCBuOyBqKyspIHtcclxuICAgICAgY29uc3QgYSA9IE1hdGguUEkgLSBNYXRoLlBJICogaiAvIChuIC0gMSk7XHJcbiAgICAgIGFzaWVudG9zLnB1c2goe2EsIHIsIHg6IHIgKiBNYXRoLmNvcyhhKSwgeTogciAqIE1hdGguc2luKGEpfSk7XHJcbiAgICB9XHJcbiAgfSk7XHJcbiAgYXNpZW50b3Muc29ydCgocCwgcSkgPT4gcS5hIC0gcC5hIHx8IHAuciAtIHEucik7XHJcbiAgY29uc3QgbGlzdGEgPSBwYXJ0aWRvcy5zbGljZSgpLnNvcnQoKHAsIHEpID0+IG9yZGVuSGVtaWNpY2xvLmluZGV4T2YocC5rKSAtIG9yZGVuSGVtaWNpY2xvLmluZGV4T2YocS5rKSk7XHJcbiAgbGV0IGsgPSAwO1xyXG4gIGZvciAoY29uc3QgcCBvZiBsaXN0YSkgZm9yIChsZXQgaSA9IDA7IGkgPCBwLmVzOyBpKyspIE9iamVjdC5hc3NpZ24oYXNpZW50b3NbaysrXSwge3BhcnRpZG86IHAubiwgYzogcC5jfSk7XHJcbiAgcmV0dXJuIGFzaWVudG9zO1xyXG59XHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcclxuICBjb25zdCBsYXJnbyA9IG5lcC5mbGF0TWFwKGQgPT4gW1xyXG4gICAge2V0aXF1ZXRhOiBkLmV0aXF1ZXRhLCBzZXJpZTogXCJQb3Igdm90b3NcIiwgdjogZC5uZXBfdm90b3N9LFxyXG4gICAge2V0aXF1ZXRhOiBkLmV0aXF1ZXRhLCBzZXJpZTogXCJQb3IgZXNjYcOxb3NcIiwgdjogZC5uZXBfZXNjYW5vc31cclxuICBdKTtcclxuICBjb25zdCBldGlxdWV0YXMgPSBuZXAubWFwKGQgPT4gZC5ldGlxdWV0YSk7XHJcbiAgcmV0dXJuIFBsb3QucGxvdCh7XHJcbiAgICB3aWR0aDogMTA0MCwgaGVpZ2h0OiA0MjAsIG1hcmdpblRvcDogMzAsIG1hcmdpbkJvdHRvbTogNDUsXHJcbiAgICB4OiB7ZG9tYWluOiBldGlxdWV0YXMsIGxhYmVsOiBudWxsLCB0eXBlOiBcInBvaW50XCIsIHBhZGRpbmc6IDAuNCwgdGlja0Zvcm1hdDogZCA9PiBkLnJlcGxhY2UoXCIgKFwiLCBcIlxcbihcIil9LFxyXG4gICAgeToge2RvbWFpbjogWzAsIDddLCBsYWJlbDogXCLihpEgTsO6bWVybyBlZmVjdGl2byBkZSBwYXJ0aWRvc1wiLCBncmlkOiB0cnVlfSxcclxuICAgIGNvbG9yOiB7ZG9tYWluOiBbXCJQb3Igdm90b3NcIiwgXCJQb3IgZXNjYcOxb3NcIl0sIHJhbmdlOiBbXCIjOWIyMjI2XCIsIFwiIzFkODRjZVwiXSwgbGVnZW5kOiB0cnVlfSxcclxuICAgIG1hcmtzOiBbXHJcbiAgICAgIFBsb3QucnVsZVkoWzJdLCB7c3Ryb2tlOiBcIiMxYjFiMWJcIiwgc3Ryb2tlRGFzaGFycmF5OiBcIjQgNFwiLCBzdHJva2VPcGFjaXR5OiAuNX0pLFxyXG4gICAgICBQbG90LnRleHQoW3t4OiBcIjIwMDhcIiwgdDogXCJCaXBhcnRpZGlzbW8gcHVybyA9IDJcIn1dLCB7eDogXCJ4XCIsIHk6IDIsIHRleHQ6IFwidFwiLCBkeTogMTIsIGZvbnRTaXplOiAxNCwgZmlsbDogXCIjNTU1XCJ9KSxcclxuICAgICAgUGxvdC5saW5lKGxhcmdvLCB7eDogXCJldGlxdWV0YVwiLCB5OiBcInZcIiwgc3Ryb2tlOiBcInNlcmllXCIsIHN0cm9rZVdpZHRoOiAzfSksXHJcbiAgICAgIFBsb3QuZG90KGxhcmdvLCB7eDogXCJldGlxdWV0YVwiLCB5OiBcInZcIiwgZmlsbDogXCJzZXJpZVwiLCByOiA1fSksXHJcbiAgICAgIFBsb3QudGV4dChsYXJnbywge3g6IFwiZXRpcXVldGFcIiwgeTogXCJ2XCIsIHRleHQ6IGQgPT4gZC52LnRvRml4ZWQoMSkucmVwbGFjZShcIi5cIiwgXCIsXCIpLCBkeTogZCA9PiBkLnNlcmllID09PSBcIlBvciB2b3Rvc1wiID8gLTE0IDogMTYsIGZvbnRTaXplOiAxMywgZmlsbDogXCJzZXJpZVwifSlcclxuICAgIF1cclxuICB9KTtcclxufVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ7XHJcbiAgY29uc3QgYXNpZW50b3MgPSBoZW1pY2ljbG8oY29uZ3Jlc28pO1xyXG4gIHJldHVybiBQbG90LnBsb3Qoe1xyXG4gICAgd2lkdGg6IDY4MCwgaGVpZ2h0OiAzODAsIG1hcmdpbjogMTAsIG1hcmdpbkJvdHRvbTogMTAsXHJcbiAgICB4OiB7YXhpczogbnVsbCwgZG9tYWluOiBbLTEuMDUsIDEuMDVdfSwgeToge2F4aXM6IG51bGwsIGRvbWFpbjogWy0wLjA1LCAxLjA1XX0sXHJcbiAgICBtYXJrczogW1xyXG4gICAgICBQbG90LmRvdChhc2llbnRvcywge3g6IFwieFwiLCB5OiBcInlcIiwgZmlsbDogXCJjXCIsIHI6IDUuNiwgdGl0bGU6IFwicGFydGlkb1wifSksXHJcbiAgICAgIFBsb3QudGV4dChbXCIzNTAgZXNjYcOxb3NcIl0sIHt4OiAwLCB5OiAwLjIsIGZvbnRTaXplOiAyMiwgZm9udFdlaWdodDogNzAwLCBmaWxsOiBcIiMzMzNcIn0pLFxyXG4gICAgICBQbG90LnRleHQoW1wibWF5b3LDrWEgYWJzb2x1dGE6IDE3NlwiXSwge3g6IDAsIHk6IDAuMDgsIGZvbnRTaXplOiAxNSwgZmlsbDogXCIjNTU1XCJ9KVxyXG4gICAgXVxyXG4gIH0pO1xyXG59XHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgPHRhYmxlIGNsYXNzPVwidGFibGEtZXNjIG1pbmlcIj5cclxuICA8dHI+PHRoPlBhcnRpZG88L3RoPjx0aD4lIHZvdG88L3RoPjx0aD5Fc2Nhw7FvczwvdGg+PC90cj5cclxuICAke2NvbmdyZXNvLnNsaWNlKCkuc29ydCgoYSwgYikgPT4gb3JkZW5IZW1pY2ljbG8uaW5kZXhPZihhLmspIC0gb3JkZW5IZW1pY2ljbG8uaW5kZXhPZihiLmspKS5tYXAocCA9PiBodG1sYDx0ciBzdHlsZT1cImJhY2tncm91bmQ6JHtwLmN9MjJcIj5cclxuICAgIDx0ZD48c3BhbiBzdHlsZT1cImRpc3BsYXk6aW5saW5lLWJsb2NrO3dpZHRoOi44ZW07aGVpZ2h0Oi44ZW07YmFja2dyb3VuZDoke3AuY307Ym9yZGVyLXJhZGl1czoycHhcIj48L3NwYW4+ICR7cC5ufTwvdGQ+XHJcbiAgICA8dGQ+JHtwLnBjdC50b0xvY2FsZVN0cmluZyhcImVzLUVTXCIsIHttaW5pbXVtRnJhY3Rpb25EaWdpdHM6IDEsIG1heGltdW1GcmFjdGlvbkRpZ2l0czogMX0pfTwvdGQ+XHJcbiAgICA8dGQ+PGI+JHtwLmVzfTwvYj48L3RkPjwvdHI+YCl9XHJcbjwvdGFibGU+YFxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ7XHJcbiAgY29uc3QgdGcgPSBbXHJcbiAgICB7bjogXCJDVVBcIiwgeDogLTQuNCwgeTogLTQuMiwgYzogXCIjZmZkNTAwXCJ9LFxyXG4gICAge246IFwiRVJDXCIsIHg6IC0yLjYsIHk6IC0zLjAsIGM6IFwiI2U4ODkwY1wifSxcclxuICAgIHtuOiBcIkNvbXVucyAvIEZyb250IEFtcGxpXCIsIHg6IC0zLjAsIHk6IC0xLjQsIGM6IFwiI2U2MDA3ZVwifSxcclxuICAgIHtuOiBcIlBTQ1wiLCB4OiAtMS40LCB5OiAwLjgsIGM6IFwiI2UzMDYxM1wifSxcclxuICAgIHtuOiBcIkp1bnRzXCIsIHg6IDEuNCwgeTogLTMuNCwgYzogXCIjMDBhOTlkXCJ9LFxyXG4gICAge246IFwiQWxpYW7Dp2EgQ2F0YWxhbmFcIiwgeDogMy45LCB5OiAtNC40LCBjOiBcIiMxYjRmOGFcIn0sXHJcbiAgICB7bjogXCJQUFwiLCB4OiAyLjgsIHk6IDMuMCwgYzogXCIjMWQ4NGNlXCJ9LFxyXG4gICAge246IFwiVm94XCIsIHg6IDQuNCwgeTogNC40LCBjOiBcIiM1YWEzMWZcIn1cclxuICBdO1xyXG4gIHJldHVybiBQbG90LnBsb3Qoe1xyXG4gICAgd2lkdGg6IDEwMDAsIGhlaWdodDogNDgwLCBtYXJnaW5Ub3A6IDIwLCBtYXJnaW5MZWZ0OiAyMCwgbWFyZ2luUmlnaHQ6IDIwLFxyXG4gICAgeDoge2RvbWFpbjogWy01LjUsIDUuNV0sIGF4aXM6IG51bGx9LCB5OiB7ZG9tYWluOiBbLTUuMywgNS4zXSwgYXhpczogbnVsbH0sXHJcbiAgICBtYXJrczogW1xyXG4gICAgICBQbG90LnJ1bGVZKFswXSwge3N0cm9rZTogXCIjMWIxYjFiXCIsIHN0cm9rZVdpZHRoOiAzfSksXHJcbiAgICAgIFBsb3QucnVsZVgoWzBdLCB7c3Ryb2tlOiBcIiMxYjFiMWJcIiwgc3Ryb2tlV2lkdGg6IDN9KSxcclxuICAgICAgUGxvdC50ZXh0KFt7eDogLTUuNCwgeTogMC4zNSwgdDogXCJJWlFVSUVSREFcIn1dLCB7eDogXCJ4XCIsIHk6IFwieVwiLCB0ZXh0OiBcInRcIiwgdGV4dEFuY2hvcjogXCJzdGFydFwiLCBmb250U2l6ZTogMTYsIGZvbnRXZWlnaHQ6IDcwMH0pLFxyXG4gICAgICBQbG90LnRleHQoW3t4OiA1LjQsIHk6IDAuMzUsIHQ6IFwiREVSRUNIQVwifV0sIHt4OiBcInhcIiwgeTogXCJ5XCIsIHRleHQ6IFwidFwiLCB0ZXh0QW5jaG9yOiBcImVuZFwiLCBmb250U2l6ZTogMTYsIGZvbnRXZWlnaHQ6IDcwMH0pLFxyXG4gICAgICBQbG90LnRleHQoW3t4OiAwLjE1LCB5OiA1LjEsIHQ6IFwiVU5JT05JU1RBIC8gRVNQQcORT0xcIn1dLCB7eDogXCJ4XCIsIHk6IFwieVwiLCB0ZXh0OiBcInRcIiwgdGV4dEFuY2hvcjogXCJzdGFydFwiLCBmb250U2l6ZTogMTYsIGZvbnRXZWlnaHQ6IDcwMH0pLFxyXG4gICAgICBQbG90LnRleHQoW3t4OiAwLjE1LCB5OiAtNS4xLCB0OiBcIklOREVQRU5ERU5USVNUQVwifV0sIHt4OiBcInhcIiwgeTogXCJ5XCIsIHRleHQ6IFwidFwiLCB0ZXh0QW5jaG9yOiBcInN0YXJ0XCIsIGZvbnRTaXplOiAxNiwgZm9udFdlaWdodDogNzAwfSksXHJcbiAgICAgIFBsb3QuZG90KHRnLCB7eDogXCJ4XCIsIHk6IFwieVwiLCByOiAxNiwgZmlsbDogXCJjXCIsIHN0cm9rZTogXCIjZmZmXCIsIHN0cm9rZVdpZHRoOiAyfSksXHJcbiAgICAgIFBsb3QudGV4dCh0Zywge3g6IFwieFwiLCB5OiBcInlcIiwgdGV4dDogXCJuXCIsIGR5OiAtMjYsIGZvbnRTaXplOiAxNywgZm9udFdlaWdodDogNzAwfSlcclxuICAgIF1cclxuICB9KTtcclxufVxyXG4ifV19
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../..";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiado");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiado");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+          window.quartoDecorateExternalLinks = function (root) {
+         var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+              if (!link.classList.contains('no-external-icon')) {
+              }
+            }
+          }
+          };
+          window.quartoDecorateExternalLinks(window.document);
+        // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+        // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+        const hideOnEscAndFocusOut = {
+          name: 'hideOnEscAndFocusOut',
+          defaultValue: true,
+          fn(instance) {
+            const dismiss = () => {
+              // A show scheduled by the trigger delay would otherwise reopen it
+              instance.clearDelayTimeouts();
+              instance.hide();
+            };
+            const onKeyDown = (event) => {
+              if (event.key !== 'Escape') {
+                return;
+              }
+              // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+              // except an open reveal.js slide menu, which Esc should close too.
+              // The menu handles keys only when its keyboard option is on.
+              const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+                window.Reveal.getConfig().menu?.keyboard !== false;
+              if (!menuHandlesEsc) {
+                event.stopPropagation();
+              }
+              if (instance.popper.contains(window.document.activeElement)) {
+                // Disabled while refocusing so the focus trigger does not reopen it
+                instance.disable();
+                instance.reference.focus();
+                instance.enable();
+              }
+              dismiss();
+            };
+            const onFocusOut = (event) => {
+              const target = event.relatedTarget;
+              if (target && !instance.reference.contains(target) &&
+                  !instance.popper.contains(target)) {
+                dismiss();
+              }
+            };
+            // On the trigger too: a click trigger (code-annotations: select) has no
+            // blur handling. Attached for the instance's lifetime so leaving the
+            // trigger also cancels a show still pending on the trigger delay.
+            instance.reference.addEventListener('focusout', onFocusOut);
+            return {
+              onShow() {
+                window.document.addEventListener('keydown', onKeyDown, true);
+                instance.popper.addEventListener('focusout', onFocusOut);
+              },
+              onHide() {
+                window.document.removeEventListener('keydown', onKeyDown, true);
+                instance.popper.removeEventListener('focusout', onFocusOut);
+              },
+              onDestroy() {
+                instance.reference.removeEventListener('focusout', onFocusOut);
+              },
+            };
+          },
+        };
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+            plugins: [hideOnEscAndFocusOut],
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
