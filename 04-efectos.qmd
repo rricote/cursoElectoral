@@ -1,6 +1,6 @@
 ---
 title: "Cómo afecta el sistema electoral al sistema de partidos"
-subtitle: "Sesión 4 · España en 2019 (abril y noviembre) y 2023"
+subtitle: "Sesión 4 · España de 2015 a 2023"
 format:
   revealjs:
     theme: [default, recursos/curso.scss]
@@ -79,16 +79,26 @@ function celda(eleccion, k) {
         <div class="num" style="color:#9b2226">350</div>
         ${orden.map(c => html`<div class="ley"><span style="background:${colorCat[c]}"></span>${c}</div>`)}</div></div>`;
   }
-  const g = e.grupos.find(d => d.k === k);
+  return celdaGrupo(eleccion, e.grupos.find(d => d.k === k), null);
+}
+
+function celdaGrupo(eleccion, g, titulo) {
   const dif = g.pct_es - g.pct;
+  const color = g.k.startsWith("OTROS") ? "#333" : g.c;
   return html`<div class="celda">${mapaSVG(eleccion, g)}
-    <div class="info"><div class="nombre" style="color:${g.k.startsWith("OTROS") ? "#333" : g.c}">${g.n}</div>
-      <div class="num" style="color:${g.k.startsWith("OTROS") ? "#333" : g.c}">${g.es}</div><div>escaños</div>
+    <div class="info"><div class="nombre" style="color:${color}">${titulo ?? g.n}</div>
+      <div class="num" style="color:${color}">${g.es}</div><div>escaños</div>
       <div class="dato">${pct(g.pct)} de los votos</div>
       <div class="dato">${pct(g.pct_es)} de los escaños</div>
       <div class="dato" style="color:${dif >= 0 ? "#1b7f3b" : "#b3261e"};font-weight:700">${dif >= 0 ? "+" : ""}${pct(dif)}</div>
       <div class="dato gris">Escaño en ${Object.keys(g.prov).length} de 52 provincias</div></div></div>`;
 }
+
+// Evolución de un partido: un mapa por elección
+evolucion = (k, elecciones) => html`<div class="cuadricula">${elecciones.map(el => {
+  const g = efectos[el].evolucion[k];
+  return celdaGrupo(el, g, `${efectos[el].etiqueta}${k === "UP" ? " · " + g.n : ""}`);
+})}</div>`
 
 cuadricula = (eleccion, ks) => html`<div class="cuadricula">${celda(eleccion, null)}${ks.map(k => celda(eleccion, k))}</div>`
 ```
@@ -98,7 +108,7 @@ cuadricula = (eleccion, ks) => html`<div class="cuadricula">${celda(eleccion, nu
 ::: {.tarjetas style="--n:3"}
 ::: {.tarjeta style="--c:#9b2226"}
 [1. Los mapas]{.tt}
-Dónde saca escaños cada partido en abril de 2019, noviembre de 2019 y 2023.
+Dónde saca escaños cada partido de 2015 a 2023, y cómo evolucionan Podemos, Ciudadanos y Vox.
 :::
 ::: {.tarjeta style="--c:#1d84ce"}
 [2. Votos y escaños]{.tt}
@@ -132,6 +142,46 @@ Los nacionalistas solo compiten en su territorio, donde son grandes, y sacan esc
 ::: {.chico}
 Es el **efecto mecánico** de Duverger. El **efecto psicológico** (el voto útil) refuerza a los grandes en las siguientes elecciones.
 :::
+
+# Diciembre de 2015 {background-color="#1b1b1b"}
+
+## 2015 · PP, PSOE y Podemos
+
+```{ojs}
+cuadricula("2015-12", ["PP", "PSOE", "UP"])
+```
+
+::: notes
+Fin del bipartidismo: cuatro partidos grandes. Podemos se presenta en Cataluña (En Comú Podem), la Comunidad Valenciana (Compromís-Podemos) y Galicia (En Marea) con candidaturas de confluencia; aquí se suman todas.
+:::
+
+## 2015 · Ciudadanos y otros
+
+```{ojs}
+cuadricula("2015-12", ["CS", "OTROS_IZQ", "OTROS_DER"])
+```
+
+::: notes
+Ciudadanos, con el 14 % de los votos, saca escaño en 26 provincias. Izquierda Unida (Unidad Popular) obtiene casi un millón de votos y solo 2 escaños, ambos en Madrid: unos 463.000 votos por escaño.
+:::
+
+# Junio de 2016 {background-color="#1b1b1b"}
+
+## 2016 · PP, PSOE y Unidos Podemos
+
+```{ojs}
+cuadricula("2016-06", ["PP", "PSOE", "UP"])
+```
+
+::: notes
+Repetición electoral. Podemos e IU se presentan juntos (Unidos Podemos) y el PP sube hasta 137 escaños.
+:::
+
+## 2016 · Ciudadanos y otros
+
+```{ojs}
+cuadricula("2016-06", ["CS", "OTROS_IZQ", "OTROS_DER"])
+```
 
 # Abril de 2019 {background-color="#1b1b1b"}
 
@@ -200,7 +250,7 @@ Desaparece Ciudadanos. "Otros de izquierda": ERC, EH Bildu y BNG. "Otros de dere
 ## Votos frente a escaños
 
 ```{ojs}
-viewof elecVE = Inputs.radio(new Map([["Abril 2019", "2019-04"], ["Noviembre 2019", "2019-11"], ["2023", "2023-07"]]), {value: "2019-11", label: "Elección"})
+viewof elecVE = Inputs.radio(new Map([["2015", "2015-12"], ["2016", "2016-06"], ["Abril 2019", "2019-04"], ["Noviembre 2019", "2019-11"], ["2023", "2023-07"]]), {value: "2019-11", label: "Elección"})
 ```
 
 ```{ojs}
@@ -228,7 +278,7 @@ Círculo vacío: % de votos. Círculo lleno: % de escaños. Verde: el sistema le
 ## ¿Cuántos votos cuesta un escaño?
 
 ```{ojs}
-viewof elecCoste = Inputs.radio(new Map([["Abril 2019", "2019-04"], ["Noviembre 2019", "2019-11"], ["2023", "2023-07"]]), {value: "2019-11", label: "Elección"})
+viewof elecCoste = Inputs.radio(new Map([["2015", "2015-12"], ["2016", "2016-06"], ["Abril 2019", "2019-04"], ["Noviembre 2019", "2019-11"], ["2023", "2023-07"]]), {value: "2019-11", label: "Elección"})
 ```
 
 ```{ojs}
@@ -271,8 +321,8 @@ Gallagher (1991) mide la distancia entre votos y escaños:
 ::: {.column width="48%"}
 ```{ojs}
 html`<div class="tarjetas" style="--n:1">
-  ${["2019-04", "2019-11", "2023-07"].map(k => html`<div class="tarjeta" style="--c:#9b2226;display:flex;align-items:center;gap:1em">
-    <div class="gran">${efectos[k].gallagher.toFixed(1).replace(".", ",")}</div>
+  ${["2015-12", "2016-06", "2019-04", "2019-11", "2023-07"].map(k => html`<div class="tarjeta" style="--c:#9b2226;display:flex;align-items:center;gap:1em;padding:.25em .7em">
+    <div class="gran" style="font-size:1.8em">${efectos[k].gallagher.toFixed(1).replace(".", ",")}</div>
     <div><span class="tt">${efectos[k].etiqueta}</span></div></div>`)}
 </div>`
 ```
@@ -289,7 +339,7 @@ España está en un punto intermedio: es proporcional, pero con una distorsión 
 ::: {.tarjeta style="--c:#1b7f3b"}
 [Ganan]{.tt}
 
-- El **primer partido** en cada elección (PSOE en 2019, PP en 2023).
+- El **primer partido** en cada elección (PP en 2015, 2016 y 2023; PSOE en 2019).
 - El segundo, en menor medida.
 - Los **partidos concentrados**: PNV, EH Bildu, Junts, ERC, Navarra Suma, Teruel Existe.
 :::
@@ -298,6 +348,7 @@ España está en un punto intermedio: es proporcional, pero con una distorsión 
 
 - Los **terceros y cuartos partidos estatales**: UP, Vox (abril de 2019), Sumar y Vox (2023).
 - Sobre todo **Ciudadanos** en noviembre de 2019.
+- **IU en 2015**: casi un millón de votos y solo 2 escaños.
 - Los que no llegan a escaño: PACMA.
 :::
 ::: {.tarjeta style="--c:#555"}
@@ -309,12 +360,58 @@ España está en un punto intermedio: es proporcional, pero con una distorsión 
 :::
 :::
 
+# La evolución de los nuevos partidos {background-color="#1b1b1b"}
+
+## Evolución de Podemos / Unidas Podemos
+
+```{ojs}
+evolucion("UP", ["2015-12", "2016-06", "2019-04", "2019-11"])
+```
+
+::: notes
+Con el 20-21 % de los votos (2015 y 2016), Podemos y sus confluencias sacan escaño en 37 provincias. Al bajar al 13-14 % (2019) se quedan solo en 24: por debajo de cierto umbral, el voto disperso deja de convertirse en escaños en las provincias pequeñas.
+:::
+
+## Evolución de Ciudadanos
+
+```{ojs}
+evolucion("CS", ["2015-12", "2016-06", "2019-04", "2019-11"])
+```
+
+::: notes
+Su máximo es abril de 2019 (57 escaños, 40 provincias). Siete meses después, con menos de la mitad de los votos, se queda en 10 escaños y 7 provincias. En 2023 no se presenta.
+:::
+
+## Evolución de Vox
+
+```{ojs}
+evolucion("VOX", ["2016-06", "2019-04", "2019-11", "2023-07"])
+```
+
+::: notes
+En 2016 Vox tiene un 0,2 % de los votos y ningún escaño. En abril de 2019 entra con 24 y en noviembre llega a 52, con escaño en 33 provincias. En 2023 baja a 33.
+:::
+
+## Unidas Podemos frente a Sumar
+
+```{ojs}
+html`<div class="cuadricula">
+  ${celda("2019-11", null)}${celdaGrupo("2019-11", efectos["2019-11"].evolucion.UP, "Unidas Podemos · noviembre de 2019")}
+  ${celda("2023-07", null)}${celdaGrupo("2023-07", efectos["2023-07"].evolucion.SUMAR, "Sumar · julio de 2023")}
+</div>`
+```
+
+::: notes
+Arriba, noviembre de 2019; abajo, 2023. Sumar integra a Podemos, IU, Más Madrid, Compromís y los Comuns. Con casi el mismo porcentaje de votos que Unidas Podemos (12,3 % frente a 12,9 %), saca 31 escaños frente a 35.
+:::
+
 ## Resumen de la sesión
 
 1. El sistema es **proporcional en teoría**, pero las provincias pequeñas le dan **efectos mayoritarios**.
 2. Los mapas muestran que los grandes sacan escaño en casi todas las provincias; los terceros dispersos, solo en las grandes.
-3. El **coste de un escaño** varía muchísimo: de unos 20.000 votos (Teruel Existe, 2019) a más de 200.000 (Más País, 2019).
-4. El índice de Gallagher se sitúa entre **5 y 7**: una **desproporcionalidad moderada**.
-5. Así se explica que España mantenga dos grandes partidos y que el multipartidismo nunca llegue a ser pleno.
+3. Podemos, Ciudadanos y Vox lo comprueban: al bajar de votos pierden provincias enteras, no solo escaños.
+4. El **coste de un escaño** varía muchísimo: de unos 20.000 votos (Teruel Existe, 2019) a más de 200.000 (Más País, 2019).
+5. El índice de Gallagher se sitúa entre **5 y 7**: una **desproporcionalidad moderada**.
+6. Así se explica que España mantenga dos grandes partidos y que el multipartidismo nunca llegue a ser pleno.
 
 <div class="volver"><a href="index.html">← Volver al índice del curso</a></div>

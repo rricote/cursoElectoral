@@ -10,7 +10,7 @@ Escribe en datos/:
   - nep.csv            (número efectivo de partidos por votos y por escaños, 1977-2023)
   - congreso_2023.json (partidos con escaño en 2023: escaños, % de voto y color)
   - efectos.json       (sesión 4: escaños por provincia de cada partido o grupo, votos frente
-                        a escaños, coste de un escaño e índice de Gallagher en 2019-A, 2019-N y 2023)
+                        a escaños, coste de un escaño e índice de Gallagher, 2015-2023)
 """
 import glob
 import json
@@ -41,18 +41,33 @@ def dhondt(votos, escanos):
 
 
 # Grupos de la sesión 4 ------------------------------------------------------
-UP = ["PODEMOS", "ECP"]
+UP_POR_ELECCION = {
+    "2015-12": ["PODEMOS", "ECP", "COMPROMIS", "ENMAREA"],
+    "2016-06": ["PODEMOS", "ECP", "COMPROMIS", "ENMAREA"],
+    "2019-04": ["PODEMOS", "ECP"],
+    "2019-11": ["PODEMOS", "ECP"],
+    "2023-07": [],
+}
 GRUPOS = {
-    "2019-04": [("PSOE", ["PSOE"]), ("PP", ["PP"]), ("CS", ["CS"]), ("UP", UP), ("VOX", ["VOX"]), ("OTROS", None)],
-    "2019-11": [("PSOE", ["PSOE"]), ("PP", ["PP"]), ("VOX", ["VOX"]), ("UP", UP), ("CS", ["CS"]), ("OTROS", None)],
+    "2015-12": [("PP", ["PP"]), ("PSOE", ["PSOE"]), ("UP", None), ("CS", ["CS"]),
+                ("OTROS_IZQ", ["ERC", "BILDU", "IU"]), ("OTROS_DER", ["CIU", "PNV", "CC"])],
+    "2016-06": [("PP", ["PP"]), ("PSOE", ["PSOE"]), ("UP", None), ("CS", ["CS"]),
+                ("OTROS_IZQ", ["ERC", "BILDU"]), ("OTROS_DER", ["CIU", "PNV", "CC"])],
+    "2019-04": [("PSOE", ["PSOE"]), ("PP", ["PP"]), ("CS", ["CS"]), ("UP", None), ("VOX", ["VOX"]), ("OTROS", "resto")],
+    "2019-11": [("PSOE", ["PSOE"]), ("PP", ["PP"]), ("VOX", ["VOX"]), ("UP", None), ("CS", ["CS"]), ("OTROS", "resto")],
     "2023-07": [("PP", ["PP"]), ("PSOE", ["PSOE"]), ("VOX", ["VOX"]), ("SUMAR", ["SUMAR"]),
                 ("OTROS_IZQ", ["ERC", "BILDU", "BNG", "CUP"]), ("OTROS_DER", ["JUNTS", "PNV", "CC", "UPN"])],
 }
-NOMBRES = {"PSOE": "PSOE", "PP": "PP", "CS": "Ciudadanos", "UP": "Unidas Podemos", "VOX": "Vox", "SUMAR": "Sumar",
-           "OTROS": "Otros y nacionalistas", "OTROS_IZQ": "Otros de izquierda", "OTROS_DER": "Otros de derecha"}
+NOMBRE_UP = {"2015-12": "Podemos y confluencias", "2016-06": "Unidos Podemos y confluencias",
+             "2019-04": "Unidas Podemos", "2019-11": "Unidas Podemos", "2023-07": "Unidas Podemos"}
+NOMBRES = {"PSOE": "PSOE", "PP": "PP", "CS": "Ciudadanos", "VOX": "Vox", "SUMAR": "Sumar",
+           "OTROS": "Otros y nacionalistas", "OTROS_IZQ": "Otros y nacionalistas de izquierda",
+           "OTROS_DER": "Otros y nacionalistas de derecha"}
 COLORES = {"PSOE": "#e30613", "PP": "#1d84ce", "CS": "#eb6109", "UP": "#7b3f98", "VOX": "#5aa31f", "SUMAR": "#e6007e",
            "OTROS": "#777777", "OTROS_IZQ": "#e8890c", "OTROS_DER": "#0b6b3a"}
-ETIQUETAS = {"2019-04": "Abril de 2019", "2019-11": "Noviembre de 2019", "2023-07": "Julio de 2023"}
+ETIQUETAS = {"2015-12": "Diciembre de 2015", "2016-06": "Junio de 2016", "2019-04": "Abril de 2019",
+             "2019-11": "Noviembre de 2019", "2023-07": "Julio de 2023"}
+EVOLUCION = ["UP", "CS", "VOX", "SUMAR"]
 
 
 def efectos(origen):
@@ -63,15 +78,16 @@ def efectos(origen):
         claves = [p["k"] for p in partidos]
         total_v = sum(nat["v"]) + nat.get("bl", 0)
         total_e = sum(nat["es"])
-        usados = set(k for _, ks in grupos if ks for k in ks)
+        up = UP_POR_ELECCION[eleccion]
+        grupos = [(g, up if ks is None else ks) for g, ks in grupos]
+        usados = set(k for _, ks in grupos if isinstance(ks, list) for k in ks)
 
         def indices(ks):
-            if ks is None:
+            if ks == "resto":
                 return [i for i, k in enumerate(claves) if k not in usados]
             return [claves.index(k) for k in ks if k in claves]
 
-        lista = []
-        for g, ks in grupos:
+        def grupo(g, ks):
             idx = indices(ks)
             v = sum(nat["v"][i] for i in idx)
             e = sum(nat["es"][i] for i in idx)
@@ -84,19 +100,24 @@ def efectos(origen):
                 prov[p["id"]] = {"es": sum(es.values()), "c": partidos[claves.index(lider)]["c"],
                                  "lider": partidos[claves.index(lider)]["n"],
                                  "detalle": ", ".join(f'{partidos[claves.index(k)]["n"]} {n}' for k, n in es.items())}
-            lista.append({"k": g, "n": NOMBRES[g], "c": COLORES[g], "votos": v, "pct": round(100 * v / total_v, 2),
-                          "es": e, "pct_es": round(100 * e / total_e, 2), "prov": prov})
+            return {"k": g, "n": NOMBRE_UP[eleccion] if g == "UP" else NOMBRES[g], "c": COLORES[g], "votos": v,
+                    "pct": round(100 * v / total_v, 2), "es": e, "pct_es": round(100 * e / total_e, 2), "prov": prov}
+
+        lista = [grupo(g, ks) for g, ks in grupos]
+        evolucion = {g: grupo(g, up if g == "UP" else [g]) for g in EVOLUCION}
 
         # partidos individuales (UP agregado) para votos-escaños y coste
         indiv = {}
         for i, k in enumerate(claves):
-            kk = "UP" if k in UP else k
-            d = indiv.setdefault(kk, {"k": kk, "n": NOMBRES.get(kk, partidos[i]["n"]),
+            kk = "UP" if k in up else k
+            d = indiv.setdefault(kk, {"k": kk, "n": NOMBRE_UP[eleccion] if kk == "UP" else NOMBRES.get(kk, partidos[i]["n"]),
                                       "c": COLORES.get(kk, partidos[i]["c"]), "votos": 0, "es": 0})
             d["votos"] += nat["v"][i]
             d["es"] += nat["es"][i]
         indiv = [d for d in indiv.values() if d["es"] > 0 or d["votos"] / total_v >= 0.01]
         for d in indiv:
+            if d["k"] == "UP":
+                d["n"] = "Unidas Podemos" if eleccion.startswith("2019") else ("Unidos Podemos" if eleccion == "2016-06" else "Podemos")
             d["pct"] = round(100 * d["votos"] / total_v, 2)
             d["pct_es"] = round(100 * d["es"] / total_e, 2)
             d["coste"] = round(d["votos"] / d["es"]) if d["es"] else None
@@ -107,7 +128,7 @@ def efectos(origen):
         salida[eleccion] = {
             "etiqueta": ETIQUETAS[eleccion],
             "escanos_prov": {p["id"]: p["s"] for p in j["prov"]},
-            "grupos": lista, "partidos": indiv, "gallagher": round(gallagher, 2),
+            "grupos": lista, "evolucion": evolucion, "partidos": indiv, "gallagher": round(gallagher, 2),
         }
     return salida
 
