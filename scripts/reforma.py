@@ -70,6 +70,23 @@ def simular(origen):
             actual_cc[cc] = actual_cc.get(cc, 0) + p["s"]
             provs_cc.setdefault(cc, []).append(p["id"])
 
+        up = UP_POR_ELECCION[el]
+        # escaños actuales por partido en cada comunidad (suma de sus provincias)
+        actual_partido_cc = {}
+        for p in j["prov"]:
+            acc = actual_partido_cc.setdefault(p["cc"], [0] * len(claves))
+            actual_partido_cc[p["cc"]] = [a + b for a, b in zip(acc, p["es"])]
+
+        def clave(k):
+            return "UP" if k in up else k
+
+        def nombre(i):
+            k = claves[i]
+            return NOMBRE_UP.get(el) if k in up else NOMBRES.get(k, partidos[i]["n"])
+
+        def color(i):
+            return COLORES.get(clave(claves[i]), partidos[i]["c"])
+
         reforma = [0] * len(claves)
         ccaa = []
         for cc, v in votos_cc.items():
@@ -77,16 +94,22 @@ def simular(origen):
             elig = [x if x >= 0.03 * validos else 0 for x in v]
             r = dhondt(elig, esc_cc[cc])
             reforma = [a + b for a, b in zip(reforma, r)]
-            gan = {claves[i]: n for i, n in enumerate(r) if n}
+            filas = {}
+            for i, k in enumerate(claves):
+                d = filas.setdefault(clave(k), {"k": clave(k), "n": nombre(i), "c": color(i), "votos": 0, "actual": 0, "reforma": 0})
+                d["votos"] += v[i]
+                d["actual"] += actual_partido_cc[cc][i]
+                d["reforma"] += r[i]
+            filas = [d for d in filas.values() if d["actual"] or d["reforma"] or d["votos"] / validos >= 0.03]
+            for d in filas:
+                d["pct"] = round(100 * d["votos"] / validos, 2)
+            filas.sort(key=lambda d: -d["votos"])
             ccaa.append({"id": cc, "n": nombres_cc[cc], "prov": provs_cc[cc],
                          "pob": POB[el][ORDEN.index(cc)] if cc in ORDEN else None,
-                         "s_actual": actual_cc[cc], "s_reforma": esc_cc[cc],
-                         "reparto": [{"k": k, "n": partidos[claves.index(k)]["n"], "c": partidos[claves.index(k)]["c"], "es": n}
-                                     for k, n in sorted(gan.items(), key=lambda kv: -kv[1])]})
+                         "s_actual": actual_cc[cc], "s_reforma": esc_cc[cc], "partidos": filas})
         assert sum(reforma) == 350, (el, sum(reforma))
 
         # agregación por partido (UP con sus confluencias)
-        up = UP_POR_ELECCION[el]
         tot_v = sum(nat["v"]) + nat.get("bl", 0)
         agg = {}
         for i, k in enumerate(claves):

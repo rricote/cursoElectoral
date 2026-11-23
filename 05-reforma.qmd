@@ -150,32 +150,155 @@ Ojo a la última columna: el mínimo de 6 hace que La Rioja, Cantabria o Navarra
 
 ```{ojs}
 //| output: false
-function tablaResultados(el) {
+ordenIzqDer = ["CUP", "IU", "UP", "SUMAR", "MASPAIS", "BILDU", "ERC", "BNG", "P905026", "COMPROMIS", "P904976", "NABAI", "PSOE", "TERUEL", "PRC", "PNV", "CC", "CIU", "JUNTS", "CS", "UPN", "NAVARRASUMA", "PP", "VOX"]
+posicion = k => { const i = ordenIzqDer.indexOf(k); return i < 0 ? 50 : i; }
+
+function hemiciclo(partidos, campo, filas = 10, r0 = 0.4) {
+  const total = d3.sum(partidos, p => p[campo]);
+  const radios = d3.range(filas).map(i => r0 + (1 - r0) * i / (filas - 1));
+  const sumR = d3.sum(radios);
+  const porFila = radios.map(r => Math.round(total * r / sumR));
+  porFila[filas - 1] += total - d3.sum(porFila);
+  const asientos = [];
+  radios.forEach((r, i) => {
+    const n = porFila[i];
+    for (let j = 0; j < n; j++) {
+      const a = Math.PI - Math.PI * j / (n - 1);
+      asientos.push({a, r, x: r * Math.cos(a), y: r * Math.sin(a)});
+    }
+  });
+  asientos.sort((p, q) => q.a - p.a || p.r - q.r);
+  let k = 0;
+  for (const p of partidos.slice().sort((a, b) => posicion(a.k) - posicion(b.k)))
+    for (let i = 0; i < p[campo]; i++) Object.assign(asientos[k++], {partido: p.n, c: p.c});
+  return asientos;
+}
+
+function congreso(partidos, campo, titulo, color) {
+  const asientos = hemiciclo(partidos, campo);
+  return Plot.plot({
+    width: 470, height: 255, margin: 4, marginTop: 30,
+    x: {axis: null, domain: [-1.03, 1.03]}, y: {axis: null, domain: [-0.03, 1.03]},
+    marks: [
+      Plot.dot(asientos, {x: "x", y: "y", fill: "c", r: 3.6, title: "partido"}),
+      Plot.text([titulo], {frameAnchor: "top-left", dy: -24, fontSize: 16, fontWeight: 700, fill: color, fontFamily: "Inter, sans-serif"}),
+      Plot.text(["350"], {x: 0, y: 0.13, fontSize: 22, fontWeight: 700, fill: "#333"}),
+      Plot.text(["mayoría: 176"], {x: 0, y: 0.02, fontSize: 12, fill: "#666"})
+    ]
+  });
+}
+
+function comparativa(el) {
   const r = reforma[el];
   const fila = p => {
     const d = p.reforma - p.actual, dp = p.pct_reforma - p.pct_actual;
     return html`<tr style="background:${p.c}22">
       <td><span class="punto" style="background:${p.c}"></span><b>${p.n}</b></td>
-      <td>${num(p.pct)}</td>
-      <td>${p.actual}</td><td>${num(p.pct_actual)}</td>
-      <td><b>${p.reforma}</b></td><td><b>${num(p.pct_reforma)}</b></td>
+      <td>${num(p.pct)}</td><td>${p.actual}</td><td><b>${p.reforma}</b></td>
       <td style="color:${colorDif(d)};font-weight:700">${signo(d)}</td>
       <td style="color:${colorDif(dp)};font-weight:700">${signo(dp, 1)}</td></tr>`;
   };
-  return html`<table class="tabla-partidos" style="font-size:${r.partidos.length > 15 ? 14 : r.partidos.length > 12 ? 16 : 18}px !important">
-    <tr><th rowspan="2">Partido</th><th rowspan="2">% votos</th><th colspan="2">Sistema actual</th><th colspan="2">Propuesta</th><th colspan="2">Diferencia</th></tr>
-    <tr><th>Esc.</th><th>% esc.</th><th>Esc.</th><th>% esc.</th><th>Esc.</th><th>Puntos</th></tr>
-    ${r.partidos.map(fila)}
-  </table>
-  <div class="fuente">Índice de Gallagher: <b>${num(r.gallagher_actual, 2)}</b> con el sistema actual → <b>${num(r.gallagher_reforma, 2)}</b> con la propuesta.
-  Número efectivo de partidos (escaños): ${num(r.nep_actual, 2)} → ${num(r.nep_reforma, 2)}.</div>`;
+  const tam = r.partidos.length > 15 ? 13 : r.partidos.length > 12 ? 14 : 16;
+  return html`<div style="display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:22px;align-items:start">
+    <div>
+      <table class="tabla-partidos" style="font-size:${tam}px !important">
+        <tr><th>Partido</th><th>% votos</th><th>Actual</th><th>Propuesta</th><th>Dif.</th><th>Dif. % esc.</th></tr>
+        ${r.partidos.map(fila)}
+      </table>
+      <div class="fuente">Gallagher: <b>${num(r.gallagher_actual, 2)}</b> → <b>${num(r.gallagher_reforma, 2)}</b> · Número efectivo de partidos: ${num(r.nep_actual, 2)} → ${num(r.nep_reforma, 2)}</div>
+    </div>
+    <div>
+      ${congreso(r.partidos, "actual", "Congreso actual", "#555")}
+      ${congreso(r.partidos, "reforma", "Congreso con la propuesta", "#9b2226")}
+    </div>
+  </div>`;
 }
 ```
+
+## Comunidad a comunidad
+
+```{ojs}
+viewof elCC = Inputs.radio(elecciones, {value: "2023-07", label: "Elección"})
+```
+
+::: {.columns}
+::: {.column width="48%"}
+```{ojs}
+viewof ccSel = {
+  const r = reforma[elCC];
+  const escanos = Object.fromEntries(r.ccaa.map(c => [c.id, c.s_reforma]));
+  const nombres = Object.fromEntries(r.ccaa.map(c => [c.id, c.n]));
+  const cont = html`<div style="cursor:pointer"></div>`;
+  const svg = d3.create("svg").attr("viewBox", `0 0 ${mapaCCAA.w} ${mapaCCAA.h + 10}`).style("width", "100%").style("height", "auto").style("max-height", "470px");
+  const formas = [];
+  const pinta = () => formas.forEach(([id, f]) => f.attr("fill", id === cont.value ? "#9b2226" : "#f0e2da"));
+  const elegir = id => { cont.value = id; pinta(); textos.forEach(([i, t]) => t.attr("fill", i === id ? "#fff" : "#333")); cont.dispatchEvent(new Event("input", {bubbles: true})); };
+  for (const [id, path] of Object.entries(mapaCCAA.paths)) {
+    const f = svg.append("path").attr("d", path).attr("stroke", "#fff").attr("stroke-width", 3).on("click", () => elegir(id));
+    f.append("title").text(`${nombres[id]}: ${escanos[id]} escaños`);
+    formas.push([id, f]);
+  }
+  for (const [id, [x, y, q]] of Object.entries(mapaCCAA.sq)) {
+    const f = svg.append("rect").attr("x", x).attr("y", y).attr("width", q).attr("height", q).attr("rx", 6).attr("stroke", "#aaa").on("click", () => elegir(id));
+    f.append("title").text(nombres[id]);
+    formas.push([id, f]);
+  }
+  const [x0, y0, x1, y1] = mapaCCAA.box;
+  svg.append("rect").attr("x", x0).attr("y", y0).attr("width", x1 - x0).attr("height", y1 - y0).attr("fill", "none").attr("stroke", "#ccc").attr("stroke-dasharray", "4 4").attr("pointer-events", "none");
+  const textos = [];
+  for (const [id, [x, y]] of Object.entries(mapaCCAA.lab)) {
+    const t = svg.append("text").attr("x", x).attr("y", y + 13).attr("text-anchor", "middle").attr("font-size", 38).attr("font-weight", 700)
+      .attr("font-family", "Inter, sans-serif").attr("pointer-events", "none").text(escanos[id]);
+    textos.push([id, t]);
+  }
+  cont.append(svg.node());
+  cont.value = "12";
+  pinta();
+  textos.forEach(([i, t]) => t.attr("fill", i === "12" ? "#fff" : "#333"));
+  return cont;
+}
+```
+::: {.fuente}
+Haz clic en una comunidad. El número es su escaños con la propuesta.
+:::
+:::
+::: {.column width="52%"}
+```{ojs}
+{
+  const c = reforma[elCC].ccaa.find(d => d.id === ccSel);
+  const fila = p => {
+    const d = p.reforma - p.actual;
+    return html`<tr style="background:${p.c}22">
+      <td><span class="punto" style="background:${p.c}"></span><b>${p.n}</b></td>
+      <td>${num(p.pct)}</td><td>${p.actual}</td><td><b>${p.reforma}</b></td>
+      <td style="color:${colorDif(d)};font-weight:700">${signo(d)}</td></tr>`;
+  };
+  const prov = c.prov.length;
+  return html`<div style="font-family:Inter,sans-serif">
+    <div style="font-size:24px;font-weight:700;color:#9b2226">${c.n}</div>
+    <div style="font-size:15px;color:#555;margin:4px 0 10px">
+      Hoy: <b>${prov} ${prov === 1 ? "circunscripción" : "circunscripciones"}</b> y <b>${c.s_actual}</b> escaños ·
+      Propuesta: <b>1 circunscripción</b> de <b>${c.s_reforma}</b> escaños
+      ${c.pob ? html` · ${miles(Math.round(c.pob / c.s_reforma))} hab./escaño` : ""}</div>
+    <table class="tabla-partidos" style="font-size:17px !important">
+      <tr><th>Partido</th><th>% votos</th><th>Actual</th><th>Propuesta</th><th>Dif.</th></tr>
+      ${c.partidos.map(fila)}
+    </table>
+    <div class="fuente">% de votos válidos en la comunidad. Solo partidos con escaño o con al menos un 3 %.</div>
+  </div>`;
+}
+```
+:::
+:::
+
+::: notes
+Esta diapositiva es interactiva: haced clic en cualquier comunidad para ver cómo cambia su reparto. Por defecto aparece Madrid. Comparad, por ejemplo, Castilla y León, que pierde muchos escaños porque hoy sus nueve provincias parten de 2 cada una, con Madrid o Murcia, que ganan. En las comunidades con varias provincias, la columna "Actual" suma los escaños de todas sus provincias.
+:::
 
 ## 2015 · actual frente a propuesta
 
 ```{ojs}
-tablaResultados("2015-12")
+comparativa("2015-12")
 ```
 
 ::: notes
@@ -185,7 +308,7 @@ En 2015 el PP y el PSOE perderían 9 y 10 escaños, mientras que Podemos y sus c
 ## 2016 · actual frente a propuesta
 
 ```{ojs}
-tablaResultados("2016-06")
+comparativa("2016-06")
 ```
 
 ::: notes
@@ -195,7 +318,7 @@ En 2016 el PP seguiría ganando, pero con 12 escaños menos (de 137 a 125). Ciud
 ## Abril de 2019 · actual frente a propuesta
 
 ```{ojs}
-tablaResultados("2019-04")
+comparativa("2019-04")
 ```
 
 ::: notes
@@ -205,7 +328,7 @@ El PSOE ganaría igualmente, pero bajaría de 123 a 110 escaños. Los grandes be
 ## Noviembre de 2019 · actual frente a propuesta
 
 ```{ojs}
-tablaResultados("2019-11")
+comparativa("2019-11")
 ```
 
 ::: notes
@@ -215,7 +338,7 @@ El caso más llamativo es Ciudadanos: con la propuesta doblaría sus escaños, d
 ## 2023 · actual frente a propuesta
 
 ```{ojs}
-tablaResultados("2023-07")
+comparativa("2023-07")
 ```
 
 ::: notes
