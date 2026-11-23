@@ -189,6 +189,24 @@ function congreso(partidos, campo, titulo, color) {
   });
 }
 
+bloqueDe = k => ["PSOE", "UP", "SUMAR", "IU", "MASPAIS"].includes(k) ? "Izquierda"
+  : ["PP", "CS", "VOX", "NAVARRASUMA"].includes(k) ? "Derecha" : "Regionalistas y nacionalistas"
+coloresBloque = ({"Izquierda": "#c8102e", "Derecha": "#1d5fa8", "Regionalistas y nacionalistas": "#e8890c"})
+
+function bloques(partidos) {
+  const nombres = ["Izquierda", "Derecha", "Regionalistas y nacionalistas"];
+  return html`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;font-family:Inter,sans-serif">
+    ${nombres.map(b => {
+      const ps = partidos.filter(p => bloqueDe(p.k) === b);
+      const a = d3.sum(ps, p => p.actual), r = d3.sum(ps, p => p.reforma), d = r - a;
+      return html`<div style="border-top:4px solid ${coloresBloque[b]};background:${coloresBloque[b]}14;border-radius:6px;padding:4px 8px">
+        <div style="font-size:12px;font-weight:700;color:${coloresBloque[b]}">${b}</div>
+        <div style="font-size:16px"><b>${a}</b> → <b>${r}</b> <span style="color:${colorDif(d)};font-weight:700">(${signo(d)})</span></div>
+      </div>`;
+    })}
+  </div>`;
+}
+
 function comparativa(el) {
   const r = reforma[el];
   const fila = p => {
@@ -206,6 +224,7 @@ function comparativa(el) {
         <tr><th>Partido</th><th>% votos</th><th>Actual</th><th>Propuesta</th><th>Dif.</th><th>Dif. % esc.</th></tr>
         ${r.partidos.map(fila)}
       </table>
+      ${bloques(r.partidos)}
       <div class="fuente">Gallagher: <b>${num(r.gallagher_actual, 2)}</b> → <b>${num(r.gallagher_reforma, 2)}</b> · Número efectivo de partidos: ${num(r.nep_actual, 2)} → ${num(r.nep_reforma, 2)}</div>
     </div>
     <div>
@@ -303,6 +322,7 @@ comparativa("2015-12")
 ```
 
 ::: notes
+Debajo de la tabla, los escaños por bloques. Izquierda: PSOE, Podemos/UP/Sumar, IU y Más País. Derecha: PP, Ciudadanos, Vox y Navarra Suma. El resto son regionalistas y nacionalistas (ERC, Junts, PNV, EH Bildu, BNG, CC, Compromís, PRC, Teruel Existe, UPN...).
 En 2015 el PP y el PSOE perderían 9 y 10 escaños, mientras que Podemos y sus confluencias ganarían 5 y Ciudadanos 6. El gran beneficiado sería Izquierda Unida: de 2 a 8 escaños, porque su voto disperso dejaría de perderse en las provincias pequeñas. El índice de Gallagher bajaría casi a la mitad.
 :::
 
@@ -442,7 +462,7 @@ Es el mismo gráfico de la sesión 2, ahora con la propuesta al lado. Hoy la mit
 :::
 :::
 
-## Para el debate
+## Para el debate {.smaller}
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -451,6 +471,7 @@ Es el mismo gráfico de la sesión 2, ahora con la propuesta al lado. Hoy la mit
 - El voto vale más parecido en toda España.
 - Menos voto útil forzado y más pluralismo.
 - Las comunidades ya son el gran nivel de gobierno territorial.
+- Facilitaría la aparición de **nuevos partidos políticos**.
 :::
 ::: {.column width="50%"}
 **Argumentos en contra**
@@ -458,6 +479,7 @@ Es el mismo gráfico de la sesión 2, ahora con la propuesta al lado. Hoy la mit
 - Se pierde el vínculo entre el diputado y su provincia.
 - Las provincias rurales y despobladas pierden peso.
 - Más fragmentación: puede costar más formar gobierno.
+- Listas muy largas: menos cercanía con los candidatos y más poder de las cúpulas (Michels).
 :::
 :::
 
@@ -467,7 +489,7 @@ La provincia como circunscripción está en el **artículo 68.2 de la Constituci
 :::
 
 ::: notes
-Es una propuesta personal y conviene presentarla con sus pros y sus contras. Una pregunta para abrir el debate: ¿qué preferís, que cada voto valga lo mismo o que cada provincia tenga sus propios diputados? Detalle técnico: el artículo 68 está en el Título III, así que su reforma sigue el procedimiento ordinario del artículo 167, no el agravado del 168.
+Es una propuesta personal y conviene presentarla con sus pros y sus contras. Al bajar la barrera efectiva, a un partido nuevo le basta con un 3-5 % en una comunidad grande para entrar, cuando hoy necesita ganar en muchas provincias a la vez; a cambio, en Andalucía o Cataluña habría listas cerradas de 47 o 50 nombres, y la sesión 1 ya mostró con Michels quién controla las listas. Una pregunta para abrir el debate: ¿qué preferís, que cada voto valga lo mismo o que cada provincia tenga sus propios diputados? Detalle técnico: el artículo 68 está en el Título III, así que su reforma sigue el procedimiento ordinario del artículo 167, no el agravado del 168.
 :::
 
 ## Resumen de la sesión
