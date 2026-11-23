@@ -18,6 +18,7 @@ reforma = FileAttachment("datos/reforma.json").json()
 mapaProv = FileAttachment("datos/mapa_provincias.json").json()
 mapaCCAA = FileAttachment("datos/mapa_ccaa.json").json()
 efectos = FileAttachment("datos/efectos.json").json()
+provincias2023 = FileAttachment("datos/provincias_2023.json").json()
 
 categoria = s => s === 1 ? "Uninominal (1)" : s <= 5 ? "Pequeña (2-5)" : s <= 9 ? "Mediana (6-9)" : "Grande (10+)"
 colorCat = ({"Uninominal (1)": "#c9c4bd", "Pequeña (2-5)": "#f2c6b4", "Mediana (6-9)": "#e07a5f", "Grande (10+)": "#9b2226"})
@@ -376,6 +377,44 @@ La desproporcionalidad **cae a la mitad o menos** en las cinco elecciones: de va
 
 ::: notes
 Es el resultado principal: con los mismos votos, la distancia entre votos y escaños cae a la mitad o menos. Valores de 2 o 3 son parecidos a los de sistemas muy proporcionales como el alemán.
+:::
+
+## La barrera real en 2023
+
+```{ojs}
+{
+  const barrera = m => 75 / (m + 1);
+  const grafico = (datos, etiquetas, destacada, pos) => Plot.plot({
+    width: 500, height: 430, marginLeft: 50, marginRight: 30, marginTop: 25, marginBottom: 42,
+    x: {label: "Escaños de la circunscripción →", type: "log", domain: [1, 50], ticks: [1, 2, 3, 5, 10, 20, 50], tickFormat: d => d},
+    y: {label: "↑ Barrera efectiva aprox. (%)", grid: true, domain: [0, 40]},
+    marks: [
+      Plot.line(d3.range(1, 51).map(m => ({m, b: barrera(m)})), {x: "m", y: "b", stroke: "#bbb", strokeDasharray: "4 3"}),
+      Plot.ruleY([3], {stroke: "#b3261e", strokeOpacity: .5}),
+      Plot.dot(datos, {x: "s", y: d => barrera(d.s), fill: d => colorCat[categoria(d.s)], r: 7, stroke: "#fff", title: d => `${d.n}: ${d.s} escaños → ~${num(barrera(d.s))} %`}),
+      Plot.text(datos.filter(d => etiquetas.includes(d.n)), {x: "s", y: d => barrera(d.s), text: "n", dy: -15, fontSize: 14}),
+      Plot.dot(datos.filter(d => d.n === destacada), {x: "s", y: d => barrera(d.s), r: 11, stroke: "#111", strokeWidth: 3}),
+      Plot.text(datos.filter(d => d.n === destacada), {x: "s", y: d => barrera(d.s), text: d => `${d.n}: ~${num(barrera(d.s))} %`, ...pos, fontSize: 15, fontWeight: 700})
+    ]
+  });
+  const actual = provincias2023.map(p => ({n: p.n, s: p.s}));
+  const nueva = reforma["2023-07"].ccaa.map(c => ({n: c.n.replace("Comunidad de ", "").replace("Comunidad Foral de ", "").replace("Ciudad Autónoma de ", ""), s: c.s_reforma}));
+  const media = d => num(d3.median(d, x => barrera(x.s)));
+  return html`<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px">
+    <div><div style="font-family:Inter,sans-serif;font-weight:700;font-size:18px;color:#555">Sistema actual: 52 provincias</div>${grafico(actual, ["Soria", "Madrid"], "Tarragona", {dx: 12, dy: -16, textAnchor: "start"})}
+      <div class="fuente">Barrera efectiva mediana: <b>${media(actual)} %</b></div></div>
+    <div><div style="font-family:Inter,sans-serif;font-weight:700;font-size:18px;color:#9b2226">Propuesta: 19 circunscripciones</div>${grafico(nueva, ["La Rioja", "Ceuta"], "Cataluña", {dx: -6, dy: -26, textAnchor: "end"})}
+      <div class="fuente">Barrera efectiva mediana: <b>${media(nueva)} %</b></div></div>
+  </div>`;
+}
+```
+
+::: {.fuente}
+Barrera efectiva ≈ 75 % / (escaños + 1), fórmula de Taagepera. La línea roja marca la barrera legal del 3 %.
+:::
+
+::: notes
+Es el mismo gráfico de la sesión 2, ahora con la propuesta al lado. Hoy la mitad de las provincias exigen al menos un 12,5 % para sacar escaño; con la propuesta, ninguna comunidad pasa del 8,3 % (La Rioja) y la mitad están en el 5 % o menos. Tarragona, que hoy exige en torno a un 10,7 %, pasaría a formar parte de Cataluña, donde con 47 escaños bastaría con un 1,6 %: en la práctica, la barrera legal del 3 % pasaría a ser la que manda.
 :::
 
 ## Quién gana y quién pierde con la propuesta
