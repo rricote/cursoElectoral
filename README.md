@@ -9,9 +9,11 @@ Presentaciones en [Quarto](https://quarto.org) (formato revealjs) para explicar 
 | `02-espana.qmd` | Sesión 2: circunscripciones, D'Hondt (con simulador), bipartidismo, voto estratégico y dual |
 | `03-partidos.qmd` | Sesión 3: tipos de sistemas de partidos, número efectivo de partidos, Congreso 2023, oferta 2019/2023 y Tarragona |
 | `04-efectos.qmd` | Sesión 4: efectos del sistema electoral (mapas por partido 2019-2023, votos/escaños, coste por escaño, Gallagher) |
+| `05-reforma.qmd` | Sesión 5: propuesta de reforma (circunscripción autonómica) con las elecciones 2015-2023 recalculadas |
 | `recursos/img/` | Capturas de la oferta de partidos (2019 y 2023) |
 | `recursos/curso.scss` | Estilo visual común |
 | `datos/` | Datos que usan los gráficos (generados desde *Simulador elecciones*) |
+| `scripts/reforma.py` | Calcula la sesión 5 (`datos/reforma.json`); se ejecuta igual que `preparar_datos.py` |
 | `scripts/preparar_datos.py` | Regenera `datos/` a partir de `Simulador elecciones/resultados-generales-web` |
 
 ## Ver las presentaciones en tu ordenador

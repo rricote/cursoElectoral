@@ -7,6 +7,7 @@ project:
     - 02-espana.qmd
     - 03-partidos.qmd
     - 04-efectos.qmd
+    - 05-reforma.qmd
   resources:
     - datos/
 

@@ -478,6 +478,7 @@ Arriba a la izquierda, el mapa de escaños por provincia (2023) como referencia.
 6. Así se explica que España mantenga dos grandes partidos y que el multipartidismo nunca llegue a ser pleno.
 
 <div class="volver"><a href="index.html">← Volver al índice del curso</a></div>
+<div class="volver sec"><a href="05-reforma.html">Ir a la sesión 5 →</a></div>
 
 ::: notes
 Seis ideas para cerrar el curso. La conclusión general es que España es proporcional sobre el papel, pero sus provincias pequeñas funcionan casi como un sistema mayoritario, y eso explica que dos grandes partidos sigan dominando.

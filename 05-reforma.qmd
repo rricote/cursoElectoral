@@ -1,0 +1,323 @@
+---
+title: "Una propuesta de reforma electoral"
+subtitle: "Sesión 5 · La comunidad autónoma como circunscripción"
+format:
+  revealjs:
+    theme: [default, recursos/curso.scss]
+    slide-number: true
+    hash-type: number
+    transition: fade
+    footer: "[Curso de política](index.html) · Sesión 5"
+execute:
+  echo: false
+---
+
+```{ojs}
+//| output: false
+reforma = FileAttachment("datos/reforma.json").json()
+mapaProv = FileAttachment("datos/mapa_provincias.json").json()
+mapaCCAA = FileAttachment("datos/mapa_ccaa.json").json()
+efectos = FileAttachment("datos/efectos.json").json()
+
+categoria = s => s === 1 ? "Uninominal (1)" : s <= 5 ? "Pequeña (2-5)" : s <= 9 ? "Mediana (6-9)" : "Grande (10+)"
+colorCat = ({"Uninominal (1)": "#c9c4bd", "Pequeña (2-5)": "#f2c6b4", "Mediana (6-9)": "#e07a5f", "Grande (10+)": "#9b2226"})
+ordenCat = ["Uninominal (1)", "Pequeña (2-5)", "Mediana (6-9)", "Grande (10+)"]
+num = (v, d = 1) => v.toLocaleString("es-ES", {minimumFractionDigits: d, maximumFractionDigits: d})
+miles = d3.formatLocale({decimal: ",", thousands: ".", grouping: [3], currency: ["", " €"]}).format(",d")
+signo = (v, d = 0) => (v > 0 ? "+" : v < 0 ? "−" : "") + num(Math.abs(v), d)
+colorDif = v => v > 0 ? "#1b7f3b" : v < 0 ? "#b3261e" : "#888"
+elecciones = new Map([["2015", "2015-12"], ["2016", "2016-06"], ["Abril 2019", "2019-04"], ["Noviembre 2019", "2019-11"], ["2023", "2023-07"]])
+
+function dibujaMapa(m, escanos, porId) {
+  const svg = d3.create("svg").attr("viewBox", `0 0 ${m.w} ${m.h + 10}`).style("height", "400px").style("width", "auto");
+  const g = svg.append("g");
+  for (const [id, path] of Object.entries(m.paths)) {
+    g.append("path").attr("d", path).attr("fill", colorCat[categoria(escanos[id])]).attr("stroke", "#fff").attr("stroke-width", porId ? 1.5 : 3)
+      .append("title").text(`${porId ? porId[id] + ": " : ""}${escanos[id]} escaños`);
+  }
+  for (const [id, [x, y, s]] of Object.entries(m.sq)) {
+    g.append("rect").attr("x", x).attr("y", y).attr("width", s).attr("height", s).attr("rx", 6).attr("fill", colorCat[categoria(escanos[id])]).attr("stroke", "#aaa");
+    g.append("text").attr("x", x + s / 2).attr("y", y + s / 2 + 13).attr("text-anchor", "middle").attr("font-size", 34).attr("font-weight", 700).attr("font-family", "Inter, sans-serif").text(escanos[id]);
+  }
+  const [x0, y0, x1, y1] = m.box;
+  g.append("rect").attr("x", x0).attr("y", y0).attr("width", x1 - x0).attr("height", y1 - y0).attr("fill", "none").attr("stroke", "#ccc").attr("stroke-dasharray", "4 4");
+  for (const [id, [x, y]] of Object.entries(m.lab)) {
+    if (escanos[id] == null) continue;
+    g.append("text").attr("x", x).attr("y", y + 13).attr("text-anchor", "middle").attr("font-size", porId ? 30 : 40).attr("font-weight", 700)
+      .attr("font-family", "Inter, sans-serif").attr("fill", escanos[id] >= 10 ? "#fff" : "#222").attr("pointer-events", "none").text(escanos[id]);
+  }
+  return svg.node();
+}
+
+function resumenCat(escanos) {
+  const vals = Object.values(escanos);
+  return html`<div style="font-family:Inter,sans-serif;font-size:14px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center">
+    ${ordenCat.map(c => { const n = vals.filter(s => categoria(s) === c).length;
+      return html`<span style="display:inline-flex;align-items:center;gap:5px;opacity:${n ? 1 : .35}">
+        <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:${colorCat[c]}"></span>${c}: <b>${n}</b></span>`; })}
+    <span style="color:#555"><b>${vals.length}</b> circunscripciones</span></div>`;
+}
+```
+
+## La propuesta
+
+::: {.tarjetas style="--n:4"}
+::: {.tarjeta style="--c:#9b2226"}
+[1. Circunscripción]{.tt}
+La **comunidad autónoma** en lugar de la provincia: **17 circunscripciones** más Ceuta y Melilla.
+:::
+::: {.tarjeta style="--c:#c9c4bd"}
+[2. Ceuta y Melilla]{.tt}
+Siguen siendo **uninominales**: un escaño cada una.
+:::
+::: {.tarjeta style="--c:#e07a5f"}
+[3. Mínimo de 6]{.tt}
+Cada comunidad parte de **6 escaños** (102 en total). Los **246** restantes se reparten por **población**, como ahora.
+:::
+::: {.tarjeta style="--c:#555"}
+[4. Lo demás no cambia]{.tt}
+**350 diputados**, fórmula **D'Hondt** y barrera del **3 %**, aplicada ahora en cada comunidad.
+:::
+:::
+
+::: {.chico}
+He recalculado las cinco últimas elecciones generales con los **votos reales** y la **población oficial** de cada convocatoria, solo cambiando la circunscripción.
+:::
+
+::: notes
+La idea de la propuesta es atacar la causa principal de la desproporcionalidad que vimos en la sesión 4: las provincias pequeñas. Al pasar a la comunidad autónoma, casi todas las circunscripciones tienen 8 escaños o más, y la barrera efectiva baja mucho. Se mantiene todo lo demás (350 diputados, D'Hondt y el 3 %) para ver el efecto aislado del cambio de circunscripción.
+El reparto entre comunidades se hace igual que la LOREG reparte hoy entre provincias: un mínimo fijo y el resto por población, con cociente y restos mayores.
+:::
+
+# El mapa {background-color="#1b1b1b"}
+
+## De 52 provincias a 19 circunscripciones
+
+```{ojs}
+viewof elMapa = Inputs.radio(elecciones, {value: "2023-07", label: "Elección"})
+```
+
+```{ojs}
+{
+  const r = reforma[elMapa];
+  const actual = efectos[elMapa].escanos_prov;
+  const nueva = Object.fromEntries(r.ccaa.map(c => [c.id, c.s_reforma]));
+  const nombres = Object.fromEntries(r.ccaa.map(c => [c.id, c.n]));
+  return html`<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px">
+    <div><div style="font-family:Inter,sans-serif;font-weight:700;font-size:18px">Sistema actual: provincias</div>
+      ${dibujaMapa(mapaProv, actual, null)}${resumenCat(actual)}</div>
+    <div><div style="font-family:Inter,sans-serif;font-weight:700;font-size:18px;color:#9b2226">Propuesta: comunidades autónomas</div>
+      ${dibujaMapa(mapaCCAA, nueva, nombres)}${resumenCat(nueva)}</div>
+  </div>`;
+}
+```
+
+::: notes
+A la izquierda, el mapa actual de escaños por provincia; a la derecha, el de la propuesta. Desaparecen las circunscripciones pequeñas: fuera de Ceuta y Melilla, la más pequeña pasa a tener 8 escaños (La Rioja) y casi todas superan los 10. Con el botón de arriba se puede cambiar de elección, porque el reparto depende de la población de cada momento.
+:::
+
+## Escaños por comunidad
+
+```{ojs}
+viewof elTabla = Inputs.radio(elecciones, {value: "2023-07", label: "Elección"})
+```
+
+```{ojs}
+{
+  const filas = reforma[elTabla].ccaa.filter(c => c.pob);
+  const fila = c => {
+    const dif = c.s_reforma - c.s_actual;
+    return html`<tr>
+      <td>${c.n}</td><td>${miles(c.pob)}</td>
+      <td>${c.s_actual}</td><td><b>${c.s_reforma}</b></td>
+      <td style="color:${colorDif(dif)};font-weight:700">${signo(dif)}</td>
+      <td>${miles(Math.round(c.pob / c.s_actual))}</td><td>${miles(Math.round(c.pob / c.s_reforma))}</td></tr>`;
+  };
+  return html`<table class="tabla-partidos" style="font-size:16px !important">
+    <tr><th>Comunidad</th><th>Población</th><th>Escaños actuales</th><th>Propuesta</th><th>Dif.</th><th>Hab./escaño actual</th><th>Hab./escaño propuesta</th></tr>
+    ${filas.map(fila)}
+    <tr><td colspan="7" style="color:#666">Ceuta y Melilla: 1 escaño cada una en los dos sistemas.</td></tr>
+  </table>`;
+}
+```
+
+::: notes
+Esta tabla muestra quién gana y quién pierde diputados con el cambio. Pierden sobre todo las comunidades con muchas provincias poco pobladas, como Castilla y León (de 31 a 18 o 19) o Castilla-La Mancha, porque hoy cada provincia parte de 2 escaños. Ganan Madrid, Murcia y las comunidades uniprovinciales pequeñas.
+Ojo a la última columna: el mínimo de 6 hace que La Rioja, Cantabria o Navarra sigan sobrerrepresentadas (unos 40.000 habitantes por escaño frente a más de 160.000 en Madrid). La propuesta reduce las desigualdades entre provincias, pero no las elimina entre comunidades.
+:::
+
+# Los resultados {background-color="#1b1b1b"}
+
+```{ojs}
+//| output: false
+function tablaResultados(el) {
+  const r = reforma[el];
+  const fila = p => {
+    const d = p.reforma - p.actual, dp = p.pct_reforma - p.pct_actual;
+    return html`<tr style="background:${p.c}22">
+      <td><span class="punto" style="background:${p.c}"></span><b>${p.n}</b></td>
+      <td>${num(p.pct)}</td>
+      <td>${p.actual}</td><td>${num(p.pct_actual)}</td>
+      <td><b>${p.reforma}</b></td><td><b>${num(p.pct_reforma)}</b></td>
+      <td style="color:${colorDif(d)};font-weight:700">${signo(d)}</td>
+      <td style="color:${colorDif(dp)};font-weight:700">${signo(dp, 1)}</td></tr>`;
+  };
+  return html`<table class="tabla-partidos" style="font-size:${r.partidos.length > 15 ? 14 : r.partidos.length > 12 ? 16 : 18}px !important">
+    <tr><th rowspan="2">Partido</th><th rowspan="2">% votos</th><th colspan="2">Sistema actual</th><th colspan="2">Propuesta</th><th colspan="2">Diferencia</th></tr>
+    <tr><th>Esc.</th><th>% esc.</th><th>Esc.</th><th>% esc.</th><th>Esc.</th><th>Puntos</th></tr>
+    ${r.partidos.map(fila)}
+  </table>
+  <div class="fuente">Índice de Gallagher: <b>${num(r.gallagher_actual, 2)}</b> con el sistema actual → <b>${num(r.gallagher_reforma, 2)}</b> con la propuesta.
+  Número efectivo de partidos (escaños): ${num(r.nep_actual, 2)} → ${num(r.nep_reforma, 2)}.</div>`;
+}
+```
+
+## 2015 · actual frente a propuesta
+
+```{ojs}
+tablaResultados("2015-12")
+```
+
+::: notes
+En 2015 el PP y el PSOE perderían 9 y 10 escaños, mientras que Podemos y sus confluencias ganarían 5 y Ciudadanos 6. El gran beneficiado sería Izquierda Unida: de 2 a 8 escaños, porque su voto disperso dejaría de perderse en las provincias pequeñas. El índice de Gallagher bajaría casi a la mitad.
+:::
+
+## 2016 · actual frente a propuesta
+
+```{ojs}
+tablaResultados("2016-06")
+```
+
+::: notes
+En 2016 el PP seguiría ganando, pero con 12 escaños menos (de 137 a 125). Ciudadanos sería el más beneficiado (+10) y Unidos Podemos ganaría 6. La desproporcionalidad caería de 5,3 a 2,4.
+:::
+
+## Abril de 2019 · actual frente a propuesta
+
+```{ojs}
+tablaResultados("2019-04")
+```
+
+::: notes
+El PSOE ganaría igualmente, pero bajaría de 123 a 110 escaños. Los grandes beneficiados serían Unidas Podemos (+10) y Vox (+9), los dos partidos con voto más repartido. Ciudadanos se quedaría casi igual, porque en abril de 2019 ya tenía mucho voto en las provincias grandes.
+:::
+
+## Noviembre de 2019 · actual frente a propuesta
+
+```{ojs}
+tablaResultados("2019-11")
+```
+
+::: notes
+El caso más llamativo es Ciudadanos: con la propuesta doblaría sus escaños, de 10 a 20. Unidas Podemos ganaría 10. PSOE y PP perderían 13 y 8. Teruel Existe se quedaría sin su escaño, porque en una circunscripción de Aragón (13 escaños) no le llegarían los votos de una sola provincia.
+:::
+
+## 2023 · actual frente a propuesta
+
+```{ojs}
+tablaResultados("2023-07")
+```
+
+::: notes
+En 2023 el PP perdería 14 escaños y el PSOE solo 2. Vox y Sumar ganarían 8 y 10. Los nacionalistas apenas cambian: compiten en sus propias comunidades, donde son grandes.
+Un apunte sobre gobernabilidad: con la propuesta, PP y Vox sumarían 164 y PSOE y Sumar 160, frente a los 170 y 152 actuales. Ningún bloque llega a 176 en ninguno de los dos sistemas.
+:::
+
+# Balance {background-color="#1b1b1b"}
+
+## ¿Es más proporcional?
+
+```{ojs}
+{
+  const datos = [...elecciones].flatMap(([et, el]) => [
+    {el: et, sistema: "Sistema actual", g: reforma[el].gallagher_actual},
+    {el: et, sistema: "Propuesta", g: reforma[el].gallagher_reforma}
+  ]);
+  return Plot.plot({
+    width: 1000, height: 380, marginBottom: 30, marginTop: 30,
+    fx: {domain: [...elecciones.keys()], label: null, padding: 0.15},
+    x: {domain: ["Sistema actual", "Propuesta"], axis: null, padding: 0.1},
+    y: {label: "↑ Índice de Gallagher (más alto = más desproporcional)", grid: true, domain: [0, 7.5]},
+    color: {domain: ["Sistema actual", "Propuesta"], range: ["#9a9a9a", "#9b2226"], legend: true},
+    marks: [
+      Plot.barY(datos, {fx: "el", x: "sistema", y: "g", fill: "sistema"}),
+      Plot.text(datos, {fx: "el", x: "sistema", y: "g", text: d => num(d.g, 1), dy: -10, fontSize: 15, fontWeight: 700})
+    ]
+  });
+}
+```
+
+::: {.chico}
+La desproporcionalidad **cae a la mitad o menos** en las cinco elecciones: de valores entre 5,3 y 6,4 a valores entre 2,2 y 3,2.
+:::
+
+::: notes
+Es el resultado principal: con los mismos votos, la distancia entre votos y escaños cae a la mitad o menos. Valores de 2 o 3 son parecidos a los de sistemas muy proporcionales como el alemán.
+:::
+
+## Quién gana y quién pierde con la propuesta
+
+::: {.tarjetas style="--n:3"}
+::: {.tarjeta style="--c:#1b7f3b"}
+[Ganan]{.tt}
+
+- Los **terceros y cuartos partidos estatales**: Podemos/UP/Sumar, Ciudadanos, Vox.
+- **IU en 2015**: de 2 a 8 escaños.
+- Las comunidades uniprovinciales pequeñas y Madrid.
+:::
+::: {.tarjeta style="--c:#b3261e"}
+[Pierden]{.tt}
+
+- **PP y PSOE**, entre 2 y 14 escaños por elección.
+- Los partidos de **una sola provincia**, como Teruel Existe.
+- Las comunidades con muchas provincias poco pobladas: Castilla y León, Castilla-La Mancha, Galicia.
+:::
+::: {.tarjeta style="--c:#555"}
+[Casi no cambian]{.tt}
+
+- Los **nacionalistas** (ERC, Junts, PNV, EH Bildu): ya compiten solo donde son fuertes.
+- La lógica de **bloques**: ningún bloque gana la mayoría absoluta gracias al cambio.
+:::
+:::
+
+## Para el debate
+
+::: {.columns}
+::: {.column width="50%"}
+**Argumentos a favor**
+
+- El voto vale más parecido en toda España.
+- Menos voto útil forzado y más pluralismo.
+- Las comunidades ya son el gran nivel de gobierno territorial.
+:::
+::: {.column width="50%"}
+**Argumentos en contra**
+
+- Se pierde el vínculo entre el diputado y su provincia.
+- Las provincias rurales y despobladas pierden peso.
+- Más fragmentación: puede costar más formar gobierno.
+:::
+:::
+
+::: {.tarjeta style="--c:#9b2226;margin-top:.6em"}
+[Qué haría falta]{.tt}
+La provincia como circunscripción está en el **artículo 68.2 de la Constitución**. La propuesta exige una **reforma constitucional** (3/5 del Congreso y del Senado) y después cambiar la **LOREG** (mayoría absoluta del Congreso).
+:::
+
+::: notes
+Es una propuesta personal y conviene presentarla con sus pros y sus contras. Una pregunta para abrir el debate: ¿qué preferís, que cada voto valga lo mismo o que cada provincia tenga sus propios diputados? Detalle técnico: el artículo 68 está en el Título III, así que su reforma sigue el procedimiento ordinario del artículo 167, no el agravado del 168.
+:::
+
+## Resumen de la sesión
+
+1. La propuesta cambia **solo la circunscripción**: de 52 provincias a 17 comunidades más Ceuta y Melilla, con un mínimo de 6 escaños.
+2. Desaparecen las circunscripciones pequeñas y la **desproporcionalidad cae a la mitad o menos**.
+3. Ganan los **partidos estatales medianos** y pierden algo PP y PSOE; los nacionalistas casi no cambian.
+4. Las comunidades con muchas provincias pequeñas pierden escaños; el mínimo de 6 sigue favoreciendo a las comunidades pequeñas.
+5. Requiere **reformar la Constitución**.
+
+<div class="volver"><a href="index.html">← Volver al índice del curso</a></div>
+
+::: notes
+Cinco ideas para cerrar el curso. Si queréis, podéis jugar con otras variantes: un mínimo de 4 en lugar de 6, una circunscripción nacional o Sainte-Laguë en lugar de D'Hondt.
+:::

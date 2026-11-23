@@ -7,7 +7,7 @@ format:
     toc: false
 ---
 
-Cuatro sesiones para entender de dónde salen los partidos, por qué votamos como votamos y qué hace el sistema electoral español con nuestros votos.
+Cinco sesiones para entender de dónde salen los partidos, por qué votamos como votamos y qué hace el sistema electoral español con nuestros votos.
 
 ## Sesiones
 
@@ -21,7 +21,10 @@ Cuatro sesiones para entender de dónde salen los partidos, por qué votamos com
    Tipología de Sartori · número efectivo de partidos · dos ejes de competición · el Congreso de 2023 · la oferta en 2019 y 2023 · los partidos en Tarragona.
 
 4. **[Cómo afecta el sistema electoral al sistema de partidos](04-efectos.html)**
-   Mapas de escaños por partido (abril y noviembre de 2019, 2023) · votos frente a escaños · coste de un escaño · índice de Gallagher.
+   Mapas de escaños por partido (2015-2023) · votos frente a escaños · coste de un escaño · índice de Gallagher · evolución de Podemos, Ciudadanos y Vox.
+
+5. **[Una propuesta de reforma electoral](05-reforma.html)**
+   La comunidad autónoma como circunscripción · mapa de escaños · las elecciones de 2015 a 2023 recalculadas · pros, contras y qué haría falta.
 
 Pulsa **F** para pantalla completa, **S** para ver las notas del presentador y **Esc** para ver todas las diapositivas.
 
