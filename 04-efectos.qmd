@@ -470,16 +470,15 @@ Arriba a la izquierda, el mapa de escaños por provincia (2023) como referencia.
 
 ## Resumen de la sesión
 
-1. El sistema es **proporcional en teoría**, pero las provincias pequeñas le dan **efectos mayoritarios**.
-2. Los mapas muestran que los grandes sacan escaño en casi todas las provincias; los terceros dispersos, solo en las grandes.
-3. Podemos, Ciudadanos y Vox lo comprueban: al bajar de votos pierden provincias enteras, no solo escaños.
-4. El **coste de un escaño** varía muchísimo: de unos 20.000 votos (Teruel Existe, 2019) a más de 200.000 (Más País, 2019).
-5. El índice de Gallagher se sitúa entre **5 y 7**: una **desproporcionalidad moderada**.
-6. Así se explica que España mantenga dos grandes partidos y que el multipartidismo nunca llegue a ser pleno.
+1. Proporcional en teoría, pero las provincias pequeñas le dan **efectos mayoritarios**.
+2. Los grandes sacan escaño en casi todas las provincias; los terceros dispersos, solo en las grandes.
+3. Al bajar de votos, Podemos, Cs y Vox pierden **provincias enteras**.
+4. Un escaño cuesta de unos **20.000 votos** (Teruel Existe) a más de **200.000** (Más País).
+5. Gallagher entre **5 y 7**: una desproporcionalidad moderada que sostiene a los dos grandes.
 
 <div class="volver"><a href="index.html">← Volver al índice del curso</a></div>
 <div class="volver sec"><a href="05-reforma.html">Ir a la sesión 5 →</a></div>
 
 ::: notes
-Seis ideas para cerrar el curso. La conclusión general es que España es proporcional sobre el papel, pero sus provincias pequeñas funcionan casi como un sistema mayoritario, y eso explica que dos grandes partidos sigan dominando.
+Cinco ideas para cerrar la sesión. La conclusión general es que España es proporcional sobre el papel, pero sus provincias pequeñas funcionan casi como un sistema mayoritario, y eso explica que dos grandes partidos sigan dominando.
 :::

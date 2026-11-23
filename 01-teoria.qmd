@@ -320,13 +320,13 @@ Es una anécdota real de 1789. En la Asamblea Nacional francesa se discutía si 
 **Siglo XIX:** el conflicto principal se da *dentro* de las élites.
 
 ::: {.tarjetas style="--n:2"}
-::: {.tarjeta style="--c:#8a6d3b"}
-[Conservadores]{.tt}
-Trono, altar, propiedad de la tierra, orden.
-:::
 ::: {.tarjeta style="--c:#d4a017"}
 [Liberales]{.tt}
 Constitución, libertades, mercado, burguesía urbana.
+:::
+::: {.tarjeta style="--c:#8a6d3b"}
+[Conservadores]{.tt}
+Trono, altar, propiedad de la tierra, orden.
 :::
 :::
 
