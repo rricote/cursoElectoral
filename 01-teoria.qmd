@@ -122,14 +122,34 @@ El Estado es la comunidad humana que, dentro de un territorio, reclama con éxit
 <small>Max Weber, *La política como vocación* (1919)</small>
 :::
 
-Tres ingredientes:
+Los elementos del Estado:
 
-- **Territorio**: fronteras definidas.
-- **Monopolio de la fuerza**: nadie más puede usarla (policía, ejército, tribunales).
-- **Legitimidad**: la mayoría acepta que ese monopolio es *correcto*.
+::: {.tarjetas style="--n:5"}
+::: {.tarjeta style="--c:#8a6d3b"}
+[Territorio]{.tt}
+Un espacio con fronteras definidas.
+:::
+::: {.tarjeta style="--c:#2e7d4f"}
+[Población]{.tt}
+Las personas que viven en él de forma permanente.
+:::
+::: {.tarjeta style="--c:#555"}
+[Poder soberano]{.tt}
+Un gobierno con el **monopolio de la fuerza**.
+:::
+::: {.tarjeta style="--c:#b3261e"}
+[Legitimidad]{.tt}
+Por dentro: la población acepta que ese poder es *correcto*.
+:::
+::: {.tarjeta style="--c:#1d84ce"}
+[Reconocimiento]{.tt}
+Por fuera: los demás Estados lo aceptan como igual.
+:::
+:::
 
 ::: notes
-La palabra clave es "legítima". Una mafia también usa la violencia, pero no la consideramos legítima. Lo que diferencia al Estado es que la gente acepta que tenga ese derecho.
+Weber se fija en lo que hace único al Estado: el monopolio de la violencia legítima. La definición jurídica clásica (Jellinek) añade los tres elementos básicos: territorio, población y poder soberano. La Convención de Montevideo de 1933 suma la capacidad de relacionarse con otros Estados, que en la práctica depende del reconocimiento internacional.
+La palabra clave de Weber es "legítima": una mafia también usa la violencia, pero no la consideramos legítima. Y el reconocimiento es la legitimidad hacia fuera: Kosovo, Taiwán o Palestina tienen territorio, población y gobierno, pero no todos los Estados los reconocen, y eso limita su vida como Estados.
 :::
 
 ## ¿Por qué obedecemos? Los tres tipos de legitimidad
