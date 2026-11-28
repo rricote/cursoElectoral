@@ -1,0 +1,805 @@
+{
+ "partidos": [
+  {
+   "k": "CUP",
+   "n": "CUP",
+   "c": "#e6c300",
+   "nota": "No se presenta el 29-N"
+  },
+  {
+   "k": "PODEMOS",
+   "n": "Podemos",
+   "c": "#6b2a83"
+  },
+  {
+   "k": "BILDU",
+   "n": "EH Bildu",
+   "c": "#8a9a0a"
+  },
+  {
+   "k": "FA",
+   "n": "Frente Amplio",
+   "c": "#e6007e"
+  },
+  {
+   "k": "ERC",
+   "n": "ERC",
+   "c": "#e8890c"
+  },
+  {
+   "k": "PSOE",
+   "n": "PSOE",
+   "c": "#e30613"
+  },
+  {
+   "k": "PNV",
+   "n": "PNV",
+   "c": "#0b6b3a"
+  },
+  {
+   "k": "D21",
+   "n": "Democracia 21",
+   "c": "#7a8a99"
+  },
+  {
+   "k": "JUNTS",
+   "n": "Junts",
+   "c": "#00a99d"
+  },
+  {
+   "k": "PP",
+   "n": "PP",
+   "c": "#1d84ce"
+  },
+  {
+   "k": "AC",
+   "n": "Aliança Catalana",
+   "c": "#1b4f8a",
+   "nota": "No se presenta a elecciones españolas"
+  },
+  {
+   "k": "VOX",
+   "n": "Vox",
+   "c": "#5aa31f"
+  },
+  {
+   "k": "SALF",
+   "n": "SALF",
+   "c": "#b8860b"
+  }
+ ],
+ "temas": [
+  {
+   "id": "aborto",
+   "titulo": "Aborto",
+   "izq": "Ampliar y blindar el derecho",
+   "der": "Restringirlo o prohibirlo",
+   "pos": {
+    "CUP": [
+     0.5,
+     "Aborto libre y gratuito en la sanidad pública."
+    ],
+    "PODEMOS": [
+     1,
+     "A favor; pide tratarlo como derecho fundamental."
+    ],
+    "BILDU": [
+     1,
+     "A favor del derecho y de su blindaje."
+    ],
+    "FA": [
+     0.5,
+     "A favor de blindarlo en la Constitución."
+    ],
+    "ERC": [
+     1.5,
+     "A favor, pero ve mejor el art. 15 que el 43."
+    ],
+    "PSOE": [
+     1,
+     "Propone incluirlo en el art. 43 de la Constitución."
+    ],
+    "PNV": [
+     3,
+     "Defiende la ley; crítico con la reforma constitucional."
+    ],
+    "D21": [
+     null,
+     "Sin posición clara."
+    ],
+    "JUNTS": [
+     4,
+     "Mantiene la ley; califica la reforma de «espectáculo»."
+    ],
+    "PP": [
+     6,
+     "Acepta la ley; votó contra blindarla en la Constitución."
+    ],
+    "AC": [
+     8,
+     "Solo por malformación del feto o riesgo para la madre."
+    ],
+    "VOX": [
+     8,
+     "Contra la ley; en 2026 aceptó una «ley de supuestos»."
+    ],
+    "SALF": [
+     null,
+     "Sin posición clara."
+    ]
+   },
+   "notas": "Abril de 2026: el Gobierno lleva al Congreso la reforma del artículo 43 para garantizar el aborto. El Congreso rechazó las enmiendas de totalidad de PP y Vox por 177 a 171. ERC dijo que preferiría el artículo 15; PNV y Junts fueron críticos; Podemos también. Vox, por primera vez, habló de aceptar una ley de supuestos. Aliança Catalana: Orriols defendió limitarlo a malformación o riesgo para la madre (programa de 2024)."
+  },
+  {
+   "id": "fortunas",
+   "titulo": "Impuestos a los más ricos",
+   "izq": "Subir los impuestos al patrimonio",
+   "der": "Suprimirlos",
+   "pos": {
+    "CUP": [
+     0,
+     "Fiscalidad muy progresiva sobre grandes fortunas."
+    ],
+    "PODEMOS": [
+     0.5,
+     "Impuesto permanente a las grandes fortunas."
+    ],
+    "BILDU": [
+     1.5,
+     "Más progresividad y lucha contra el fraude."
+    ],
+    "FA": [
+     0.5,
+     "Más impuestos al patrimonio; mínimo del 20 % a empresas."
+    ],
+    "ERC": [
+     2,
+     "Más progresividad, con hacienda catalana propia."
+    ],
+    "PSOE": [
+     2.5,
+     "Más impuestos a grandes patrimonios y empresas."
+    ],
+    "PNV": [
+     5,
+     "Defiende el modelo fiscal propio del concierto vasco."
+    ],
+    "D21": [
+     6.5,
+     "Rebajas fiscales selectivas y menos burocracia."
+    ],
+    "JUNTS": [
+     7,
+     "En contra de nuevos impuestos estatales al patrimonio."
+    ],
+    "PP": [
+     8.5,
+     "Eliminar el impuesto a las grandes fortunas."
+    ],
+    "AC": [
+     9,
+     "Suprimir patrimonio, sucesiones y transmisiones."
+    ],
+    "VOX": [
+     9.5,
+     "Suprimir patrimonio y sucesiones; gravar remesas."
+    ],
+    "SALF": [
+     9.5,
+     "Bajada drástica de impuestos y del tamaño del Estado."
+    ]
+   },
+   "notas": "Programas del 29-N: PSOE, Frente Amplio y Podemos proponen más tributación de grandes patrimonios y empresas; PP y Vox, rebajas. Vox incluye un gravamen sobre las remesas. Democracia 21 habla de rebajas fiscales y menos burocracia. Aliança Catalana: programa catalán de 2024 (supresión de patrimonio y sucesiones)."
+  },
+  {
+   "id": "inmigracion",
+   "titulo": "Inmigración",
+   "izq": "Regularizar y ampliar derechos",
+   "der": "Restringir y expulsar",
+   "pos": {
+    "CUP": [
+     0.5,
+     "Regularización y plenos derechos para los migrantes."
+    ],
+    "PODEMOS": [
+     0.5,
+     "Regularización de medio millón de personas (ILP)."
+    ],
+    "BILDU": [
+     1,
+     "A favor de la regularización."
+    ],
+    "FA": [
+     1,
+     "Acogida, derechos y vías legales."
+    ],
+    "ERC": [
+     1.5,
+     "Apoya la regularización; quiere competencias catalanas."
+    ],
+    "PSOE": [
+     2.5,
+     "Regularización y migración laboral ordenada."
+    ],
+    "PNV": [
+     4,
+     "Apoyó tramitar la regularización, con matices."
+    ],
+    "D21": [
+     3.5,
+     "La inmigración es «un activo» con regulación «sensata»."
+    ],
+    "JUNTS": [
+     6.5,
+     "Competencias para Cataluña; expulsión de multirreincidentes."
+    ],
+    "PP": [
+     7.5,
+     "Cupos anuales y acuerdos de retorno con países de origen."
+    ],
+    "AC": [
+     9.5,
+     "Política muy restrictiva; centrada en el islam."
+    ],
+    "VOX": [
+     10,
+     "«Ni uno más»: fin del arraigo y «remigración»."
+    ],
+    "SALF": [
+     10,
+     "Deportaciones masivas."
+    ]
+   },
+   "notas": "PSOE y Frente Amplio: regularización y derechos; PP: cupos máximos anuales, acuerdos de retorno y prioridad nacional en algunas ayudas; Vox: «ni uno más», fin del arraigo y remigración. Podemos, ERC y Sumar apoyaron la ILP de regularización. Junts ha endurecido su discurso ante el avance de Aliança Catalana, que se declara islamófoba. Democracia 21 presenta la inmigración como un activo con regulación sensata."
+  },
+  {
+   "id": "bienestar",
+   "titulo": "Redistribución y Estado del bienestar",
+   "izq": "Más gasto social y prestaciones",
+   "der": "Menos Estado y más mercado",
+   "pos": {
+    "CUP": [
+     0,
+     "Servicios públicos universales y banca pública."
+    ],
+    "PODEMOS": [
+     1,
+     "Más gasto social, financiado con impuestos a los ricos."
+    ],
+    "BILDU": [
+     1.5,
+     "Refuerzo de los servicios públicos."
+    ],
+    "FA": [
+     1,
+     "Más inversión pública en vivienda, sanidad y cuidados."
+    ],
+    "ERC": [
+     2,
+     "Estado del bienestar fuerte, gestionado desde Cataluña."
+    ],
+    "PSOE": [
+     3,
+     "Mantener y ampliar prestaciones (IMV, pensiones)."
+    ],
+    "PNV": [
+     5,
+     "Modelo vasco: bienestar con equilibrio presupuestario."
+    ],
+    "D21": [
+     5.5,
+     "Más eficiencia del Estado y menos gasto político."
+    ],
+    "JUNTS": [
+     6,
+     "Menos impuestos; bienestar gestionado por la Generalitat."
+    ],
+    "PP": [
+     7,
+     "Bajar impuestos y revisar ayudas; mantiene las pensiones."
+    ],
+    "AC": [
+     8.5,
+     "Pensiones por capitalización y bajadas de impuestos."
+    ],
+    "VOX": [
+     8,
+     "«Prioridad nacional» en ayudas; menos gasto «superfluo»."
+    ],
+    "SALF": [
+     9.5,
+     "Reducción drástica del Estado."
+    ]
+   },
+   "notas": "Aquí la escala resume dos cosas: cuánto gasto social y cuántos impuestos. Vox no está a favor de «menos Estado» en todo: su eje es a quién va el gasto, con la «prioridad nacional» para españoles en las ayudas. Aliança Catalana defendió en 2025 un sistema de pensiones por capitalización (la «mochila austriaca»)."
+  },
+  {
+   "id": "vivienda",
+   "titulo": "Vivienda",
+   "izq": "Regular precios y más vivienda pública",
+   "der": "Liberalizar y bajar impuestos",
+   "pos": {
+    "CUP": [
+     0,
+     "Topes al alquiler, expropiación de pisos vacíos."
+    ],
+    "PODEMOS": [
+     0.5,
+     "Rebaja de alquileres por ley: tope del 30 % de la renta."
+    ],
+    "BILDU": [
+     1.5,
+     "Regulación de alquileres y contratos estables."
+    ],
+    "FA": [
+     0.5,
+     "Topes al alquiler, recargos a multipropietarios."
+    ],
+    "ERC": [
+     2,
+     "Conservar y reforzar la Ley de Vivienda."
+    ],
+    "PSOE": [
+     3,
+     "Ampliar el parque público e intervenir el alquiler."
+    ],
+    "PNV": [
+     5.5,
+     "Parque público; recelo ante la intervención del alquiler."
+    ],
+    "D21": [
+     6,
+     "Plan de barrios; sin impuestos para menores de 35."
+    ],
+    "JUNTS": [
+     7,
+     "Contra regular el alquiler temporal; incentivos fiscales."
+    ],
+    "PP": [
+     8,
+     "Derogar la Ley de Vivienda y aumentar la oferta."
+    ],
+    "AC": [
+     null,
+     "Sin posición clara."
+    ],
+    "VOX": [
+     9,
+     "Derogar la Ley de Vivienda; IVA cero en la primera vivienda."
+    ],
+    "SALF": [
+     9,
+     "Cero impuestos en la compra de la primera vivienda."
+    ]
+   },
+   "notas": "La línea divisoria es la Ley 12/2023 de vivienda: PP y Vox prometen derogarla y apostar por más oferta y menos impuestos; PSOE, Frente Amplio, Podemos y ERC quieren conservarla y profundizarla. Los decretos de vivienda del Gobierno han caído en el Congreso con los votos de PP, Vox, Junts y UPN. Democracia 21 propone un plan nacional de construcción de barrios y eliminar impuestos de la vivienda a los menores de 35 años."
+  },
+  {
+   "id": "territorial",
+   "titulo": "Modelo territorial",
+   "izq": "Independencia o derecho a decidir",
+   "der": "Recentralizar el Estado",
+   "pos": {
+    "CUP": [
+     0,
+     "Independencia de los Països Catalans."
+    ],
+    "PODEMOS": [
+     3,
+     "Estado plurinacional y referéndum pactado."
+    ],
+    "BILDU": [
+     0.5,
+     "Independencia del País Vasco y derecho a decidir."
+    ],
+    "FA": [
+     3,
+     "Plurinacionalidad; apoya la financiación singular catalana."
+    ],
+    "ERC": [
+     0.5,
+     "Independencia; pactó la financiación singular."
+    ],
+    "PSOE": [
+     5,
+     "Estado autonómico casi federal; financiación singular."
+    ],
+    "PNV": [
+     2.5,
+     "Soberanismo vasco, concierto económico y bilateralidad."
+    ],
+    "D21": [
+     null,
+     "Sin posición clara."
+    ],
+    "JUNTS": [
+     1,
+     "Independencia; concierto económico para Cataluña."
+    ],
+    "PP": [
+     7.5,
+     "Contra la financiación singular; igualdad entre comunidades."
+    ],
+    "AC": [
+     0,
+     "Independencia de Cataluña."
+    ],
+    "VOX": [
+     10,
+     "Suprimir las autonomías y recentralizar."
+    ],
+    "SALF": [
+     null,
+     "Sin posición clara."
+    ]
+   },
+   "notas": "Este eje cruza al de izquierda y derecha: hay independentistas de izquierda (CUP, ERC, EH Bildu) y de derecha (Junts, Aliança Catalana). ERC pactó con el PSOE la financiación singular; Junts reclama un concierto económico; PP y Vox se oponen."
+  },
+  {
+   "id": "monarquia",
+   "titulo": "Monarquía o república",
+   "izq": "República",
+   "der": "Defensa de la monarquía",
+   "pos": {
+    "CUP": [
+     0,
+     "República catalana."
+    ],
+    "PODEMOS": [
+     0.5,
+     "Referéndum sobre la monarquía; republicano."
+    ],
+    "BILDU": [
+     0,
+     "República vasca."
+    ],
+    "FA": [
+     1,
+     "Republicano; IU y Comuns piden referéndum."
+    ],
+    "ERC": [
+     0,
+     "República catalana."
+    ],
+    "PSOE": [
+     7,
+     "Republicano de ideario; defiende la monarquía constitucional."
+    ],
+    "PNV": [
+     4,
+     "No la cuestiona como prioridad."
+    ],
+    "D21": [
+     null,
+     "Sin posición clara."
+    ],
+    "JUNTS": [
+     1,
+     "República catalana."
+    ],
+    "PP": [
+     9.5,
+     "Defensa de la monarquía parlamentaria."
+    ],
+    "AC": [
+     1,
+     "República catalana."
+    ],
+    "VOX": [
+     10,
+     "Defensa firme de la Corona."
+    ],
+    "SALF": [
+     null,
+     "Sin posición clara."
+    ]
+   },
+   "notas": "Posiciones históricas y declaradas de cada partido. El PSOE se define como republicano en sus principios, pero ha defendido siempre la monarquía parlamentaria de la Constitución de 1978."
+  },
+  {
+   "id": "eutanasia",
+   "titulo": "Eutanasia",
+   "izq": "Garantizarla y ampliarla",
+   "der": "Derogar la ley",
+   "pos": {
+    "CUP": [
+     1,
+     "A favor."
+    ],
+    "PODEMOS": [
+     1,
+     "Votó a favor de la ley de 2021."
+    ],
+    "BILDU": [
+     1,
+     "Votó a favor."
+    ],
+    "FA": [
+     1,
+     "A favor; pide garantizar su aplicación."
+    ],
+    "ERC": [
+     1,
+     "Votó a favor."
+    ],
+    "PSOE": [
+     1.5,
+     "Impulsó la ley de 2021."
+    ],
+    "PNV": [
+     2.5,
+     "Votó a favor."
+    ],
+    "D21": [
+     null,
+     "Sin posición clara."
+    ],
+    "JUNTS": [
+     3,
+     "Votó a favor."
+    ],
+    "PP": [
+     8,
+     "Votó en contra; prioriza los cuidados paliativos."
+    ],
+    "AC": [
+     null,
+     "Sin posición clara."
+    ],
+    "VOX": [
+     10,
+     "Derogar la ley."
+    ],
+    "SALF": [
+     null,
+     "Sin posición clara."
+    ]
+   },
+   "notas": "La ley de eutanasia de 2021 salió adelante con PSOE, Unidas Podemos, ERC, PNV, Junts, EH Bildu y otros; PP, Vox y UPN votaron en contra y la llevaron al Tribunal Constitucional, que la avaló en 2023. Vox prometía derogarla, aunque en la campaña del 29-N apenas habla de estos temas."
+  },
+  {
+   "id": "nuclear",
+   "titulo": "Energía nuclear",
+   "izq": "Cerrar las centrales",
+   "der": "Mantenerlas y alargar su vida",
+   "pos": {
+    "CUP": [
+     0,
+     "Cierre inmediato."
+    ],
+    "PODEMOS": [
+     0.5,
+     "Cierre según calendario; renovables."
+    ],
+    "BILDU": [
+     1,
+     "Cierre y renovables."
+    ],
+    "FA": [
+     0.5,
+     "Contra la prórroga de Almaraz."
+    ],
+    "ERC": [
+     3.5,
+     "Votó contra quitar el calendario de cierre (2025)."
+    ],
+    "PSOE": [
+     4,
+     "Cierre escalonado hasta 2035, pero prorrogó Almaraz a 2030."
+    ],
+    "PNV": [
+     4,
+     "Votó contra quitar el calendario de cierre (2025)."
+    ],
+    "D21": [
+     null,
+     "Sin posición clara."
+    ],
+    "JUNTS": [
+     6.5,
+     "Se abstuvo en las votaciones sobre la prórroga."
+    ],
+    "PP": [
+     9,
+     "Derogar el calendario de cierre de todas las centrales."
+    ],
+    "AC": [
+     null,
+     "Sin posición clara."
+    ],
+    "VOX": [
+     9.5,
+     "Mantener y ampliar la energía nuclear."
+    ],
+    "SALF": [
+     null,
+     "Sin posición clara."
+    ]
+   },
+   "notas": "Noviembre de 2025: el Congreso rechazó por un voto la enmienda del PP para eliminar las fechas de cierre de Almaraz, Ascó I y Cofrentes (PP, Vox y UPN a favor; PSOE, Sumar, ERC y PNV en contra; Junts se abstuvo). Agosto de 2026: el Gobierno prorrogó Almaraz hasta 2030; Sumar lo calificó de error."
+  },
+  {
+   "id": "defensa",
+   "titulo": "Gasto en defensa y OTAN",
+   "izq": "Salir de la OTAN o gastar menos",
+   "der": "Subir el gasto al 5 % del PIB",
+   "pos": {
+    "CUP": [
+     0,
+     "Salir de la OTAN."
+    ],
+    "PODEMOS": [
+     0,
+     "Salir de la OTAN; contra el aumento del gasto."
+    ],
+    "BILDU": [
+     0.5,
+     "Salir de la OTAN."
+    ],
+    "FA": [
+     2,
+     "Contra el 5 %; IU, la más contraria."
+    ],
+    "ERC": [
+     2.5,
+     "Acepta con reservas; prioridad al gasto social."
+    ],
+    "PSOE": [
+     5,
+     "2,1 % del PIB, «ni más ni menos»; rechaza el 5 %."
+    ],
+    "PNV": [
+     6,
+     "Apoya el compromiso con la OTAN por «sentido de Estado»."
+    ],
+    "D21": [
+     null,
+     "Sin posición clara."
+    ],
+    "JUNTS": [
+     5.5,
+     "Pragmático: decide según sus intereses."
+    ],
+    "PP": [
+     7,
+     "A favor de aumentar, sin aclarar si llegaría al 5 %."
+    ],
+    "AC": [
+     null,
+     "Sin posición clara."
+    ],
+    "VOX": [
+     9,
+     "Partidario de aumentar el gasto."
+    ],
+    "SALF": [
+     null,
+     "Propone un referéndum sobre la OTAN."
+    ]
+   },
+   "notas": "En junio de 2025 Sánchez se comprometió a gastar el 2,1 % del PIB en defensa y rechazó el 5 % pactado por el resto de aliados. Podemos, EH Bildu y el BNG piden salir de la OTAN. El PP evitó aclarar si subiría al 5 %; Vox es partidario de incrementarlo. SALF propone referéndums sobre la UE y la OTAN."
+  },
+  {
+   "id": "ue",
+   "titulo": "Unión Europea",
+   "izq": "Más integración europea",
+   "der": "Menos UE o salir de ella",
+   "pos": {
+    "CUP": [
+     7,
+     "Muy crítica con la UE «neoliberal»."
+    ],
+    "PODEMOS": [
+     5,
+     "Crítica con las reglas fiscales de la UE."
+    ],
+    "BILDU": [
+     4,
+     "Europa de los pueblos; crítica con la UE actual."
+    ],
+    "FA": [
+     2.5,
+     "Europeísta, con más Europa social y verde."
+    ],
+    "ERC": [
+     2.5,
+     "Europeísta; Cataluña como Estado de la UE."
+    ],
+    "PSOE": [
+     1.5,
+     "Muy europeísta."
+    ],
+    "PNV": [
+     1.5,
+     "Muy europeísta; Europa de las regiones."
+    ],
+    "D21": [
+     null,
+     "Sin posición clara."
+    ],
+    "JUNTS": [
+     3,
+     "Europeísta, crítico con las instituciones."
+    ],
+    "PP": [
+     2.5,
+     "Europeísta (Partido Popular Europeo)."
+    ],
+    "AC": [
+     null,
+     "Sin posición clara."
+    ],
+    "VOX": [
+     8,
+     "«Europa de las naciones»: devolver soberanía a los Estados."
+    ],
+    "SALF": [
+     10,
+     "Referéndum sobre la salida de la UE."
+    ]
+   },
+   "notas": "Posiciones generales de cada partido y su familia europea. SALF propone un referéndum sobre la salida de la UE desde su presentación como partido (octubre de 2025)."
+  },
+  {
+   "id": "jornada",
+   "titulo": "Reducir la jornada laboral a 37,5 horas",
+   "izq": "Reducirla por ley",
+   "der": "En contra de imponerla por ley",
+   "pos": {
+    "CUP": [
+     0,
+     "A favor, e incluso más reducción."
+    ],
+    "PODEMOS": [
+     0,
+     "A favor."
+    ],
+    "BILDU": [
+     0.5,
+     "A favor."
+    ],
+    "FA": [
+     0,
+     "Su gran propuesta (Yolanda Díaz)."
+    ],
+    "ERC": [
+     1,
+     "A favor."
+    ],
+    "PSOE": [
+     1.5,
+     "Proyecto del Gobierno."
+    ],
+    "PNV": [
+     3,
+     "Votó a favor de tramitarla, con matices."
+    ],
+    "D21": [
+     null,
+     "Sin posición clara."
+    ],
+    "JUNTS": [
+     8,
+     "Presentó enmienda de totalidad."
+    ],
+    "PP": [
+     8.5,
+     "Presentó enmienda de totalidad."
+    ],
+    "AC": [
+     null,
+     "Sin posición clara."
+    ],
+    "VOX": [
+     9,
+     "Presentó enmienda de totalidad."
+    ],
+    "SALF": [
+     null,
+     "Sin posición clara."
+    ]
+   },
+   "notas": "Septiembre de 2025: el Congreso devolvió al Gobierno el proyecto de ley para reducir la jornada de 40 a 37,5 horas, al aprobarse las enmiendas de totalidad de PP, Vox y Junts, con el apoyo de UPN (178 votos a favor y 170 en contra)."
+  }
+ ]
+}

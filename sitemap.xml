@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rricote.github.io/cursoElectoral/05-reforma.html</loc>
-    <lastmod>2026-11-23T18:22:12.022Z</lastmod>
+    <loc>https://rricote.github.io/cursoElectoral/06-posiciones.html</loc>
+    <lastmod>2026-11-28T10:59:41.993Z</lastmod>
   </url>
   <url>
-    <loc>https://rricote.github.io/cursoElectoral/03-partidos.html</loc>
-    <lastmod>2026-11-21T17:07:34.361Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rricote.github.io/cursoElectoral/01-teoria.html</loc>
-    <lastmod>2026-11-23T17:57:51.780Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rricote.github.io/cursoElectoral/index.html</loc>
-    <lastmod>2026-11-23T16:45:40.680Z</lastmod>
+    <loc>https://rricote.github.io/cursoElectoral/04-efectos.html</loc>
+    <lastmod>2026-11-23T17:56:18.037Z</lastmod>
   </url>
   <url>
     <loc>https://rricote.github.io/cursoElectoral/02-espana.html</loc>
     <lastmod>2026-11-21T17:55:58.112Z</lastmod>
   </url>
   <url>
-    <loc>https://rricote.github.io/cursoElectoral/04-efectos.html</loc>
-    <lastmod>2026-11-23T17:56:18.037Z</lastmod>
+    <loc>https://rricote.github.io/cursoElectoral/index.html</loc>
+    <lastmod>2026-11-28T10:59:41.174Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rricote.github.io/cursoElectoral/01-teoria.html</loc>
+    <lastmod>2026-11-23T17:57:51.780Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rricote.github.io/cursoElectoral/03-partidos.html</loc>
+    <lastmod>2026-11-21T17:07:34.361Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rricote.github.io/cursoElectoral/05-reforma.html</loc>
+    <lastmod>2026-11-28T10:59:41.473Z</lastmod>
   </url>
 </urlset>
