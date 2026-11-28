@@ -150,3 +150,18 @@ $presentation-h2-font-size: 1.45em;
 .reveal table.escala-pos th:nth-child(2) { width: 300px; }
 .reveal table.tabla-partidos.familias { font-size: 19px !important; }
 .reveal table.tabla-partidos.familias td:first-child { white-space: nowrap; }
+.reveal table.tabla-partidos.familias { font-size: 17px !important; }
+.reveal table.tabla-partidos.familias td:first-child { white-space: normal; width: 38%; }
+.reveal .tres-derechas .tarjeta ul { margin: .2em 0 0 1em; padding: 0; }
+.reveal .tres-derechas .tarjeta li { font-size: 18px; line-height: 1.25; margin-bottom: .25em; }
+.reveal .tres-derechas .tt { font-size: 20px; line-height: 1.2; }
+.reveal table.eurogrupos td, .reveal table.eurogrupos th { white-space: normal !important; }
+.reveal table.eurogrupos td:first-child { width: 72%; }
+.reveal table.tabla-ultra { width: 100%; border-collapse: separate; border-spacing: 3px; font-size: 18px !important; table-layout: fixed; }
+.reveal table.tabla-ultra th, .reveal table.tabla-ultra td { font-size: inherit !important; border: none; padding: .3em .5em; line-height: 1.22; vertical-align: top; }
+.reveal table.tabla-ultra th:first-child { width: 17%; }
+.reveal table.tabla-ultra th { background: var(--c); color: #fff; font-family: Inter, sans-serif; font-size: 16px !important; vertical-align: bottom; }
+.reveal table.tabla-ultra td:first-child { font-weight: 700; font-family: Inter, sans-serif; font-size: 15px; color: #333; background: #eee; }
+.reveal table.tabla-ultra td:nth-child(2) { background: #0d4f8b14; }
+.reveal table.tabla-ultra td:nth-child(3) { background: #3b247014; }
+.reveal table.tabla-ultra td:nth-child(4) { background: #6b4a2b14; }

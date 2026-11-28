@@ -55,15 +55,15 @@ matriz = () => {
   <span class="mz-ley" style="background:#c8641e"></span> segundo polo · <span class="mz-ley" style="background:#fafafa;border:1px solid #ccc"></span> sin posición clara. Pasa el ratón por una casilla para ver la frase.</div>`
 }
 grupos = [
-  {n: "La Izquierda", c: "#9e1b1b", es: 45},
-  {n: "Verdes/ALE", c: "#3c9b3c", es: 53},
-  {n: "S&D", c: "#e3001b", es: 135},
-  {n: "Renew", c: "#f2b400", es: 78},
-  {n: "PPE", c: "#3a8fd9", es: 184},
-  {n: "ECR", c: "#0d4f8b", es: 84},
-  {n: "Patriotas", c: "#3b2470", es: 85},
-  {n: "ESN", c: "#6b4a2b", es: 27},
-  {n: "No inscritos", c: "#a3a3a3", es: 28}
+  {n: "La Izquierda", f: "Grupo de La Izquierda en el Parlamento Europeo (GUE/NGL)", c: "#9e1b1b", es: 45},
+  {n: "Verdes/ALE", f: "Grupo de los Verdes / Alianza Libre Europea", c: "#3c9b3c", es: 53},
+  {n: "S&D", f: "Grupo de la Alianza Progresista de Socialistas y Demócratas (S&D)", c: "#e3001b", es: 135},
+  {n: "Renew", f: "Grupo Renew Europe", c: "#f2b400", es: 78},
+  {n: "PPE", f: "Grupo del Partido Popular Europeo (PPE)", c: "#3a8fd9", es: 184},
+  {n: "ECR", f: "Grupo de los Conservadores y Reformistas Europeos (ECR)", c: "#0d4f8b", es: 84},
+  {n: "Patriotas", f: "Grupo Patriotas por Europa (PfE)", c: "#3b2470", es: 85},
+  {n: "ESN", f: "Grupo Europa de las Naciones Soberanas (ESN)", c: "#6b4a2b", es: 27},
+  {n: "No inscritos", f: "No inscritos", c: "#a3a3a3", es: 28}
 ]
 function hemiciclo(partidos, filas = 12, r0 = 0.42) {
   const total = d3.sum(partidos, p => p.es)
@@ -86,7 +86,7 @@ function hemiciclo(partidos, filas = 12, r0 = 0.42) {
 }
 eurocamara = () => {
   const plot = Plot.plot({
-    width: 560, height: 310, margin: 6,
+    width: 500, height: 280, margin: 6,
     x: {axis: null, domain: [-1.04, 1.04]}, y: {axis: null, domain: [-0.04, 1.04]},
     marks: [
       Plot.dot(hemiciclo(grupos), {x: "x", y: "y", fill: "c", r: 3.6, title: "partido"}),
@@ -94,13 +94,13 @@ eurocamara = () => {
       Plot.text(["mayoría: 361"], {x: 0, y: 0.08, fontSize: 15, fill: "#555"})
     ]
   })
-  const tabla = html`<table class="tabla-esc mini" style="font-size:18px !important">
-    <tr><th>Grupo</th><th>Esc.</th><th>%</th></tr>
+  const tabla = html`<table class="tabla-esc mini eurogrupos" style="font-size:15px !important">
+    <tr><th>Grupo parlamentario</th><th>Esc.</th><th>%</th></tr>
     ${grupos.map(g => html`<tr style="background:${g.c}22">
-      <td><span style="display:inline-block;width:.8em;height:.8em;background:${g.c};border-radius:2px"></span> ${g.n}</td>
+      <td><span style="display:inline-block;width:.8em;height:.8em;background:${g.c};border-radius:2px"></span> ${g.f}</td>
       <td><b>${g.es}</b></td><td>${(100 * g.es / 720).toLocaleString("es-ES", {minimumFractionDigits: 1, maximumFractionDigits: 1})}</td></tr>`)}
   </table>`
-  return html`<div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:14px;align-items:center;width:100%">${plot}${tabla}</div>
+  return html`<div style="display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:14px;align-items:center;width:100%">${plot}${tabla}</div>
   <div class="ep-pie">Composición aproximada a finales de 2026 (un escaño vacante). Grupos ordenados de izquierda a derecha.</div>`
 }
 ```
@@ -295,14 +295,14 @@ En el Parlamento Europeo los eurodiputados no se sientan por países, sino en gr
 
 <table class="tabla-partidos familias">
 <tr><th>Grupo europeo</th><th>Familia ideológica</th><th>Partidos españoles</th></tr>
-<tr style="background:#9e1b1b1c"><td><span class="punto" style="background:#9e1b1b"></span><b>La Izquierda</b></td><td>Izquierda radical, comunistas, ecosocialistas</td><td>Podemos (2), EH Bildu (1), parte de Sumar · <i>afines: IU, CUP</i></td></tr>
-<tr style="background:#3c9b3c1c"><td><span class="punto" style="background:#3c9b3c"></span><b>Verdes / ALE</b></td><td>Ecologistas y regionalistas de izquierda</td><td>ERC (1), BNG (1), Comuns y Compromís (Sumar)</td></tr>
-<tr style="background:#e3001b1c"><td><span class="punto" style="background:#e3001b"></span><b>S&amp;D</b></td><td>Socialdemócratas</td><td>PSOE (20)</td></tr>
-<tr style="background:#f2b4001c"><td><span class="punto" style="background:#f2b400"></span><b>Renew</b></td><td>Liberales y centristas</td><td>PNV (1) · <i>afín: Democracia 21; antes, Ciudadanos</i></td></tr>
-<tr style="background:#3a8fd91c"><td><span class="punto" style="background:#3a8fd9"></span><b>PPE</b></td><td>Democristianos y centroderecha</td><td>PP (22)</td></tr>
-<tr style="background:#0d4f8b1c"><td><span class="punto" style="background:#0d4f8b"></span><b>ECR</b></td><td>Nacional-conservadores (Meloni)</td><td>— <i>(Vox estuvo aquí hasta 2024)</i></td></tr>
-<tr style="background:#3b24701c"><td><span class="punto" style="background:#3b2470"></span><b>Patriotas</b></td><td>Derecha radical populista (Le Pen, Orbán)</td><td>Vox (6) · <i>afín: Aliança Catalana</i></td></tr>
-<tr style="background:#6b4a2b1c"><td><span class="punto" style="background:#6b4a2b"></span><b>ESN</b></td><td>Extrema derecha soberanista (AfD)</td><td>—</td></tr>
+<tr style="background:#9e1b1b1c"><td><span class="punto" style="background:#9e1b1b"></span><b>Grupo de La Izquierda en el Parlamento Europeo (GUE/NGL)</b></td><td>Izquierda radical, comunistas, ecosocialistas</td><td>Podemos (2), EH Bildu (1), parte de Sumar · <i>afines: IU, CUP</i></td></tr>
+<tr style="background:#3c9b3c1c"><td><span class="punto" style="background:#3c9b3c"></span><b>Grupo de los Verdes / Alianza Libre Europea</b></td><td>Ecologistas y regionalistas de izquierda</td><td>ERC (1), BNG (1), Comuns y Compromís (Sumar)</td></tr>
+<tr style="background:#e3001b1c"><td><span class="punto" style="background:#e3001b"></span><b>Grupo de la Alianza Progresista de Socialistas y Demócratas (S&amp;D)</b></td><td>Socialdemócratas</td><td>PSOE (20)</td></tr>
+<tr style="background:#f2b4001c"><td><span class="punto" style="background:#f2b400"></span><b>Grupo Renew Europe</b></td><td>Liberales y centristas</td><td>PNV (1) · <i>afín: Democracia 21; antes, Ciudadanos</i></td></tr>
+<tr style="background:#3a8fd91c"><td><span class="punto" style="background:#3a8fd9"></span><b>Grupo del Partido Popular Europeo (PPE)</b></td><td>Democristianos y centroderecha</td><td>PP (22)</td></tr>
+<tr style="background:#0d4f8b1c"><td><span class="punto" style="background:#0d4f8b"></span><b>Grupo de los Conservadores y Reformistas Europeos (ECR)</b></td><td>Nacional-conservadores (Meloni)</td><td>— <i>(Vox estuvo aquí hasta 2024)</i></td></tr>
+<tr style="background:#3b24701c"><td><span class="punto" style="background:#3b2470"></span><b>Grupo Patriotas por Europa (PfE)</b></td><td>Derecha radical populista (Le Pen, Orbán)</td><td>Vox (6) · <i>afín: Aliança Catalana</i></td></tr>
+<tr style="background:#6b4a2b1c"><td><span class="punto" style="background:#6b4a2b"></span><b>Grupo Europa de las Naciones Soberanas (ESN)</b></td><td>Extrema derecha soberanista (AfD)</td><td>—</td></tr>
 <tr style="background:#a3a3a31c"><td><span class="punto" style="background:#a3a3a3"></span><b>No inscritos</b></td><td>Sin grupo</td><td>Junts (1), SALF</td></tr>
 </table>
 
@@ -310,6 +310,28 @@ En el Parlamento Europeo los eurodiputados no se sientan por países, sino en gr
 
 ::: notes
 Así se reparten los 61 eurodiputados españoles elegidos en 2024: PP 22, PSOE 20, Vox 6; tres para Ahora Repúblicas, tres para Sumar y tres para Se Acabó la Fiesta; dos para Podemos; uno para Junts y otro para la coalición del PNV. Dos cosas interesantes. Primera: las coaliciones se parten al llegar a Bruselas. Ahora Repúblicas mandó a ERC y al BNG con los Verdes y a EH Bildu con la Izquierda, y Sumar también se repartió entre Verdes e Izquierda. Segunda: Vox cambió de familia en 2024, de los conservadores de Meloni a los Patriotas de Le Pen y Orbán. Junts no se ha integrado en ningún grupo, y el PNV está con los liberales. Las familias europeas son una buena pista para situar a un partido: comparten manifiesto, financiación y votaciones en Bruselas.
+:::
+
+## Tres grupos a la derecha del PPE {.smaller}
+
+<table class="tabla-ultra">
+<tr><th></th>
+<th style="--c:#0d4f8b">Grupo de los Conservadores y Reformistas Europeos (ECR)</th>
+<th style="--c:#3b2470">Grupo Patriotas por Europa (PfE)</th>
+<th style="--c:#6b4a2b">Grupo Europa de las Naciones Soberanas (ESN)</th></tr>
+<tr><td>Escaños</td><td><b>84</b></td><td><b>85</b></td><td><b>27</b></td></tr>
+<tr><td>Partidos principales</td><td>Hermanos de Italia (Meloni), Ley y Justicia (Polonia), Demócratas de Suecia</td><td>Agrupación Nacional (Le Pen), Fidesz (Orbán), Liga (Salvini), FPÖ, ANO, PVV</td><td>Alternativa para Alemania (AfD, más de la mitad), Renacimiento (Bulgaria), Reconquista (Zemmour)</td></tr>
+<tr><td>Perfil</td><td>Nacional-conservador; el más moderado</td><td>Derecha radical populista; el más grande</td><td>Extrema derecha nativista; el más radical</td></tr>
+<tr><td>Rusia y Ucrania</td><td>Proucraniano y atlantista</td><td>Dividido; Orbán frena ayudas y sanciones</td><td>El más cercano al Kremlin</td></tr>
+<tr><td>Unión Europea</td><td>Reformarla desde dentro</td><td>«Europa de las naciones»: más poder a los Estados</td><td>El más euroescéptico</td></tr>
+<tr><td>Relación con el PPE</td><td>Pactos frecuentes; Meloni gobierna Italia</td><td>Cordón sanitario: sin cargos de responsabilidad</td><td>Aislado, incluso por los otros dos</td></tr>
+<tr><td>España</td><td>Ningún partido (Vox, hasta 2024)</td><td>Vox; Abascal preside el partido europeo</td><td>Ningún partido</td></tr>
+</table>
+
+<div class="ep-pie">Escaños actuales aproximados. Orden de izquierda a derecha en el hemiciclo.</div>
+
+::: notes
+Hasta 2024 había dos grupos a la derecha del PPE: los Conservadores y Reformistas y el de Identidad y Democracia. Después de las europeas la extrema derecha se partió en tres. Orbán y el checo Babiš fundaron Patriotas por Europa; Le Pen, Salvini y Vox se sumaron y lo convirtieron en el tercer grupo de la Cámara. Meloni y el PiS polaco se quedaron en los Conservadores y Reformistas. Y la AfD alemana, expulsada del antiguo grupo de Le Pen tras varios escándalos, montó su propio grupo: Europa de las Naciones Soberanas, al que los politólogos consideran el más extremo de la Cámara. ¿Qué los separa? Sobre todo Rusia y Ucrania, y la relación con el resto del Parlamento: el grupo de Meloni ha salido del aislamiento y vota a menudo con el PPE, mientras que Patriotas y Soberanistas siguen fuera del reparto de cargos. Paradójicamente, Patriotas tiene más escaños que ECR pero menos influencia en Bruselas. Para España, el dato clave es que Vox dejó a Meloni para irse con Orbán y Le Pen, y que Abascal preside hoy el partido europeo de los Patriotas.
 :::
 
 ## Qué nos enseña
