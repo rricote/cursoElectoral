@@ -148,3 +148,5 @@ $presentation-h2-font-size: 1.45em;
 .reveal .ep-polos span:last-child { text-align: right; }
 .reveal table.escala-pos th:nth-child(1) { width: 190px; }
 .reveal table.escala-pos th:nth-child(2) { width: 300px; }
+.reveal table.tabla-partidos.familias { font-size: 19px !important; }
+.reveal table.tabla-partidos.familias td:first-child { white-space: nowrap; }
