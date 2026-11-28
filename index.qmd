@@ -7,6 +7,8 @@ format:
     toc: false
 ---
 
+![](recursos/img/hoc.jpg){fig-alt="Cartel de la serie House of Cards" style="width:100%;border-radius:8px;margin-bottom:1em"}
+
 Seis sesiones para entender de dónde salen los partidos, por qué votamos como votamos y qué hace el sistema electoral español con nuestros votos.
 
 ## Sesiones
