@@ -8,6 +8,7 @@ project:
     - 03-partidos.qmd
     - 04-efectos.qmd
     - 05-reforma.qmd
+    - 06-posiciones.qmd
   resources:
     - datos/
 

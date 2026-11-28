@@ -7,7 +7,7 @@ format:
     toc: false
 ---
 
-Cinco sesiones para entender de dónde salen los partidos, por qué votamos como votamos y qué hace el sistema electoral español con nuestros votos.
+Seis sesiones para entender de dónde salen los partidos, por qué votamos como votamos y qué hace el sistema electoral español con nuestros votos.
 
 ## Sesiones
 
@@ -25,6 +25,9 @@ Cinco sesiones para entender de dónde salen los partidos, por qué votamos como
 
 5. **[Una propuesta de reforma electoral](05-reforma.html)**
    La comunidad autónoma como circunscripción · mapa de escaños · las elecciones de 2015 a 2023 recalculadas · pros, contras y qué haría falta.
+
+6. **[Qué defiende cada partido](06-posiciones.html)**
+   Aborto · impuestos a los ricos · inmigración · Estado del bienestar · vivienda · modelo territorial · monarquía · eutanasia · nuclear · OTAN · Unión Europea · jornada laboral.
 
 Pulsa **F** para pantalla completa, **S** para ver las notas del presentador y **Esc** para ver todas las diapositivas.
 

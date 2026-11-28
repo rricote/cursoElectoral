@@ -122,3 +122,29 @@ $presentation-h2-font-size: 1.45em;
 .reveal .cuadricula.grande .celda { flex-direction: column; align-items: flex-start; }
 .reveal .cuadricula.grande .celda svg { height: 360px; }
 .reveal .cuadricula.grande .info { font-size: 17px; }
+
+/* Sesión 6: escala de posiciones */
+.reveal table.escala-pos { width: 100%; border-collapse: separate; border-spacing: 0 4px; font-size: 19px !important; margin: 0; table-layout: fixed; }
+.reveal table.escala-pos th, .reveal table.escala-pos td { font-size: inherit !important; border: none; padding: .2em .45em; line-height: 1.15; vertical-align: middle; }
+.reveal table.escala-pos th { font-weight: 600; border-bottom: 2px solid #1b1b1b; font-family: Inter, sans-serif; }
+.reveal table.escala-pos .ep-n { width: 175px; white-space: nowrap; font-weight: 600; }
+.reveal .ep-c { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+.reveal table.escala-pos .ep-pista { width: 330px; padding: 0 14px; }
+.reveal .ep-polos { display: flex; justify-content: space-between; gap: .6em; font-size: 13px; line-height: 1.1; color: #555; font-weight: 600; }
+.reveal .ep-linea { position: relative; height: 18px; }
+.reveal .ep-linea::before { content: ""; position: absolute; left: 0; right: 0; top: 8px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, #5b3f8c, #ddd 50%, #c8641e); opacity: .55; }
+.reveal .ep-punto { position: absolute; top: 2px; width: 15px; height: 15px; margin-left: -7.5px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #333; }
+.reveal .ep-sp { position: absolute; left: 0; right: 0; top: 0; text-align: center; font-size: 12px; font-style: italic; color: #888; background: #fafafa; }
+.reveal .ep-t { color: #333; }
+.reveal .ep-pie { font-size: 13px !important; color: #666; margin-top: .4em; font-family: Inter, sans-serif; }
+.reveal table.matriz-pos { border-collapse: separate; border-spacing: 2px; font-size: 15px !important; font-family: Inter, sans-serif; margin: 0 auto; }
+.reveal table.matriz-pos td, .reveal table.matriz-pos th { font-size: inherit !important; border: none; padding: 0 .35em; height: 28px; }
+.reveal table.matriz-pos td:not(.ep-n) { width: 52px; text-align: center; }
+.reveal table.matriz-pos th { vertical-align: bottom; height: 120px; padding: 0; }
+.reveal table.matriz-pos th div { writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 600; font-size: 13px; max-height: 120px; margin: 0 auto; }
+.reveal table.matriz-pos .mz-sp { color: #999; background: #fafafa; }
+.reveal .mz-ley { display: inline-block; width: 12px; height: 12px; vertical-align: middle; margin: 0 3px 0 10px; }
+
+.reveal .ep-polos span:last-child { text-align: right; }
+.reveal table.escala-pos th:nth-child(1) { width: 190px; }
+.reveal table.escala-pos th:nth-child(2) { width: 300px; }

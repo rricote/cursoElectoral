@@ -501,7 +501,8 @@ Es una propuesta personal y conviene presentarla con sus pros y sus contras. Al 
 5. Requiere **reformar la Constitución**.
 
 <div class="volver"><a href="index.html">← Volver al índice del curso</a></div>
+<div class="volver sec"><a href="06-posiciones.html">Ir a la sesión 6 →</a></div>
 
 ::: notes
-Cinco ideas para cerrar el curso. Si queréis, podéis jugar con otras variantes: un mínimo de 4 en lugar de 6, una circunscripción nacional o Sainte-Laguë en lugar de D'Hondt.
+Cinco ideas para cerrar la sesión. Si queréis, podéis jugar con otras variantes: un mínimo de 4 en lugar de 6, una circunscripción nacional o Sainte-Laguë en lugar de D'Hondt.
 :::

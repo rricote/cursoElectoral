@@ -1,0 +1,268 @@
+---
+title: "Qué defiende cada partido"
+subtitle: "Sesión 6 · Las posiciones de los partidos ante los grandes temas"
+format:
+  revealjs:
+    theme: [default, recursos/curso.scss]
+    slide-number: true
+    hash-type: number
+    transition: fade
+    footer: "[Curso de política](index.html) · Sesión 6"
+execute:
+  echo: false
+---
+
+```{ojs}
+//| output: false
+issues = FileAttachment("datos/issues.json").json()
+partidos = issues.partidos
+tema = id => issues.temas.find(t => t.id === id)
+tinte = (c, a) => c + Math.round(a * 255).toString(16).padStart(2, "0")
+escala = id => {
+  const t = tema(id)
+  const filas = partidos.map(p => {
+    const [v, txt] = t.pos[p.k]
+    const marca = v === null
+      ? html`<span class="ep-sp">sin posición clara</span>`
+      : html`<span class="ep-punto" style="left:${v * 10}%;background:${p.c}"></span>`
+    return html`<tr style="background:${tinte(p.c, 0.10)}">
+      <td class="ep-n"><span class="ep-c" style="background:${p.c}"></span>${p.n}${p.nota ? html`<sup title="${p.nota}">*</sup>` : ""}</td>
+      <td class="ep-pista"><div class="ep-linea">${marca}</div></td>
+      <td class="ep-t">${v === null ? "—" : txt}</td></tr>`
+  })
+  return html`<table class="escala-pos">
+    <thead><tr><th></th>
+      <th><div class="ep-polos"><span>← ${t.izq}</span><span>${t.der} →</span></div></th>
+      <th>En pocas palabras</th></tr></thead>
+    <tbody>${filas}</tbody></table>
+    <div class="ep-pie">Posición orientativa (0-10) a partir de programas, votaciones y declaraciones, noviembre de 2026.
+    * CUP y Aliança Catalana no se presentan a las generales del 29-N.</div>`
+}
+matriz = () => {
+  const col = d3.scaleLinear().domain([0, 5, 10]).range(["#5b3f8c", "#f2efe9", "#c8641e"])
+  const cab = issues.temas.map(t => html`<th><div>${t.titulo}</div></th>`)
+  const filas = partidos.map(p => html`<tr>
+    <td class="ep-n"><span class="ep-c" style="background:${p.c}"></span>${p.n}</td>
+    ${issues.temas.map(t => {
+      const v = t.pos[p.k][0]
+      return v === null
+        ? html`<td class="mz-sp" title="${t.pos[p.k][1]}">·</td>`
+        : html`<td style="background:${col(v)}" title="${t.titulo}: ${t.pos[p.k][1]}"></td>`
+    })}</tr>`)
+  return html`<table class="matriz-pos"><thead><tr><th></th>${cab}</tr></thead><tbody>${filas}</tbody></table>
+  <div class="ep-pie"><span class="mz-ley" style="background:#5b3f8c"></span> primer polo de cada escala
+  <span class="mz-ley" style="background:#f2efe9;border:1px solid #ccc"></span> intermedio
+  <span class="mz-ley" style="background:#c8641e"></span> segundo polo · <span class="mz-ley" style="background:#fafafa;border:1px solid #ccc"></span> sin posición clara. Pasa el ratón por una casilla para ver la frase.</div>`
+}
+```
+
+## Cómo leer esta sesión
+
+::: {.tarjetas}
+::: {.tarjeta style="--c:#9b2226"}
+[Una diapositiva, un tema]{.tt}
+Cada tema tiene dos polos. Cada partido aparece como un punto en una escala de 0 a 10 entre esos dos polos, con una frase que resume su postura.
+:::
+::: {.tarjeta style="--c:#1d84ce"}
+[Partidos en orden]{.tt}
+Los partidos van ordenados de izquierda a derecha, como en la sesión 3. Fijaos en cuándo ese orden **se rompe**: ahí aparece el segundo eje.
+:::
+::: {.tarjeta style="--c:#5aa31f"}
+[Es una aproximación]{.tt}
+Las posiciones salen de programas del 29-N, votaciones en el Congreso y declaraciones. Son orientativas: discutidlas.
+:::
+:::
+
+::: notes
+Esta sesión cambia de enfoque: ya no hablamos de cómo se reparten los escaños, sino de lo que defiende cada partido. He incluido los partidos del Congreso más cuatro que interesan: CUP y Aliança Catalana (que solo se presentan en Cataluña y no van a las generales del 29-N), SALF de Alvise Pérez y Democracia 21 de Miriam González. Las posiciones son mías, no de un estudio académico: las he sacado de programas, votaciones y declaraciones de 2025 y 2026. Cuando un partido no ha dicho nada claro sobre un tema, lo marco como «sin posición clara» en vez de inventármelo. Lo interesante es ver qué temas ordenan a los partidos de izquierda a derecha y cuáles no.
+:::
+
+## Los partidos {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+- **CUP**: izquierda anticapitalista e independentista catalana.
+- **Podemos**: izquierda; se presenta solo, salvo en Valencia y Canarias.
+- **EH Bildu**: izquierda independentista vasca.
+- **Frente Amplio**: Sumar, IU, Más Madrid, Comuns y otros, con Ada Colau.
+- **ERC**: izquierda independentista catalana.
+- **PSOE**: socialdemocracia; partido del Gobierno.
+- **PNV**: nacionalismo vasco democristiano.
+:::
+::: {.column width="50%"}
+- **Democracia 21**: Miriam González; regeneración institucional, se dice «transversal». Solo en Madrid y Barcelona.
+- **Junts**: independentismo catalán de centroderecha.
+- **PP**: centroderecha; principal partido de la oposición.
+- **Aliança Catalana**: derecha radical independentista.
+- **Vox**: derecha radical populista.
+- **SALF**: Alvise Pérez; populismo antisistema.
+:::
+:::
+
+::: notes
+Un repaso rápido. Democracia 21 rechaza situarse en el eje izquierda-derecha; los análisis la colocan en un espacio liberal y reformista cercano al centro, y por eso la pongo entre el PNV y Junts. Aliança Catalana y Junts comparten el eje independentista pero no el económico ni el migratorio. SALF nació de la candidatura de Alvise a las europeas de 2024.
+:::
+## Aborto
+
+```{ojs}
+escala("aborto")
+```
+
+::: notes
+Abril de 2026: el Gobierno lleva al Congreso la reforma del artículo 43 para garantizar el aborto. El Congreso rechazó las enmiendas de totalidad de PP y Vox por 177 a 171. ERC dijo que preferiría el artículo 15; PNV y Junts fueron críticos; Podemos también. Vox, por primera vez, habló de aceptar una ley de supuestos. Aliança Catalana: Orriols defendió limitarlo a malformación o riesgo para la madre (programa de 2024).
+:::
+
+## Impuestos a los más ricos
+
+```{ojs}
+escala("fortunas")
+```
+
+::: notes
+Programas del 29-N: PSOE, Frente Amplio y Podemos proponen más tributación de grandes patrimonios y empresas; PP y Vox, rebajas. Vox incluye un gravamen sobre las remesas. Democracia 21 habla de rebajas fiscales y menos burocracia. Aliança Catalana: programa catalán de 2024 (supresión de patrimonio y sucesiones).
+:::
+
+## Inmigración
+
+```{ojs}
+escala("inmigracion")
+```
+
+::: notes
+PSOE y Frente Amplio: regularización y derechos; PP: cupos máximos anuales, acuerdos de retorno y prioridad nacional en algunas ayudas; Vox: «ni uno más», fin del arraigo y remigración. Podemos, ERC y Sumar apoyaron la ILP de regularización. Junts ha endurecido su discurso ante el avance de Aliança Catalana, que se declara islamófoba. Democracia 21 presenta la inmigración como un activo con regulación sensata.
+:::
+
+## Redistribución y Estado del bienestar
+
+```{ojs}
+escala("bienestar")
+```
+
+::: notes
+Aquí la escala resume dos cosas: cuánto gasto social y cuántos impuestos. Vox no está a favor de «menos Estado» en todo: su eje es a quién va el gasto, con la «prioridad nacional» para españoles en las ayudas. Aliança Catalana defendió en 2025 un sistema de pensiones por capitalización (la «mochila austriaca»).
+:::
+
+## Vivienda
+
+```{ojs}
+escala("vivienda")
+```
+
+::: notes
+La línea divisoria es la Ley 12/2023 de vivienda: PP y Vox prometen derogarla y apostar por más oferta y menos impuestos; PSOE, Frente Amplio, Podemos y ERC quieren conservarla y profundizarla. Los decretos de vivienda del Gobierno han caído en el Congreso con los votos de PP, Vox, Junts y UPN. Democracia 21 propone un plan nacional de construcción de barrios y eliminar impuestos de la vivienda a los menores de 35 años.
+:::
+
+## Modelo territorial
+
+```{ojs}
+escala("territorial")
+```
+
+::: notes
+Este eje cruza al de izquierda y derecha: hay independentistas de izquierda (CUP, ERC, EH Bildu) y de derecha (Junts, Aliança Catalana). ERC pactó con el PSOE la financiación singular; Junts reclama un concierto económico; PP y Vox se oponen.
+:::
+
+## Monarquía o república
+
+```{ojs}
+escala("monarquia")
+```
+
+::: notes
+Posiciones históricas y declaradas de cada partido. El PSOE se define como republicano en sus principios, pero ha defendido siempre la monarquía parlamentaria de la Constitución de 1978.
+:::
+
+## Eutanasia
+
+```{ojs}
+escala("eutanasia")
+```
+
+::: notes
+La ley de eutanasia de 2021 salió adelante con PSOE, Unidas Podemos, ERC, PNV, Junts, EH Bildu y otros; PP, Vox y UPN votaron en contra y la llevaron al Tribunal Constitucional, que la avaló en 2023. Vox prometía derogarla, aunque en la campaña del 29-N apenas habla de estos temas.
+:::
+
+## Energía nuclear
+
+```{ojs}
+escala("nuclear")
+```
+
+::: notes
+Noviembre de 2025: el Congreso rechazó por un voto la enmienda del PP para eliminar las fechas de cierre de Almaraz, Ascó I y Cofrentes (PP, Vox y UPN a favor; PSOE, Sumar, ERC y PNV en contra; Junts se abstuvo). Agosto de 2026: el Gobierno prorrogó Almaraz hasta 2030; Sumar lo calificó de error.
+:::
+
+## Gasto en defensa y OTAN
+
+```{ojs}
+escala("defensa")
+```
+
+::: notes
+En junio de 2025 Sánchez se comprometió a gastar el 2,1 % del PIB en defensa y rechazó el 5 % pactado por el resto de aliados. Podemos, EH Bildu y el BNG piden salir de la OTAN. El PP evitó aclarar si subiría al 5 %; Vox es partidario de incrementarlo. SALF propone referéndums sobre la UE y la OTAN.
+:::
+
+## Unión Europea
+
+```{ojs}
+escala("ue")
+```
+
+::: notes
+Posiciones generales de cada partido y su familia europea. SALF propone un referéndum sobre la salida de la UE desde su presentación como partido (octubre de 2025).
+:::
+
+## Reducir la jornada laboral a 37,5 horas
+
+```{ojs}
+escala("jornada")
+```
+
+::: notes
+Septiembre de 2025: el Congreso devolvió al Gobierno el proyecto de ley para reducir la jornada de 40 a 37,5 horas, al aprobarse las enmiendas de totalidad de PP, Vox y Junts, con el apoyo de UPN (178 votos a favor y 170 en contra).
+:::
+
+## Todo junto
+
+```{ojs}
+matriz()
+```
+
+::: notes
+La misma información en una sola tabla. Morado es el primer polo de cada escala (normalmente la posición de la izquierda) y naranja el segundo. En la mayoría de temas económicos y sociales los colores van de morado a naranja de arriba abajo: el eje izquierda-derecha funciona. Pero mirad la columna del modelo territorial y la de la monarquía: Junts y Aliança Catalana se ponen morados, y el PSOE se va al centro. Y en la Unión Europea, la CUP y Podemos se acercan a Vox. Es el segundo eje de la sesión 3.
+:::
+
+## Qué nos enseña
+
+::: {.tarjetas}
+::: {.tarjeta style="--c:#9b2226"}
+[El eje izquierda-derecha manda]{.tt}
+En impuestos, gasto social, vivienda, jornada laboral, aborto o inmigración el orden de los partidos se mantiene casi igual.
+:::
+::: {.tarjeta style="--c:#00a99d"}
+[El eje territorial lo cruza]{.tt}
+En independencia o monarquía, Junts y Aliança Catalana están con la izquierda independentista, y lejos del PP y de Vox.
+:::
+::: {.tarjeta style="--c:#5aa31f"}
+[Hay temas transversales]{.tt}
+En la Unión Europea o la OTAN se juntan los extremos; en la energía nuclear el PSOE gobierna a medio camino.
+:::
+:::
+
+::: notes
+Tres ideas. Primera: la mayoría de temas se ordenan de izquierda a derecha, lo que explica por qué el eje sigue siendo útil. Segunda: el eje territorial lo cruza, y por eso Junts puede votar con PP y Vox en economía y con ERC en autogobierno; es la llave de la legislatura. Tercera: algunos temas no siguen ningún eje claro, como la UE o la OTAN, donde los extremos de izquierda y derecha desconfían de las instituciones internacionales por razones distintas.
+:::
+
+## Resumen de la sesión
+
+1. Cada partido ocupa un lugar distinto en **cada tema**, no solo en el eje izquierda-derecha.
+2. Los temas **económicos y sociales** ordenan a los partidos casi siempre igual.
+3. El **eje territorial** junta a independentistas de izquierda y de derecha.
+4. En **Europa y defensa** los extremos se parecen más entre sí que al centro.
+5. Las posiciones **cambian**: Vox con el aborto, Junts con la inmigración o el PSOE con Almaraz.
+
+<div class="volver"><a href="index.html">← Volver al índice del curso</a></div>
+
+::: notes
+Cierre del curso. La última idea es importante: los partidos se mueven según la competencia. Vox ha suavizado su discurso sobre el aborto, Junts ha endurecido el de inmigración ante Aliança Catalana y el Gobierno del PSOE ha prorrogado Almaraz pese a su calendario de cierre. Para el debate: ¿en qué tema os sentís más lejos del partido al que votáis?
+:::
